@@ -9,6 +9,7 @@ PAGINE:
 - Inserimento eventi (solo lato org)
 - Vista eventi pubblicati con possibilità di modifica (solo lato org)
 - Carrello
+- Recupero password
 
 
  
