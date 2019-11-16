@@ -1,0 +1,15 @@
+
+PAGINE:
+ 
+- Home
+- Login
+- Registrazione
+- Lista eventi con relativi filtri di ricerca (da definire)
+- Approvazione organizzatori (solo lato admin)
+- Inserimento eventi (solo lato org)
+- Vista eventi pubblicati con possibilità di modifica (solo lato org)
+- Carrello
+- Info di un evento con sezione per l'aggiunta dei biglietti nel carrello
+
+
+ 
