@@ -3,11 +3,6 @@ body {
     background: url(../img/bg.jpg);
 }
 
-* {
-    margin: 0;
-    padding: 0;
-}
-
 label {
     color: white;
 }
