@@ -1,5 +1,11 @@
+/* Body */
 body {
     background: url(../img/bg.jpg);
+}
+
+* {
+    margin: 0;
+    padding: 0;
 }
 
 label {
@@ -7,38 +13,43 @@ label {
 }
 
 hr {
-    margin-top: 1%;
+    margin-top: 2% !important;
     display: block;
-    height: 1%;
-    border-top: 1px solid #ccc;
+    border-top: 1px solid white;
     margin: 1em 0;
     padding: 0;
 }
 
 .row{
-    margin: 2% 0;
+    margin: 1% 0;
 }
 
+/* Form */
 .form-div {
     border:1px solid;
     border-color: white;
-    padding: 10%;
+    padding: 7%;
 }
+
 
 .page-btn{
     margin-top: 2%;
 }
 
-.text {
-    width: 100%;
-    display:inline-block;
-    overflow: auto;
+#carrello{
+    width: 30%;
+    height: 30%;
 }
 
-#text > button {
-    float: right;
+#searchInput{
+    width: 80%;
 }
 
-#logoImg{
-    width: 100%;
+/* Footer */
+a {
+    color: white;
+}
+
+a:hover{
+    color: #007bff;
 }
