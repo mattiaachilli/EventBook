@@ -3,6 +3,11 @@ body {
     background: url(../img/bg.jpg);
 }
 
+* {
+    margin: 0;
+    padding: 0;
+}
+
 label {
     color: white;
 }
@@ -31,10 +36,14 @@ hr {
     margin-top: 2%;
 }
 
-/* Logo */
-/*#logoImg{
-    width: 100%;
-}*/
+#carrello{
+    width: 30%;
+    height: 30%;
+}
+
+#searchInput{
+    width: 80%;
+}
 
 /* Footer */
 a {
