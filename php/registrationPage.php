@@ -7,46 +7,47 @@
                 <div class="row">
                     <div class="col-md-6 col-s-12">
                             <label for="username">Username</label>
-                            <input type="text" class="form-control" id="username" placeholder="Username">
+                            <input type="text" class="form-control" id="username">
                     </div>
                     <div class="col-md-6 col-s-12">
-                            <label for="nome">Nome</label>
-                            <input type="text" class="form-control" id="nome" placeholder="Nome">
+                            <label for="e-mail">E-mail</label>
+                            <input type="text" class="form-control" id="e-mail">
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-6 col-s-12">
-                        <label for="email">E-mail</label>
-                        <input type="email" class="form-control" id="email" placeholder="E-mail">
+                        <label for="nome">Nome</label>
+                        <input type="email" class="form-control" id="nome">
                     </div>
                     <div class="col-md-6 col-s-12">
                         <label for="cognome">Cognome</label>
-                        <input type="text" class="form-control" id="cognome" placeholder="Cognome">
+                        <input type="text" class="form-control" id="cognome">
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-6 col-s-12">
-                        <label for="conferma-email">Conferma e-mail</label>
-                        <input type="email" class="form-control" id="conferma-email" placeholder="Conferma e-mail">
+                        <label for="password">Password</label>
+                        <input type="password" class="form-control" id="password">
                     </div>
                     <div class="col-md-6 col-s-12"></div>
                 </div>
                 <div class="row">
                     <div class="col-md-6 col-s-12">
                         <label for="conferma-password">Conferma password</label>
-                        <input type="password" class="form-control" id="conferma-password" placeholder="Conferma password">
+                        <input type="password" class="form-control" id="conferma-password">
                     </div>
                     <div class="col-md-6 col-s-12"></div>
                 </div>
-                <div class="form-check mt-4 ml-3">
-                    <input class="form-check-input" type="checkbox" id="autoSizingCheck">
-                    <label class="form-check-label" for="autoSizingCheck">Organizzatore</label>
-                </div>
-                <div class="row">
-                    <div class="col-4"></div>
-                    <div class="col-4"></div>
-                    <div class="col-4">
-                        <button type="submit" class="btn btn-primary float-right">Registrati</button>
+                <div class="form-row align-items-center pl-3 pr-3 mt-4">
+                    <div class="col-12 col-lg-4">
+                        <div class="form-check mb-2">
+                        <input class="form-check-input" type="checkbox" id="autoSizingCheck">
+                        <label class="form-check-label" for="autoSizingCheck">Organizzatore</label>
+                        </div>
+                    </div>
+                    <div class="col-0 col-lg-4"></div>
+                    <div class="col-12 col-lg-4">
+                        <button type="submit" class="btn btn-primary mb-2 float-right">Registrati</button>
                     </div>
                 </div>
             </form>
