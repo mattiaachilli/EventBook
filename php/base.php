@@ -25,7 +25,7 @@
         <header>
                 <div class="row">
                     <div class="col-md-4 col-sm-12 col-xs-12 pr-5">
-                        <a href="index.php"><img id="logoImg" class="img-fluid pt-1" src="../img/logo.png" alt="" /></a>
+                        <a href="index.php"><img id="logoImg" class="img-fluid pt-1" src="../img/logo2.png" alt="" /></a>
                     </div>
                     <div class="col-md-2 col-sm-1 col-xs-12"> </div>
                     <div class="col-md-4 col-sm-5 col-10">
