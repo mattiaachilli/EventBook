@@ -18,6 +18,15 @@
     <link rel="stylesheet" href="../css/bootstrap/bootstrap.min.css">
     <script src="../js/bootstrap/bootstrap.min.js"></script>
     <link rel="stylesheet" href="../css/style.css">
+    <?php
+    if(isset($parameters["js"])):
+        foreach($parameters["js"] as $script):
+    ?>
+        <script src="<?php echo $script; ?>"></script>
+    <?php
+        endforeach;
+    endif;
+    ?>
 </head>
 
 <body>
