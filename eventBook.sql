@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Nov 28, 2019 alle 18:02
+-- Creato il: Nov 30, 2019 alle 14:33
 -- Versione del server: 10.4.8-MariaDB
 -- Versione PHP: 7.3.11
 
@@ -45,6 +45,13 @@ CREATE TABLE `categorie` (
   `Nome` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dump dei dati per la tabella `categorie`
+--
+
+INSERT INTO `categorie` (`Nome`) VALUES
+('Sport');
+
 -- --------------------------------------------------------
 
 --
@@ -53,13 +60,16 @@ CREATE TABLE `categorie` (
 
 CREATE TABLE `eventi` (
   `IDevento` varchar(10) NOT NULL,
-  `Data_e_ora` date NOT NULL,
+  `Data` date NOT NULL,
   `Nome_evento` varchar(20) NOT NULL,
   `Nome_location` varchar(20) NOT NULL,
   `Nazione_location` varchar(20) NOT NULL,
   `Città_location` varchar(20) NOT NULL,
   `Biglietti_disponibili` int(6) NOT NULL,
-  `Categoria` varchar(20) NOT NULL
+  `Categoria` varchar(20) NOT NULL,
+  `Immagine` varchar(50) NOT NULL,
+  `Descrizione` varchar(1000) NOT NULL,
+  `Prezzo` int(5) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -76,6 +86,13 @@ CREATE TABLE `location` (
   `Via` varchar(20) NOT NULL,
   `N_civico` int(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dump dei dati per la tabella `location`
+--
+
+INSERT INTO `location` (`Nome`, `Nazione`, `Città`, `Capienza`, `Via`, `N_civico`) VALUES
+('Allianz Stadium', 'Italia', 'Torino', 45000, 'Gaetano Scirea', 50);
 
 -- --------------------------------------------------------
 
