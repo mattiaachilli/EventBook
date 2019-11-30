@@ -2,7 +2,7 @@
     <div class="col-md-2 col-sm-2"></div>
     <div class="col-md-8 col-sm-8 col-xs-12">
         <h2 class="text-light display-4">Registrati</h2>
-        <div class="form-div">
+        <div class="form-div rounded">
             <form>
                 <div class="row">
                     <div class="col-md-6 col-s-12">
@@ -40,9 +40,9 @@
                 </div>
                 <div class="form-row align-items-center pl-3 pr-3 mt-4">
                     <div class="col-12 col-lg-4">
-                        <div class="form-check mb-2">
-                        <input class="form-check-input" type="checkbox" id="autoSizingCheck">
-                        <label class="form-check-label" for="autoSizingCheck">Organizzatore</label>
+                        <div class="form-check custom-control custom-checkbox mb-2">
+                            <input type="checkbox" class="form-check-input custom-control-input" id="checkbox">
+                            <label class="form-check-label custom-control-label" for="checkbox">Organizzatore</label>
                         </div>
                     </div>
                     <div class="col-0 col-lg-4"></div>

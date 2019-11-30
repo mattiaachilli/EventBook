@@ -1,6 +1,7 @@
 /* Body */
 body {
-    background: url(../img/bg.jpg);
+    background: url(../img/bg2.jpg);
+    background-attachment: fixed;
 }
 
 label {
@@ -24,6 +25,12 @@ hr {
     border:1px solid;
     border-color: white;
     padding: 7%;
+}
+
+.scrollable-menu {
+    height: auto;
+    max-height: 350%;
+    overflow-x: hidden;
 }
 
 
