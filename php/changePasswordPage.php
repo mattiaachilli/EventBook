@@ -12,6 +12,11 @@
                     <label for="repeat-password">Ripeti password</label>
                     <input type="password" class="form-control" id="repeat-password">
                 </div>
+                <div class="col-12 text-light mt-1">
+                    <p id="info-alert">
+                    
+                    </p>
+                </div>
                 <div class="row mt-4">
                     <div class="col-9"></div>
                     <div class="col-3">
