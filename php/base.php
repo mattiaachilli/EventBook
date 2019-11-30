@@ -43,8 +43,8 @@
                     <div class="col-4"></div>
                     <div class="collapse navbar-collapse col-12 col-lg-8 p-0 container-fluid" id="navbarColor03">
                         <div class="mt-1 p-1 bg-light container-fluid rounded rounded-pill shadow-sm">
-                            <form method = "post" class="input-group">
-                                <input type="search" placeholder="Cerca evento.." aria-describedby="button-addon1" class="form-control rounded-pill border-0 bg-light">
+                            <form action = "ciao.php" method = "get" class="input-group">
+                                <input type="search" name = "search" placeholder="Cerca evento.." aria-describedby="button-addon1" class="form-control rounded-pill border-0 bg-light">
                                 <div class="input-group-append">
                                     <button id="button-addon1" type="submit" class="btn btn-link text-primary"><i class="fa fa-search"></i></button>
                                 </div>
@@ -53,8 +53,8 @@
                                         <i class = "fas fa-bars"></i>
                                     </button>
                                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
-                                        <a class="dropdown-item text-primary" href="#">Accedi</a>
-                                        <a class="dropdown-item text-primary" href="#">Registrati</a>
+                                        <a class="dropdown-item text-primary" href="login.php">Accedi</a>
+                                        <a class="dropdown-item text-primary" href="registration.php">Registrati</a>
                                         <a class="dropdown-item text-primary" href="#">
                                             <i class = "fas fa-shopping-cart"></i>
                                         </a>
