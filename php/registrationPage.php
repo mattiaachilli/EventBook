@@ -51,19 +51,6 @@
                     </div>
                 </div>
             </form>
-            <!--
-            <hr/>
-
-            <div class="text">
-                <label for="resetPassword"> Hai dimenticato la tua password? </label>
-                <button type="submit" class="btn btn-primary page-btn" id="resetPassword"> Reimpostala </button>
-            </div>
-            <hr/>
-            <div class="text">
-                <label for="register"> Non hai ancora un account? </label>
-                <button type="submit" class="btn btn-primary page-btn" id="register"> Registrati</button>
-            </div>
-        -->
         </div>
     </div>
     <div class="col-md-2 col-sm-2"></div>
