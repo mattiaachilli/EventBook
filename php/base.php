@@ -19,6 +19,15 @@
     <script src="../js/bootstrap/bootstrap.min.js"></script>
     <link rel="stylesheet" href="../fontawesome-free-5.11.2-web/css/all.css">
     <link rel="stylesheet" href="../css/style.css">
+    <?php
+    if(isset($parameters["js"])):
+        foreach($parameters["js"] as $script):
+    ?>
+        <script src="<?php echo $script; ?>"></script>
+    <?php
+        endforeach;
+    endif;
+    ?>
 </head>
 
 <body>
