@@ -9,7 +9,7 @@
                     <input type="password" class="form-control" id="new-password">
                 </div>
                 <div class="col-12 mt-2">
-                    <label for="new-password">Ripeti password</label>
+                    <label for="repeat-password">Ripeti password</label>
                     <input type="password" class="form-control" id="repeat-password">
                 </div>
                 <div class="row mt-4">
