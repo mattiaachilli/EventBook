@@ -5,3 +5,7 @@
 <font size="13"><a href="registration.php">Registrazione</a></font>
 <br>
 <font size="13"><a href="changePassword.php">Cambia Password</a></font>
+<br>
+<font size="13"><a href="events.php">Eventi in programma</a></font>
+<br>
+<font size="13"><a href="eventInfo.php">Info evento</a></font>
