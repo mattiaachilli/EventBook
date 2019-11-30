@@ -17,38 +17,46 @@
         crossorigin="anonymous"></script>
     <link rel="stylesheet" href="../css/bootstrap/bootstrap.min.css">
     <script src="../js/bootstrap/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="../fontawesome-free-5.11.2-web/css/all.css">
     <link rel="stylesheet" href="../css/style.css">
 </head>
 
 <body>
-    <div class="container-fluid">
+    <div class="container-fluid p-0">
         <header>
-                <div class="row">
-                    <div class="col-md-4 col-sm-12 col-xs-12 pr-5">
-                        <a href="index.php"><img id="logoImg" class="img-fluid pt-1" src="../img/logo2.png" alt="" /></a>
-                    </div>
-                    <div class="col-md-2 col-sm-1 col-xs-12"> </div>
-                    <div class="col-md-4 col-sm-5 col-10">
-                        <form>
-                            <div class="form-row mt-4">
-                                <input type="search" class="form-control w-75 mr-3" id="search" placeholder="Ricerca evento..">
-                                <button class="btn btn-primary" type="submit">Cerca</button>
-                            </div>
-                            <!--
-                            <div class="mt-4">
-                                <input class="form-control w-75" type="search" placeholder="Cerca evento.." autocomplete="true" />
-                                <button type="submit" class="btn btn-primary page-btn ml-5">Cerca</button>
-                            </div>
-                            -->
-                        </form>
-                    </div>
-                    <div class="col-md-2 col-sm-2 col-2">
-                        <a href="#">
-                            <img class="img-fluid mt-4" src="../img/carrello.png" alt="carrello" />
-                        </a>
-                    </div>
+            <div class = "row">
+                <div class = "col-12 col-lg-4 text-center">
+                    <a href = "index.php">
+                        <img id="logoImg" class="img-fluid w-auto mt-2" src="../img/logo2.png" alt="" />
+                    </a>
                 </div>
-            </header>
+                <nav class="navbar container-fluid navbar-expand-lg navbar-dark bg-transaparent col-12 col-lg-8">
+                    <div class="col-4"></div>
+                    <div class="collapse navbar-collapse col-12 col-lg-8 p-0 container-fluid" id="navbarColor03">
+                        <div class="mt-1 p-1 bg-light container-fluid rounded rounded-pill shadow-sm">
+                            <div class="input-group">
+                                <input type="search" placeholder="Cerca evento.." aria-describedby="button-addon1" class="form-control rounded-pill border-0 bg-light">
+                                <div class="input-group-append">
+                                    <button id="button-addon1" type="submit" class="btn btn-link text-primary"><i class="fa fa-search"></i></button>
+                                </div>
+                                <div class="dropdown rounded-pill">
+                                    <button class="btn btn btn-link text-primary" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <i class = "fas fa-bars"></i>
+                                    </button>
+                                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+                                        <a class="dropdown-item text-primary" href="#">Accedi</a>
+                                        <a class="dropdown-item text-primary" href="#">Registrati</a>
+                                        <a class="dropdown-item text-primary" href="#">
+                                            <i class = "fas fa-shopping-cart"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </header>
     </div>
     <hr/>
     <?php
