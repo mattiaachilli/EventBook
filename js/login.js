@@ -1,5 +1,6 @@
 $(document).ready(function(){
-    $("form").submit(function() {
+    $("form").submit(function(event) {
+        event.preventDefault();
         const username_email = $("#username-email").val().trim();
         const password = $("#password").val().trim();
         if(username_email != "" && password != "") {
@@ -11,8 +12,10 @@ $(document).ready(function(){
                     let msg = "";
                     if (code == 0) {
                         msg = "Username/Email o Password incorretti";
+                    } else {
+                        msg ="OK"
                     }
-                    //Incolla su html
+                    alert(msg);
                 }
             });
         } else {
