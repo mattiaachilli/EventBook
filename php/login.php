@@ -1,9 +1,10 @@
 <?php
     require_once("bootstrap.php");
 
+
     if(isUserLoggedIn()){
-        $templateParams["title"] = "Home - EventBook";
-        $parameters["content"] = "home.php";
+        //$templateParams["title"] = "Home - EventBook";
+        header("Location: index.php");
     }
     else{ /* If is not logged */
         $parameters["title"] = "Login - EventBook";

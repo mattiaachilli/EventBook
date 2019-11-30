@@ -3,7 +3,7 @@
     <div class="col-md-4 col-sm-6 col-xs-12">
         <h1 class="text-light display-4">Login</h1>
         <div class="form-div rounded" id="form-div">
-            <form method= "POST">
+            <form method= "POST" id="form-login">
                 <div class="col-12">
                     <label for="username-email">Username / Email </label>
                     <input type="text" class="form-control" id="username-email">
@@ -11,6 +11,7 @@
                 <div class="col-12 mt-2">
                     <label for="password">Password</label>
                     <input type="password" class="form-control" id="password">
+                    <p id="msg"></p>
                 </div>
                 <div class="row mt-4">
                     <div class="col-6">

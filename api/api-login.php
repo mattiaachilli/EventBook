@@ -5,6 +5,7 @@
         if(count($login) == 0){
             echo 0;
         } else {
+            registerLoggedUser($login[0]);
             echo 1;
         }
     }

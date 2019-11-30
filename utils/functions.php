@@ -1,6 +1,6 @@
 <?php
     function isUserLoggedIn(){
-        return !empty($_SESSION['user']);
+        return !empty($_SESSION["user"]);
     }
 
     function registerLoggedUser($user){

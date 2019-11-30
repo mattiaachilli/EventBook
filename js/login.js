@@ -1,5 +1,6 @@
 $(document).ready(function(){
-    $("form").submit(function(event) {
+    $("#msg").hide();
+    $("#form-login").submit(function(event) {
         event.preventDefault();
         const username_email = $("#username-email").val().trim();
         const password = $("#password").val().trim();
@@ -9,17 +10,21 @@ $(document).ready(function(){
                 type: 'post',
                 data: {username: username_email, password: password},
                 success: function(code) {
-                    let msg = "";
                     if (code == 0) {
-                        msg = "Username/Email o Password incorretti";
+                        $("#msg").html("Username/Email o Password incorretti");
+                        $("#msg").fadeIn(1000);
+                        $("#msg").css("font-size", "10px");
+                        $("#msg").css("color", "white");
                     } else {
-                        msg ="OK"
+                        document.location.href = "index.php";
                     }
-                    alert(msg);
                 }
             });
         } else {
-            $("#form-div").append("Campi non compilati");
+            $("#msg").html("Campi non compilati");
+            $("#msg").fadeIn(1000);
+            $("#msg").css("font-size", "10px");
+            $("#msg").css("color", "white");
         }
     });
 });
