@@ -54,7 +54,20 @@
                                         <i class = "fas fa-bars"></i>
                                     </button>
                                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+                                    <?php
+                                        if(!isUserLoggedIn()) : 
+                                    ?>
                                         <a class="dropdown-item text-primary" href="login.php">Accedi</a>
+                                    <?php
+                                        endif;
+                                    ?>
+                                    <?php
+                                        if(isUserLoggedIn()) : 
+                                    ?>
+                                        <a class="dropdown-item text-primary" href="logout.php">Esci</a>
+                                    <?php
+                                        endif;
+                                    ?>
                                         <a class="dropdown-item text-primary" href="registration.php">Registrati</a>
                                         <a class="dropdown-item text-primary" href="#">
                                             <i class = "fas fa-shopping-cart"></i>
@@ -88,7 +101,7 @@
                     </div>
                     <div class="col-md-4 col-sm-4 col-12">
                         <h5 class="text-uppercase">Contatti</h5>
-                        <p> ..... </p>
+                        <p> mattia.achilli@studio.unibo.it</p>
                     </div>
                     <div class="col-md-4 col-sm-4 col-12">
                         <h5 class="text-uppercase">Info utili</h5>

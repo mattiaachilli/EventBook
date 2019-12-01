@@ -1,5 +1,5 @@
 <?php
-    //require_once bootstrap goes here
+    require_once("bootstrap.php");
 
     $parameters["title"] = "Home - EventBook";
     $parameters["content"] = "home.php";

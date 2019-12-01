@@ -1,9 +1,13 @@
 <?php
-    //require_once bootstrap goes here
+    require_once("bootstrap.php");
 
-    $parameters["title"] = "Cambia password - EventBook";
-    $parameters["content"] = "changePasswordPage.php";
-    $parameters["js"] = array("../js/changePassword.js");
+    if(isUserLoggedIn()){
+        header("Location: index.php");
+    } else {
+        $parameters["title"] = "Cambia password - EventBook";
+        $parameters["content"] = "changePasswordPage.php";
+        $parameters["js"] = array("../js/changePassword.js");
+    }
     
     require 'base.php';
 ?>

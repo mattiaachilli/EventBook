@@ -9,3 +9,8 @@
 <font size="13"><a href="events.php">Eventi in programma</a></font>
 <br>
 <font size="13"><a href="eventInfo.php">Info evento</a></font>
+<?php
+    if(isUserLoggedIn()) {
+        echo '<br><font size="13"><a href="logout.php">Esci</a></font>';
+    }
+?>

@@ -1,7 +1,6 @@
 <?php
     require_once("bootstrap.php");
 
-
     if(isUserLoggedIn()){
         //$templateParams["title"] = "Home - EventBook";
         header("Location: index.php");

@@ -5,7 +5,11 @@
         if(count($login) == 0){
             echo 0;
         } else {
-            registerLoggedUser($login[0]);
+            $checkbox = 0;
+            if(isset($_POST["checkbox"]) && $_POST["checkbox"] == 1) {
+                $checkbox = 1;
+            }
+            registerLoggedUser($login[0], $checkbox);
             echo 1;
         }
     }
