@@ -27,5 +27,23 @@
             $stmt->bind_param("ss", $password_encrypt, $username);
             $stmt->execute();
         }
+
+        public function getCategories() {
+            $stmt = $this->db->prepare("SELECT Nome
+                                        FROM categorie");
+            $stmt->execute();
+            $result = $stmt->get_result();
+
+            return $result->fetch_all(MYSQLI_ASSOC);
+        }
+
+        public function getLocations() {
+            $stmt = $this->db->prepare("SELECT *
+                                        FROM location");
+            $stmt->execute();
+            $result = $stmt->get_result();
+
+            return $result->fetch_all(MYSQLI_ASSOC);
+        }
     }
 ?>
