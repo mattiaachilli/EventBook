@@ -64,7 +64,7 @@
                             <?php
                                 $location_s = $db->getLocations();
                                 foreach($location_s as $location) {
-                                    echo '<option value="'.$location["Nome"].'">'.$location["Nome"].'</option>';
+                                    echo '<option value="'.$location["Nome"].'">'.$location["Nome"]." - ".$location["Città"]." (".$location["Nazione"].")</option>";
                                 }
                             ?>
                         </select>
