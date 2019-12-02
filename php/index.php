@@ -4,5 +4,5 @@
     $parameters["title"] = "Home - EventBook";
     $parameters["content"] = "home.php";
     
-    require 'base.php';
+    require 'phpPages/base.php';
 ?>
