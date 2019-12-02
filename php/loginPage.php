@@ -11,7 +11,7 @@
                 <div class="col-12 mt-2">
                     <label for="password">Password</label>
                     <input type="password" class="form-control" id="password">
-                    <p id="msg"></p>
+                    <small id="msg" class="text-light"></small>
                 </div>
                 <div class="row mt-4">
                     <div class="col-6">
@@ -24,6 +24,21 @@
                     <div class="col-3">
                         <button type="submit" class="btn btn-primary page-btn float-right" >Accedi</button>
                     </div>
+                    <hr/>
+                </div>
+                <div class="row mt-4">
+                    <div class="col-1"></div>
+                    <div class="col-10">
+                        <hr/>
+                    </div>
+                    <div class="col-1"></div>
+                </div>
+                <div class="row mt-2">
+                    <div class="col-2"></div>
+                    <div class="col-8">
+                        <a href="#" class="">Hai dimenticato la password?</a>
+                    </div>
+                    <div class="col-2"></div>
                 </div>
             </form>
         </div>

@@ -23,7 +23,5 @@ $(document).ready(function(){
             $("#msg").html("Compilare tutti i campi!");
         }
         $("#msg").fadeIn(1000);
-        $("#msg").css("font-size", "12px");
-        $("#msg").css("color", "white");
     });
 });
