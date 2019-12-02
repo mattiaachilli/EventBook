@@ -19,6 +19,15 @@
             return $result->fetch_all(MYSQLI_ASSOC);
         }
 
+        public function changePassword($username, $password) {
+            $password_encrypt = md5($password);
+            $stmt = $this->db->prepare("UPDATE utenti 
+                                        SET Password = ? 
+                                        WHERE Username = ?");
+            $stmt->bind_param("ss", $password_encrypt, $username);
+            $stmt->execute();
+        }
+
         public function checkRegistration($username, $email){
             $stmnt = $this->db->prepare("SELECT username, email FROM utenti WHERE username = ? OR Email = ?");
             $stmnt->bind_param("ss", $username, $email);
