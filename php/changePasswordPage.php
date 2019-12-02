@@ -13,9 +13,9 @@
                     <input type="password" class="form-control" id="repeat-password">
                 </div>
                 <div class="col-12 text-light mt-1">
-                    <p id="info-alert">
+                    <small id="info-alert">
                     
-                    </p>
+                    </small>
                 </div>
                 <div class="row mt-4">
                     <div class="col-9"></div>
