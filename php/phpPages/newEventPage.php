@@ -11,7 +11,7 @@
                     </div>
                     <div class="col-md-6 col-sm-12 col-xs-12 mt-2">
                         <label for="example-date-input">Data</label>
-                        <input class="form-control" type="date" value="2011-08-19" id="example-date-input">
+                        <input class="form-control" type="date" id="example-date-input">
                     </div>
                 </div>        
                 <div class="row">
