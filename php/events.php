@@ -2,7 +2,7 @@
     require_once("bootstrap.php");
     
     $parameters["title"] = "Eventi in programma - EventBook";
-    $parameters["content"] = "eventsPage.php";
+    $parameters["content"] = "phpPages/eventsPage.php";
     
-    require 'base.php';
+    require 'phpPages/base.php';
 ?>

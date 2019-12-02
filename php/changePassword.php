@@ -5,9 +5,9 @@
         header("Location: index.php");
     } else {
         $parameters["title"] = "Cambia password - EventBook";
-        $parameters["content"] = "changePasswordPage.php";
+        $parameters["content"] = "phpPages/changePasswordPage.php";
         $parameters["js"] = array("../js/changePassword.js");
     }
     
-    require 'base.php';
+    require 'phpPages/base.php';
 ?>

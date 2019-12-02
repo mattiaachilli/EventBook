@@ -18,5 +18,14 @@
 
             return $result->fetch_all(MYSQLI_ASSOC);
         }
+
+        public function changePassword($username, $password) {
+            $password_encrypt = md5($password);
+            $stmt = $this->db->prepare("UPDATE utenti 
+                                        SET Password = ? 
+                                        WHERE Username = ?");
+            $stmt->bind_param("ss", $password_encrypt, $username);
+            $stmt->execute();
+        }
     }
 ?>
