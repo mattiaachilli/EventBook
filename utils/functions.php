@@ -10,6 +10,10 @@
         }
     }
 
+    function registerUser($user){
+        $_SESSION["user"] = $user;
+    }
+
     function setSessionFromCookie() {
         if(isset($_COOKIE["user"]) && empty($_SESSION["user"])) {
             $_SESSION["user"] = $_COOKIE["user"];
