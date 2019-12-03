@@ -50,5 +50,9 @@ a:hover{
 #shopping-cart{
     border:1px solid;
     border-color: white;
-    padding: 0 7% 7% 7%;
+    padding: 0 7%;
+}
+
+#trash:hover{
+    cursor: pointer;
 }

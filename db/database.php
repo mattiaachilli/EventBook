@@ -11,7 +11,10 @@
 
         public function checkLogin($username_email, $password) {
             $password_encrypt = md5($password);
-            $stmt = $this->db->prepare("SELECT Username FROM utenti WHERE (Username = ? OR Email = ?) AND Password = ?");
+            $stmt = $this->db->prepare("SELECT Username 
+                                        FROM utenti 
+                                        WHERE (Username = ? OR Email = ?) 
+                                        AND Password = ?");
             $stmt->bind_param("sss", $username_email, $username_email, $password_encrypt);
             $stmt->execute();
             $result = $stmt->get_result();
