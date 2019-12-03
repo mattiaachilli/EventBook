@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Nov 30, 2019 alle 14:33
+-- Creato il: Dic 03, 2019 alle 17:37
 -- Versione del server: 10.4.8-MariaDB
 -- Versione PHP: 7.3.11
 
@@ -50,7 +50,13 @@ CREATE TABLE `categorie` (
 --
 
 INSERT INTO `categorie` (`Nome`) VALUES
-('Sport');
+('Calcio'),
+('Concerto'),
+('Evento culinario'),
+('Festival'),
+('Musica elettronica'),
+('Sport'),
+('Workshop');
 
 -- --------------------------------------------------------
 
@@ -69,7 +75,9 @@ CREATE TABLE `eventi` (
   `Categoria` varchar(20) NOT NULL,
   `Immagine` varchar(50) NOT NULL,
   `Descrizione` varchar(1000) NOT NULL,
-  `Prezzo` int(5) NOT NULL
+  `Prezzo` int(5) NOT NULL,
+  `Username_organizzatore` varchar(15) NOT NULL,
+  `Active` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -108,6 +116,14 @@ CREATE TABLE `utenti` (
   `Password` varchar(45) NOT NULL,
   `Organizzatore` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dump dei dati per la tabella `utenti`
+--
+
+INSERT INTO `utenti` (`Username`, `Email`, `Nome`, `Cognome`, `Password`, `Organizzatore`) VALUES
+('InnoJack', 'matteo.innocenti2@studio.unibo.it', 'Matteo', 'Innocenti', '67b5bced5ed9e3efbf68094ef8b622cf', 0),
+('MattSaber', 'innocentimatteo93@gmail.com', 'Matteo', 'Innocenti', '27b59ebf7181a828c2ce688878305a5b', 0);
 
 --
 -- Indici per le tabelle scaricate
