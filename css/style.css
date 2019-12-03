@@ -45,3 +45,10 @@ a {
 a:hover{
     color: #007bff;
 }
+
+/* Shopping Cart */
+#shopping-cart{
+    border:1px solid;
+    border-color: white;
+    padding: 0 7% 7% 7%;
+}
