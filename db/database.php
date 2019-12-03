@@ -51,6 +51,7 @@
             $stmnt->bind_param("ss", $username, $email);
             $stmnt->execute();
             $result = $stmnt->get_result();
+            
             return $result->fetch_all(MYSQLI_ASSOC);
         }
 
@@ -59,6 +60,17 @@
             $stmnt = $this->db->prepare("INSERT INTO utenti(Username, Email, Nome, Cognome, Password, Organizzatore) VALUES(?,?,?,?,?,?)");
             $stmnt->bind_param("sssssi", $username, $email, $nome, $cognome, $password_encrypt, $checkbox);
             $stmnt->execute();
+        }
+
+        public function checkMailExists($email){
+            $stmnt = $this->db->prepare("SELECT *
+                                         FROM utenti 
+                                         WHERE Email = ?");
+            $stmnt->bind_param("s", $email);
+            $stmnt->execute();
+            $result = $stmnt->get_result();
+
+            return $result->fetch_all(MYSQLI_ASSOC);
         }
     }
 ?>
