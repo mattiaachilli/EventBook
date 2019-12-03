@@ -68,9 +68,10 @@
         }
 
         public function getEvents(){
-            $stmt = $this->db->prepare("SELECT Username, Nome_evento FROM eventi, utenti WHERE Username = Id_organizzatore");
+            $stmt = $this->db->prepare("SELECT Username, Nome_evento FROM eventi, utenti WHERE Username = Username_organizzatore AND Active = 0");
             $stmt->execute();
             $result = $stmt->get_result();
+            return $result->fetch_all(MYSQLI_ASSOC);
         }
 
         public function checkMailExists($email) {
