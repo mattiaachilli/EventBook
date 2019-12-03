@@ -51,7 +51,7 @@
             $stmnt->bind_param("ss", $username, $email);
             $stmnt->execute();
             $result = $stmnt->get_result();
-            
+
             return $result->fetch_all(MYSQLI_ASSOC);
         }
 
@@ -62,13 +62,24 @@
             $stmnt->execute();
         }
 
-        public function checkMailExists($email){
+        public function checkMailExists($email) {
             $stmnt = $this->db->prepare("SELECT *
                                          FROM utenti 
                                          WHERE Email = ?");
             $stmnt->bind_param("s", $email);
             $stmnt->execute();
             $result = $stmnt->get_result();
+
+            return $result->fetch_all(MYSQLI_ASSOC);
+        }
+
+        public function getLocationCapacity($nome, $nazione, $città) {
+            $stmt = $this->db->prepare("SELECT Capienza
+                                        FROM location
+                                        WHERE Nome = ? AND Nazione = ? AND Città = ?");
+            $stmnt->bind_param("sss", $nome, $nazione, $città);
+            $stmt->execute();
+            $result = $stmt->get_result();
 
             return $result->fetch_all(MYSQLI_ASSOC);
         }

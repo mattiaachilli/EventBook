@@ -9,7 +9,6 @@
         $parameters["title"] = "Invia mail - EventBook";
         $parameters["content"] = "phpPages/sendMailPage.php";
         $parameters["js"] = array("../js/sendMail.js");
-     
     }
 
     require 'phpPages\base.php';
