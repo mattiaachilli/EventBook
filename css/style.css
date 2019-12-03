@@ -22,9 +22,13 @@ hr {
 
 /* Form */
 .form-div {
-    border:1px solid;
+    border: 1px solid;
     border-color: white;
     padding: 7%;
+}
+
+th{
+    width: 33%;
 }
 
 .scrollable-menu {
