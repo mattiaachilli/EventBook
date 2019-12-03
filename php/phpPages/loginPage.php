@@ -33,7 +33,7 @@
                     </div>
                     <div class="col-1"></div>
                 </div>
-                <div class="row mt-2">
+                <div class="row mt-2 text-center">
                     <div class="col-2"></div>
                     <div class="col-8">
                         <a href="#" class="">Hai dimenticato la password?</a>

@@ -27,5 +27,50 @@
             $stmt->bind_param("ss", $password_encrypt, $username);
             $stmt->execute();
         }
+
+        public function getCategories() {
+            $stmt = $this->db->prepare("SELECT Nome
+                                        FROM categorie");
+            $stmt->execute();
+            $result = $stmt->get_result();
+
+            return $result->fetch_all(MYSQLI_ASSOC);
+        }
+
+        public function getLocations() {
+            $stmt = $this->db->prepare("SELECT *
+                                        FROM location");
+            $stmt->execute();
+            $result = $stmt->get_result();
+
+            return $result->fetch_all(MYSQLI_ASSOC);
+        }
+        
+        public function checkRegistration($username, $email){
+            $stmnt = $this->db->prepare("SELECT username, email FROM utenti WHERE username = ? OR Email = ?");
+            $stmnt->bind_param("ss", $username, $email);
+            $stmnt->execute();
+            $result = $stmnt->get_result();
+            
+            return $result->fetch_all(MYSQLI_ASSOC);
+        }
+
+        public function registerUser($username, $email, $nome, $cognome, $password, $checkbox){
+            $password_encrypt = md5($password);
+            $stmnt = $this->db->prepare("INSERT INTO utenti(Username, Email, Nome, Cognome, Password, Organizzatore) VALUES(?,?,?,?,?,?)");
+            $stmnt->bind_param("sssssi", $username, $email, $nome, $cognome, $password_encrypt, $checkbox);
+            $stmnt->execute();
+        }
+
+        public function checkMailExists($email){
+            $stmnt = $this->db->prepare("SELECT *
+                                         FROM utenti 
+                                         WHERE Email = ?");
+            $stmnt->bind_param("s", $email);
+            $stmnt->execute();
+            $result = $stmnt->get_result();
+
+            return $result->fetch_all(MYSQLI_ASSOC);
+        }
     }
 ?>
