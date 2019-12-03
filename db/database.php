@@ -60,5 +60,18 @@
             $stmnt->bind_param("sssssi", $username, $email, $nome, $cognome, $password_encrypt, $checkbox);
             $stmnt->execute();
         }
+
+        public function insertCategory($category){
+            $stmt = $this->db->prepare("INSERT INTO categorie(Nome) VALUE (?)");
+            $stmt->bind_param("s", $category);
+            $stmt->execute();
+        }
+
+        public function getEvents(){
+            $stmt = $this->db->prepare("SELECT Username, Nome_evento FROM eventi, utenti WHERE Username = Id_organizzatore");
+            $stmt->execute();
+            $result = $stmt->get_result();
+            return $result->fetch_all(MYSQLI_ASSOC);
+        }
     }
 ?>
