@@ -70,11 +70,13 @@
         </header>
     </div>
     <hr/>
-    <?php
-        if (isset($parameters["content"])) {
-            require($parameters["content"]);
-        }
-    ?>
+    <main>
+        <?php
+            if (isset($parameters["content"])) {
+                require($parameters["content"]);
+            }
+        ?>
+    </main>
     <hr/>
     <footer class="page-footer font-small blue p-4">
             <div class="container-fluid text-center text-light">

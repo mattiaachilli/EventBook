@@ -51,12 +51,32 @@ a:hover{
 }
 
 /* Shopping Cart */
-#shopping-cart{
+.shopping-cart{
     border:1px solid;
     border-color: white;
-    padding: 0 7%;
 }
 
-#trash:hover{
+.trash:hover{
     cursor: pointer;
+    color: #007bff;
+}
+
+#carrello{
+    height: 60vh;
+    overflow-y: scroll;
+}
+
+/* width */
+#carrello::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Track */
+#carrello::-webkit-scrollbar-track {
+    background:white; 
+}
+
+/* Handle */
+#carrello::-webkit-scrollbar-thumb {
+    background: #007bff; 
 }
