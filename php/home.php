@@ -14,6 +14,8 @@
 <br>
 <font size="13"><a href="sendMail.php">Invio mail</a></font>
 <br>
+<font size="13"><a href="adminApprovazione.php">Admin HomePage</a></font>
+<br>
 <font size="13"><a href="newEvent.php">Nuovo evento</a></font>
 
 <?php
