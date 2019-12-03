@@ -15,7 +15,7 @@
     }
 
     function setSessionFromCookie() {
-        if(isset($_COOKIE["user"]) && empty($_SESSION["user"])) {
+        if(!empty($_COOKIE["user"]) && empty($_SESSION["user"])) {
             $_SESSION["user"] = $_COOKIE["user"];
         }
     }

@@ -8,25 +8,25 @@
                     <div class="col-md-6 col-sm-12 col-xs-12 mt-2">
                         <label for="name">Nome evento</label>
                         <input type="text" class="form-control" id="name">
-                        <small id="wrongName" class = "text-white"></small>
+                        <small id="wrongName" class="text-white"></small>
                     </div>
                     <div class="col-md-6 col-sm-12 col-xs-12 mt-2">
                         <label for="example-date-input">Data</label>
                         <input class="form-control" type="date" id="date">
-                        <small id="wrongData" class = "text-white"></small>
+                        <small id="wrongDate" class="text-white"></small>
                     </div>
                 </div>        
                 <div class="row">
                     <div class="col-md-6 col-sm-12 col-xs-12 mt-2">
                         <label for="description">Breve descrizione</label>
                         <textarea id="description" class="md-textarea form-control" rows="1"></textarea>
-                        <small id="wrongDesc" class = "text-white"></small>
+                        <small id="wrongDesc" class="text-white"></small>
                     </div>
                     <div class="col-md-6 col-sm-12 col-xs-12 mt-2">
-                        <label for="file">Scegli un'immagine per l'evento</label>
+                        <label for="file">Immagine evento</label>
                         <div class="input-group">
                             <input class="custom-file-input" name="image" type="file" id="fileToUpload">
-                            <label class="custom-file-label text-truncate" id="pathImg">Choose...</label>
+                            <label class="custom-file-label text-truncate" id="pathImg"></label>
                             <small id="wrongImg" class = "text-white"></small>
                         </div>
                     </div>
@@ -43,7 +43,7 @@
                         <small id="wrongPrice" class="text-white"></small>   
                     </div>
                     <div class="col-md-6 col-sm-12 col-xs-12 mt-2">
-                        <label id="maxTickets" for="tickets">Biglietti disponibili (max. #######)</label>
+                        <label id="maxTickets" for="tickets">Biglietti disponibili (max. 0)</label>
                         <input type="text" class="form-control" id="tickets">
                         <small id="wrongTickets" class = "text-white"></small>
                     </div>
@@ -52,7 +52,7 @@
                     <div class="col-lg-6 col-sm-12 col-xs-12 mt-2">
                         <label for="category">Categoria</label>
                         <select class="custom-select" id="category">
-                            <option selected>Choose...</option>
+                            <option selected></option>
                             <?php
                                 $categories = $db->getCategories();
                                 foreach($categories as $category) {
@@ -65,7 +65,7 @@
                     <div class="col-lg-6 col-sm-12 col-xs-12 mt-2">
                         <label for="location">Location</label>
                         <select class="custom-select" id="location">
-                            <option id="selected" value="">Choose...</option>
+                            <option id="selected" value=""></option>
                             <?php
                                 $location_s = $db->getLocations();
                                 foreach($location_s as $location) {

@@ -36,7 +36,7 @@
                 <div class="row mt-2 text-center">
                     <div class="col-2"></div>
                     <div class="col-8">
-                        <a href="#" class="">Hai dimenticato la password?</a>
+                        <a href="../php/sendMail.php" class="">Hai dimenticato la password?</a>
                     </div>
                     <div class="col-2"></div>
                 </div>
