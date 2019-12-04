@@ -11,8 +11,9 @@
             registerLoggedUser($login[0]["Username"], $_POST["checkbox"]);
             if ($login[0]["Username"] == "Admin") {
                 echo 3;
+            } else {
+                echo 1;
             }
-            echo 1;
         } 
     }
 ?>

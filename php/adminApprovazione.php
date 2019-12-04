@@ -8,7 +8,5 @@
     } else {
         header("Location: index.php");
     }
-
-    
     require 'phpPages\base.php';
 ?>
