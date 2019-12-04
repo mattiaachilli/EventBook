@@ -10,7 +10,8 @@ $(document).ready(function(){
                 url: '../api/api-login.php',
                 type: 'post',
                 data: {username: username_email, password: password, checkbox: checkbox},
-                success: function(code) {           
+                success: function(code) {     
+                    console.log(code);      
                     if (code == 0) {
                         $("#msg").html("Username/Email o Password incorretti");
                     } else if (code == 1) { /* Normal user */

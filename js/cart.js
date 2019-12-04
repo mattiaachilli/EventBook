@@ -12,19 +12,19 @@ function typeWriter() {
 }
 
 function check() {
-    return $("#carrello").children().length == 1 || $("#carrello").children().length == 0;
+    return $("#cart").children().length == 1 || $("#cart").children().length == 0;
 }
 
 function removeElements() {
-    $("#carrello").parent().parent().remove();
-    $("#carrello").remove();
+    $("#cart").parent().parent().remove();
+    $("#cart").remove();
     $("#payment").remove();
 }
 
 function checkAndRemove() {
     if(check()) {
-        $("#carrello").hide(1000);
-        $("#carrello").parent().parent().hide(1000);
+        $("#cart").hide(1000);
+        $("#cart").parent().parent().hide(1000);
         $("#payment").hide(1000);
         setTimeout(
             function() 
@@ -67,5 +67,21 @@ $(document).ready(function() {
 
         /* Remove from cookie.... */
         //$.ajax()
+    });
+    /* Continue shopping button */
+    $("#continua").click(function() {
+        document.location.href = "events.php";
+    });
+    /* Buy button */
+    $("#buy").click(function() {
+        $.ajax({
+            url: '../api/api-checklogin.php',
+            success: function(code) {     
+                console.log(code);
+                if(code == 0) {
+                    $("#alert").fadeIn();
+                }    
+            }
+        });
     });
 });

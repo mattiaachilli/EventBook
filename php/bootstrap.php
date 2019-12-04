@@ -3,7 +3,7 @@
     require_once("../utils/functions.php");
     require_once("../db/database.php");
     $db = new Database("localhost", "root", "", "eventbook");
-    //setSessionFromCookie();
+    setSessionFromCookie();
     /* CONSTANTS FOR TYPE OF USER */
     define("USER", 0);
     define("ORGANIZER", 1);

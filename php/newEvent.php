@@ -1,6 +1,6 @@
 <?php
     require_once("bootstrap.php");
-
+    
     if(isUserLoggedIn() && typeOfUserLogged() == ORGANIZER) {
         $parameters["title"] = "Nuovo evento - EventBook";
         $parameters["content"] = "phpPages/newEventPage.php";

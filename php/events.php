@@ -1,7 +1,7 @@
 <?php
     require_once("bootstrap.php");
     
-    if(isUserLoggedIn() && typeOfUserLogged() == USER) {
+    if(!isUserLoggedIn() || isUserLoggedIn() && typeOfUserLogged() == USER) {
         $parameters["title"] = "Eventi in programma - EventBook";
         $parameters["content"] = "phpPages/eventsPage.php";
     } else {

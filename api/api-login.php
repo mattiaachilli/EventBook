@@ -4,8 +4,7 @@
         $login = $db->checkLogin($_POST["username"], $_POST["password"]);
         if(count($login) == 0){
             echo 0;
-        } 
-        if ($login[0]["Organizzatore"] == 1){
+        } else if ($login[0]["Organizzatore"] == 1){
             registerLoggedUser($login[0]["Username"], $_POST["checkbox"], 1);
             echo 2;
         } else {

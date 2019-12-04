@@ -1,7 +1,7 @@
 <?php
     require_once("bootstrap.php");
 
-    if(isUserLoggedIn() && typeOfUserLogged() == USER) {
+    if(!isUserLoggedIn() || isUserLoggedIn() && typeOfUserLogged() == USER) {
         $parameters["title"] = "Carrello";
         $parameters["content"] = "phpPages/cartPage.php";
         $parameters["js"] = array("../js/cart.js");
