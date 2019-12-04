@@ -61,22 +61,22 @@ a:hover{
     color: #007bff;
 }
 
-#carrello{
+#cart{
     height: 60vh;
     overflow-y: scroll;
 }
 
 /* width */
-#carrello::-webkit-scrollbar {
+#cart::-webkit-scrollbar {
     width: 10px;
 }
 
 /* Track */
-#carrello::-webkit-scrollbar-track {
+#cart::-webkit-scrollbar-track {
     background:white; 
 }
 
 /* Handle */
-#carrello::-webkit-scrollbar-thumb {
+#cart::-webkit-scrollbar-thumb {
     background: #007bff; 
 }

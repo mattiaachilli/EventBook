@@ -11,7 +11,7 @@
 
         public function checkLogin($username_email, $password) {
             $password_encrypt = md5($password);
-            $stmt = $this->db->prepare("SELECT Username 
+            $stmt = $this->db->prepare("SELECT Username, Organizzatore
                                         FROM utenti 
                                         WHERE (Username = ? OR Email = ?) 
                                         AND Password = ?");

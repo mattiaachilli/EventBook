@@ -4,29 +4,32 @@ const speed = 200;
 function typeWriter() {
     const title = document.getElementById("title-cart");
     title.style.display = "block";
-    console.log(txt.length);
     if (i < txt.length) {
         title.innerHTML += txt.charAt(i);
         i++;
-        console.log(i);
         setTimeout(typeWriter, speed);
   }
 }
 
 function check() {
-    return $("#carrello").children().length == 1;
+    return $("#cart").children().length == 1 || $("#cart").children().length == 0;
 }
+
+function removeElements() {
+    $("#cart").parent().parent().remove();
+    $("#cart").remove();
+    $("#payment").remove();
+}
+
 function checkAndRemove() {
     if(check()) {
-        $("#carrello").hide(1000);
-        $("#carrello").parent().parent().hide(1000);
+        $("#cart").hide(1000);
+        $("#cart").parent().parent().hide(1000);
         $("#payment").hide(1000);
         setTimeout(
             function() 
             {
-                $("#carrello").remove();
-                $("#carrello").parent().parent().remove();
-                $("#payment").remove();
+                removeElements();
             }, 500);
         $("#title-cart").hide(1000).delay(500, function() {
             $("#title-cart").text("");
@@ -36,7 +39,16 @@ function checkAndRemove() {
 }
 
 $(document).ready(function() {
-    /* Controllo iniziale */
+    
+    $.getJSON("../api/api-cart.php", function(data){
+        
+    });
+    /* Check if there aren't products in the cart */
+    if(check()) {
+        removeElements();
+        $("#title-cart").text("");
+        typeWriter();
+    }
     $(".trash").click(function() {
         const row = $(this).parents(".row")[1];
         $(row).hide(1000);
@@ -55,5 +67,21 @@ $(document).ready(function() {
 
         /* Remove from cookie.... */
         //$.ajax()
+    });
+    /* Continue shopping button */
+    $("#continua").click(function() {
+        document.location.href = "events.php";
+    });
+    /* Buy button */
+    $("#buy").click(function() {
+        $.ajax({
+            url: '../api/api-checklogin.php',
+            success: function(code) {     
+                console.log(code);
+                if(code == 0) {
+                    $("#alert").fadeIn();
+                }    
+            }
+        });
     });
 });
