@@ -101,7 +101,7 @@
 
         public function insertNewEvent($nome, $data, $desc, $immagine, 
                                        $prezzo, $n_biglietti, $categoria, $nomeLocation, $nazioneLocation, $cittàLocation){
-            $usernameOrg = 2;
+            $usernameOrg = $_SESSION["user"][0];
             $active = 0;
             $stmt = $this->db->prepare("INSERT INTO eventi(Data, Nome_evento, Nome_location, Nazione_location, Città_location, 
                                         Biglietti_disponibili, Categoria, Immagine, Descrizione, Prezzo, Username_organizzatore, Active) 

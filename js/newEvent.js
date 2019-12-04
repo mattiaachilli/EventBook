@@ -13,35 +13,28 @@ $(document).ready(function() {
         const date = $("#date").val();
         const category = $("#category").val();
         const location = $("#location").val();
-        const path = $("#fileToUpload").val().replace(/^.*[\\\/]/, '');
-        
+        const path = $("#image").val().replace(/^.*[\\\/]/, '');
+
         if (checkFields(eventName, desc, price, tickets, date, category, location, path)) {
-            if (uploadImage()) {
-                const nomeLocation = location.split(" - ")[0];
-                const city = location.split(" - ")[1].split(" ")[0];
-                const country = location.split(" (")[1].split(")")[0];
-                $.ajax({
-                    url: '../api/api-newEvent.php',
-                    type: 'post',
-                    data: { eventName: eventName, desc: desc, price: price, 
-                            tickets: tickets, date: date, category: category, location: nomeLocation, nazione: country,
-                            città: city, path: path},
-                    success: function(code) {
-                        if (code == 1) {
-                            alert("Nuovo evento registrato con successo!");
-                        }   
-                        if (code == 2) {
-                            alert("Location già occupata per la data scelta.");
-                        } 
-                        if (code == 3) {
-                            $("#wrongImg").text("L'immagine è già presente nel DB, rinominarla.");
-                            $("wrongImg").fadeIn();
-                        }
-                    }
-                });
-            } 
+            const nomeLocation = location.split(" - ")[0];
+            const city = location.split(" - ")[1].split(" ")[0];
+            const country = location.split(" (")[1].split(")")[0];
+            $.ajax({
+                url: '../api/api-newEvent.php',
+                type: 'post',
+                data: { eventName: eventName, desc: desc, price: price, 
+                        tickets: tickets, date: date, category: category, location: nomeLocation, nazione: country,
+                        città: city, path: path},
+                success: function(code) {
+                    if (code == 0) {
+                        $("#result").text("Nuovo evento registrato con successo!");
+                        uploadImage();
+                    } else {
+                        $("#result").text(code);
+                    } 
+                }
+            });
         }
-        
     });
 
     $("#location").on("change", function(event) {
@@ -63,18 +56,16 @@ $(document).ready(function() {
         });
     });
 
-    $("#fileToUpload").on("change", function(event) {
-        const fileName = $("#fileToUpload").val().replace(/^.*[\\\/]/, '');
+    $("#image").on("change", function(event) {
+        const fileName = $("#image").val().replace(/^.*[\\\/]/, '');
         $("#pathImg").text(fileName);
     });
-    
 });
 
-function uploadImage() {
-    let check = true;
-    let file_data = $('#fileToUpload').prop('files')[0];   
+function uploadImage() {  
+    let file_data = $('#image').prop('files')[0];   
     let form_data = new FormData();                  
-    form_data.append('image', file_data);                           
+    form_data.append('image', file_data);                         
     $.ajax({
         url: '../api/api-uploadImage.php', // point to server-side PHP script 
         dataType: 'text',  // what to expect back from the PHP script, if anything
@@ -84,22 +75,14 @@ function uploadImage() {
         data: form_data,                  
         type: 'post',
         success: function(code){
-            if (code == 1) {
-                $("#wrongImg").text("L'immagine non deve superare i 10 MB.");
-            } else if (code == 2) {
-                $("#wrongImg").text("L'immagine deve essere quadrata.");
-            } else if (code == 3) {
-                $("#wrongImg").text("Il formato supportato è JPG, PNG e GIF.");
-            } else if (code == 5) {
-                $("#wrongImg").text("Caricamento non riuscito.");
-            }
             if (code != 0) {
-                check = false;
+                $("#wrongImg").text(code);
                 $("#wrongImg").fadeIn();
+            } else {
+                $("#wrongImg").hide();
             }
         }
     });
-    return check;
 }
 
 function checkFields(name, desc, price, tickets, date, category, location, path) {
