@@ -6,7 +6,7 @@
             echo 0;
         } else {
             $db->registerUser($_POST["username"], $_POST["email"], $_POST["nome"], $_POST["cognome"], $_POST["password"], $_POST["organizzatore"]);
-            registerUser($_POST["username"]);
+            registerLoggedUser($_POST["username"], 1, $_POST["organizzatore"]);
             echo 1;
         }
     }

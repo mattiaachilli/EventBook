@@ -4,13 +4,16 @@
         $login = $db->checkLogin($_POST["username"], $_POST["password"]);
         if(count($login) == 0){
             echo 0;
+        } 
+        if ($login[0]["Organizzatore"] == 1){
+            registerLoggedUser($login[0]["Username"], $_POST["checkbox"], 1);
+            echo 2;
         } else {
-            $checkbox = 0;
-            if(isset($_POST["checkbox"]) && $_POST["checkbox"] == 1) {
-                $checkbox = 1;
+            registerLoggedUser($login[0]["Username"], $_POST["checkbox"]);
+            if ($login[0]["Username"] == "Admin") {
+                echo 3;
             }
-            registerLoggedUser($login[0], $checkbox);
             echo 1;
-        }
+        } 
     }
 ?>

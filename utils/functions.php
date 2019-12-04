@@ -1,22 +1,32 @@
 <?php
+    function typeOfUserLogged() {
+        if(isUserLoggedIn()) {
+            return $_SESSION["user"][1];
+        }
+    }
+
     function isUserLoggedIn(){
         return !empty($_SESSION["user"]);
     }
 
-    function registerLoggedUser($user, $checkbox){
-        $_SESSION["user"] = $user["Username"];
-        if($checkbox == 1) {
-            setcookie("user", $user["Username"], time() + 3600 * 24 * 365, "/"); 
+    function registerLoggedUser($user, $checkbox, $organizer = -1){
+        $array_session = array($user);
+        if($organizer == 1) {
+            array_push($array_session, ORGANIZER);
+        } else if($user == "Admin") {
+            array_push($array_session, ADMIN);
+        } else {
+            array_push($array_session, USER);
         }
-    }
-
-    function registerUser($user){
-        $_SESSION["user"] = $user;
+        if($checkbox == 1) {
+            setcookie("user", json_encode($array_session), time() + 3600 * 24 * 365, "/"); 
+        }
+        $_SESSION["user"] = $array_session;
     }
 
     function setSessionFromCookie() {
         if(!empty($_COOKIE["user"]) && empty($_SESSION["user"])) {
-            $_SESSION["user"] = $_COOKIE["user"];
+            $_SESSION["user"] = json_decode($_COOKIE["user"], true);
         }
     }
 ?>

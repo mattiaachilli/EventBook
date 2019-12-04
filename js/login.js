@@ -5,17 +5,20 @@ $(document).ready(function(){
         const username_email = $("#username-email").val().trim();
         const password = $("#password").val().trim();
         const checkbox = $("#checkbox").is(":checked")? 1 : 0;
-        console.log(checkbox);
         if(username_email != "" && password != "") {
             $.ajax({
                 url: '../api/api-login.php',
                 type: 'post',
                 data: {username: username_email, password: password, checkbox: checkbox},
-                success: function(code) {
+                success: function(code) {           
                     if (code == 0) {
                         $("#msg").html("Username/Email o Password incorretti");
-                    } else {
+                    } else if (code == 1) { /* Normal user */
                         document.location.href = "index.php";
+                    } else if(code == 2) { /* Oganizer */
+                        document.location.href = "newEvent.php";
+                    } else if (code == 3) { /* Administrator */
+                        document.location.href = "adminApprovazione.php";
                     }
                 }
             });

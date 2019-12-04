@@ -1,9 +1,13 @@
 <?php
     require_once("bootstrap.php");
 
-    $parameters["title"] = "Carrello";
-    $parameters["content"] = "phpPages/cartPage.php";
-    $parameters["js"] = array("../js/cart.js");
+    if(isUserLoggedIn() && typeOfUserLogged() == USER) {
+        $parameters["title"] = "Carrello";
+        $parameters["content"] = "phpPages/cartPage.php";
+        $parameters["js"] = array("../js/cart.js");
+    } else {
+        header("Location: index.php");
+    }
 
     require 'phpPages\base.php';
 ?>
