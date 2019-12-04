@@ -3,7 +3,7 @@
 
     if(isUserLoggedIn() && typeOfUserLogged() == ADMIN) {
         $parameters["title"] = "Admin - EventBook";
-        $parameters["content"] = "phpPages/adminPage.php";
+        $parameters["content"] = "phpPages/tableApprovazioni.php";
         $parameters["js"] = array("../js/table.js");
     } else {
         header("Location: index.php");
