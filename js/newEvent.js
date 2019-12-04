@@ -2,8 +2,10 @@ let capacity = 0;
 
 $(document).ready(function() {
     initializeLabels();
+    
     $("form").submit(function(event) {
         event.preventDefault();
+        
         const eventName = $("#name").val();
         const desc = $("#description").val();
         const price = $("#price").val();
@@ -11,13 +13,13 @@ $(document).ready(function() {
         const date = $("#date").val();
         const category = $("#category").val();
         const location = $("#location").val();
-        const nomeLocation = location.split(" - ")[0];
-        const city = location.split(" - ")[1].split(" ")[0];
-        const country = location.split(" (")[1].split(")")[0];
         const path = $("#fileToUpload").val().replace(/^.*[\\\/]/, '');
-
+        
         if (checkFields(eventName, desc, price, tickets, date, category, location, path)) {
             if (uploadImage()) {
+                const nomeLocation = location.split(" - ")[0];
+                const city = location.split(" - ")[1].split(" ")[0];
+                const country = location.split(" (")[1].split(")")[0];
                 $.ajax({
                     url: '../api/api-newEvent.php',
                     type: 'post',
@@ -25,11 +27,15 @@ $(document).ready(function() {
                             tickets: tickets, date: date, category: category, location: nomeLocation, nazione: country,
                             città: city, path: path},
                     success: function(code) {
-                        if (code == 0) {
+                        if (code == 1) {
                             alert("Nuovo evento registrato con successo!");
                         }   
                         if (code == 2) {
                             alert("Location già occupata per la data scelta.");
+                        } 
+                        if (code == 3) {
+                            $("#wrongImg").text("L'immagine è già presente nel DB, rinominarla.");
+                            $("wrongImg").fadeIn();
                         }
                     }
                 });
@@ -84,8 +90,6 @@ function uploadImage() {
                 $("#wrongImg").text("L'immagine deve essere quadrata.");
             } else if (code == 3) {
                 $("#wrongImg").text("Il formato supportato è JPG, PNG e GIF.");
-            } else if (code == 4) {
-                $("#wrongImg").text("L'immagine è già presente nel DB, rinominarla.");
             } else if (code == 5) {
                 $("#wrongImg").text("Caricamento non riuscito.");
             }

@@ -101,13 +101,12 @@
 
         public function insertNewEvent($nome, $data, $desc, $immagine, 
                                        $prezzo, $n_biglietti, $categoria, $nomeLocation, $nazioneLocation, $cittàLocation){
-            /* da finire */
-            $ID = 2; 
             $usernameOrg = 2;
-            
             $active = 0;
-            $stmt = $this->db->prepare("INSERT INTO eventi VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-            $stmt->bind_param("isssssisssisi", $ID, $data, $nome, $nomeLocation, $nazioneLocation, $cittàLocation, $n_biglietti, 
+            $stmt = $this->db->prepare("INSERT INTO eventi(Data, Nome_evento, Nome_location, Nazione_location, Città_location, 
+                                        Biglietti_disponibili, Categoria, Immagine, Descrizione, Prezzo, Username_organizzatore, Active) 
+                                        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+            $stmt->bind_param("sssssisssisi", $data, $nome, $nomeLocation, $nazioneLocation, $cittàLocation, $n_biglietti, 
                                              $categoria, $immagine, $desc, $prezzo, $usernameOrg, $active);
             $stmt->execute();
         }
