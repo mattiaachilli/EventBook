@@ -25,7 +25,7 @@
                     <div class="col-md-6 col-sm-12 col-xs-12 mt-2">
                         <label for="file">Immagine evento</label>
                         <div class="input-group">
-                            <input class="custom-file-input" name="image" type="file" id="fileToUpload">
+                            <input class="custom-file-input" name="image" type="file" id="image">
                             <label class="custom-file-label text-truncate" id="pathImg"></label>
                             <small id="wrongImg" class = "text-white"></small>
                         </div>
@@ -81,6 +81,11 @@
                     <div class="col-9"></div>
                     <div class="col-3">
                         <button type="submit" class="btn btn-primary page-btn float-right">Conferma</button>
+                    </div>
+                </div>
+                <div class="row text-center">
+                    <div class="col-12">
+                        <label id="result" class = "text-white"></label>
                     </div>
                 </div>
             </form>
