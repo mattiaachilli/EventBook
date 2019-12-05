@@ -3,15 +3,15 @@
     <div class="col-md-8 col-sm-8 col-xs-12">
         <h2 class="text-light display-4">Registrati</h2>
         <div class="form-div rounded">
-            <form id = "reg-form">
+            <form id = "reg-form" action = "../api/api-registration.php" method = "post">
                 <div class="row">
                     <div class="col-md-6 col-s-12">
                             <label for="username">Username</label>
-                            <input type="text"  class="form-control" name = "username" id="username">
+                            <input type="text" class="form-control" name = "username" id="username">
                             <small class = "text-white"></small>
                     </div>
                     <div class="col-md-6 col-s-12">
-                            <label for="e-mail">E-mail</label>
+                            <label for="email">E-mail</label>
                             <input type="email" class="form-control" name = "email" id="email">
                             <small class = "text-white"></small>
                     </div>
@@ -39,7 +39,7 @@
                 <div class="row">
                     <div class="col-md-6 col-s-12">
                         <label for="conferma-password">Conferma password</label>
-                        <input type="password" class="form-control" name = "conferma-password" id="conferma-password">
+                        <input type="password" class="form-control" name = "confermaPassword" id="conferma-password">
                         <small class = "text-white"></small>
                     </div>
                     <div class="col-md-6 col-s-12"></div>
@@ -53,7 +53,7 @@
                     </div>
                     <div class="col-0 col-lg-4"></div>
                     <div class="col-12 col-lg-4">
-                        <button type="button" id = "regButton" class="btn btn-primary mb-2 float-right">Registrati</button>
+                        <button type="submit" id = "regButton" class="btn btn-primary mb-2 float-right">Registrati</button>
                     </div>
                 </div>
             </form>
