@@ -5,8 +5,8 @@
         <div class = "form-div rounded">
             <form method= "POST" id="form-login">
                 <div class="col-12">
-                    <label for="email">Inserisci categoria</label>
-                    <input type="email" class="form-control" id="email">
+                    <label for="category">Inserisci categoria</label>
+                    <input type="text" class="form-control" id="category">
                 </div>
                 <div class="row mt-3">
                     <div class="col-12">
