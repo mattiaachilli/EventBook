@@ -8,7 +8,7 @@
     else{ /* If is not logged */
         $parameters["title"] = "Login - EventBook";
         $parameters["content"] = "phpPages/loginPage.php";
-        $parameters["js"] = array("../js/login.js");
+        $parameters["js"] = array("../js/login.js", "../js/md5.js");
     }
 
     require 'phpPages\base.php';
