@@ -104,7 +104,7 @@
         public function insertNewEvent($nome, $data, $desc, $immagine, 
                                        $prezzo, $n_biglietti, $categoria, $nomeLocation, $nazioneLocation, $cittàLocation){
             $usernameOrg = $_SESSION["user"][0];
-            $active = 0;
+            $active = 1;
             $stmt = $this->db->prepare("INSERT INTO eventi(Data, Nome_evento, Nome_location, Nazione_location, Città_location, 
                                         Biglietti_disponibili, Categoria, Immagine, Descrizione, Prezzo, Username_organizzatore, Active) 
                                         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
@@ -118,6 +118,29 @@
                                         FROM eventi
                                         WHERE Data = ? AND Nazione_location = ? AND Città_location = ? AND Nome_location = ?");
             $stmt->bind_param("ssss", $data, $nazione, $città, $location);
+            $stmt->execute();
+            $result = $stmt->get_result();
+
+            return $result->fetch_all(MYSQLI_ASSOC);
+        }
+
+        public function getAllEvents() {
+            $stmt = $this->db->prepare("SELECT *
+                                        FROM eventi
+                                        WHERE active = 1");
+            $stmt->execute();
+            $result = $stmt->get_result();
+
+            return $result->fetch_all(MYSQLI_ASSOC);
+        }
+
+        public function getEvent($id) {
+            $stmt = $this->db->prepare("SELECT *
+                                        FROM eventi E, location L
+                                        WHERE IDevento = ? AND E.Nome_location = L.Nome 
+                                                           AND E.Nazione_location = L.Nazione
+                                                           AND E.Città_location = L.Città");
+            $stmt->bind_param("s", $id);
             $stmt->execute();
             $result = $stmt->get_result();
 
