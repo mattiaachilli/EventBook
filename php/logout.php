@@ -7,5 +7,5 @@
     }
 
     unset($_SESSION["user"]);
-    require 'index.php';
+    require dirname(__DIR__).'/php/phpPages/base.php';
 ?>

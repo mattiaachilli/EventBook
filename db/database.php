@@ -10,12 +10,14 @@
         }
 
         public function checkLogin($username_email, $password) {
-            $password_encrypt = md5($password);
+            if(strlen($password) < 32){
+                $password = md5($password);
+            }
             $stmt = $this->db->prepare("SELECT Username, Organizzatore
                                         FROM utenti 
                                         WHERE (Username = ? OR Email = ?) 
                                         AND Password = ?");
-            $stmt->bind_param("sss", $username_email, $username_email, $password_encrypt);
+            $stmt->bind_param("sss", $username_email, $username_email, $password);
             $stmt->execute();
             $result = $stmt->get_result();
 
@@ -104,7 +106,7 @@
         public function insertNewEvent($nome, $data, $desc, $immagine, 
                                        $prezzo, $n_biglietti, $categoria, $nomeLocation, $nazioneLocation, $cittàLocation){
             $usernameOrg = $_SESSION["user"][0];
-            $active = 0;
+            $active = 1;
             $stmt = $this->db->prepare("INSERT INTO eventi(Data, Nome_evento, Nome_location, Nazione_location, Città_location, 
                                         Biglietti_disponibili, Categoria, Immagine, Descrizione, Prezzo, Username_organizzatore, Active) 
                                         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
@@ -135,6 +137,29 @@
             $stmt = $this->db->prepare($query);
             $stmt->bind_param("i", $id);
             $stmt->execute();
+        }
+        
+        public function getAllEvents() {
+            $stmt = $this->db->prepare("SELECT *
+                                        FROM eventi
+                                        WHERE active = 1");
+            $stmt->execute();
+            $result = $stmt->get_result();
+
+            return $result->fetch_all(MYSQLI_ASSOC);
+        }
+
+        public function getEvent($id) {
+            $stmt = $this->db->prepare("SELECT *
+                                        FROM eventi E, location L
+                                        WHERE IDevento = ? AND E.Nome_location = L.Nome 
+                                                           AND E.Nazione_location = L.Nazione
+                                                           AND E.Città_location = L.Città");
+            $stmt->bind_param("s", $id);
+            $stmt->execute();
+            $result = $stmt->get_result();
+
+            return $result->fetch_all(MYSQLI_ASSOC);
         }
     }
 ?>

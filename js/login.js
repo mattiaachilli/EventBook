@@ -3,7 +3,7 @@ $(document).ready(function(){
     $("#form-login").submit(function(event) {
         event.preventDefault();
         const username_email = $("#username-email").val().trim();
-        const password = $("#password").val().trim();
+        const password = md5($("#password").val().trim());
         const checkbox = $("#checkbox").is(":checked")? 1 : 0;
         if(username_email != "" && password != "") {
             $.ajax({
