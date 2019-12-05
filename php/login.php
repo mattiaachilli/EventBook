@@ -10,5 +10,5 @@
         $parameters["js"] = array("../js/login.js", "../js/md5.js");
     }
 
-    require 'phpPages\base.php';
+    require dirname(__DIR__).'/php/phpPages/base.php';
 ?>
