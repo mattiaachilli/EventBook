@@ -4,12 +4,11 @@ $(document).ready(function(){
         $("small").each(function(){
             $(this).hide();
         });
-
         const usernameSmall = $("#username").siblings().filter("small");
         const emailSmall = $("#email").siblings().filter("small");
 
-        const psw = $.md5($("#password").val());
-        const confermPsw = $("#conferma-password").val();
+        const psw = md5($("#password").val());
+        const confermPsw = md5($("#conferma-password").val());
         const user = $("#username").val();
         const email = $("#email").val();
         const nome = $("#nome").val();
@@ -20,12 +19,12 @@ $(document).ready(function(){
             type: 'post',
             data: {username: user, password: psw, confermaPassword: confermPsw, email: email, nome: nome, cognome: cognome, organizzatore: checkbox},
             success: function(code){
-                console.log(code);
                 switch(code){
                     case "0":
                         $(usernameSmall).hide().html("Username già in uso").fadeIn(1000);
                         break;
                     case "1":
+                        console.log("User registrato");
                         document.location.href = "index.php"
                         break;
                     case "2": 

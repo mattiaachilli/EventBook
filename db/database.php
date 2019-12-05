@@ -60,10 +60,10 @@
 
         public function registerUser($username, $email, $nome, $cognome, $password, $checkbox){
             if(strlen($password) < 32){
-                $password_encrypt = md5($password);
+                $password = md5($password);
             }
             $stmnt = $this->db->prepare("INSERT INTO utenti(Username, Email, Nome, Cognome, Password, Organizzatore) VALUES(?,?,?,?,?,?)");
-            $stmnt->bind_param("sssssi", $username, $email, $nome, $cognome, $password_encrypt, $checkbox);
+            $stmnt->bind_param("sssssi", $username, $email, $nome, $cognome, $password, $checkbox);
             $stmnt->execute();
         }
 
