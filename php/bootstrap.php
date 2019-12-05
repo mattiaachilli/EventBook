@@ -8,4 +8,5 @@
     define("USER", 0);
     define("ORGANIZER", 1);
     define("ADMIN", 2);
+    define("ROOT", "http://".$_SERVER['HTTP_HOST']."/progetto-tec.-web");
 ?>
