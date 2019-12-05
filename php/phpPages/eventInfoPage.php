@@ -23,12 +23,12 @@
                         </div>
                     </div>
                     <div class="row mt-5">
-                        <div class="col-12 text-truncate">
+                        <div class="col-12">
                             Indirizzo: Amsterdam Arena - ArenA Boulevard 1, 1100 DL Amsterdam, Paesi Bassi
                         </div>
                     </div>
                     <div class="row mt-5">
-                        <div class="col-12 font-weight-light font-italic text-truncate">Genere: musica elettronica</div>
+                        <div class="col-12 font-weight-light font-italic">Genere: musica elettronica</div>
                     </div>
                     <div class="row mt-5">
                         <div class="col-xl-2 col-sm-12 col-xs-12">
