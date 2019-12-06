@@ -67,7 +67,7 @@
 <div class="row mb-5">
     <div class="col-sm-11 col-xs-12 text-right">
         <form action="../php/events.php">
-            <button type="submit" class="btn btn-primary"><< indietro</button>
+            <button type="submit" class="btn btn-primary"><i class="fas fa-arrow-left"></i> back</button>
         </form>
     </div>
     <div class="col-sm-1 col-xs-0"></div>

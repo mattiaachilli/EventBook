@@ -89,24 +89,24 @@
 <?php endforeach; ?>
 
 <div class="row mt-4">
-    <div class="col-2"></div>
-    <div class="col-4">
+    <div class="col-1"></div>
+    <div class="col-5">
         <form action="../php/events.php">
             <button name="minID" value="<?php echo $minID; ?>" 
                     type="submit" class="btn btn-primary mb-2 float-right"
-                    <?php if ($absoluteMinEventID == $minID  || $numEvents == 0) echo "disabled"; ?>><< indietro
+                    <?php if ($absoluteMinEventID == $minID  || $numEvents == 0) echo "disabled"; ?>><i class="fas fa-arrow-left"></i> back
             </button>
         </form>
     </div>
-    <div class="col-4">
+    <div class="col-5">
         <form action="../php/events.php">
             <button name="maxID" value="<?php echo $maxID; ?>" 
                     type="submit" class="btn btn-primary mb-2" 
-                    <?php if ($absoluteMaxEventID == $maxID || $numEvents == 0) echo "disabled"; ?>>avanti >> 
+                    <?php if ($absoluteMaxEventID == $maxID || $numEvents == 0) echo "disabled"; ?>>next <i class="fas fa-arrow-right"></i> 
             </button>
         </form>
     </div>
-    <div class="col-2"></div>
+    <div class="col-1"></div>
 </div>
 
 
