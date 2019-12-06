@@ -1,6 +1,6 @@
 <?php
     require_once(dirname(__DIR__)."/php/bootstrap.php");
-    if((isset($_POST["username"])
+    if(isset($_POST["username"])
         && isset($_POST["email"]) 
         && isset($_POST["nome"]) 
         && isset($_POST["cognome"])
