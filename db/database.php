@@ -76,7 +76,7 @@
         }
 
         public function getEvents(){
-            $stmt = $this->db->prepare("SELECT Username, Nome_evento FROM eventi, utenti WHERE Username = Username_organizzatore AND Active = 0");
+            $stmt = $this->db->prepare("SELECT Username, Nome_evento, IDevento FROM eventi, utenti WHERE Username = Username_organizzatore AND (Active = 0 AND Deleted = 0)");
             $stmt->execute();
             $result = $stmt->get_result();
             return $result->fetch_all(MYSQLI_ASSOC);
@@ -126,6 +126,19 @@
             return $result->fetch_all(MYSQLI_ASSOC);
         }
 
+        public function updateEvents($id, $decision){
+            $query = "UPDATE eventi ";
+            if($decision == 1){
+                $query.= "SET Active = 1 ";
+            } else {
+                $query.= "SET Deleted = 1 ";
+            }
+            $query.="WHERE IDevento = ?";
+            $stmt = $this->db->prepare($query);
+            $stmt->bind_param("i", $id);
+            $stmt->execute();
+        }
+        
         public function getAllEvents() {
             $stmt = $this->db->prepare("SELECT *
                                         FROM eventi

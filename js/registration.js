@@ -20,27 +20,26 @@ $(document).ready(function(){
             data: {username: user, password: psw, confermaPassword: confermPsw, email: email, nome: nome, cognome: cognome, organizzatore: checkbox},
             success: function(code){
                 switch(code){
-                    case "0":
-                        $(usernameSmall).hide().html("Username già in uso").fadeIn(1000);
+                    case "Username già in uso":
+                        $(usernameSmall).hide().html(code).fadeIn(1000);
                         break;
-                    case "1":
-                        console.log("User registrato");
+                    case "User registrato":
                         document.location.href = "index.php"
                         break;
-                    case "2": 
+                    case "Campo vuoto": 
                         console.log("ciao");
                         $("#reg-form input").each(function(){
                             if($(this).val() === ""){
-                                $(this).siblings().filter("small").hide().html("Campo vuoto").fadeIn(1000);
+                                $(this).siblings().filter("small").hide().html(code).fadeIn(1000);
                             }
                         });
                         break;
-                    case "3":
-                        $("#password").siblings().filter("small").hide().html("Questi campi devono essere uguali").fadeIn(1000);
-                        $("#conferma-password").siblings().filter("small").hide().html("Questi campi devono essere uguali").fadeIn(1000);
+                    case "Questi campi devono essere uguali":
+                        $("#password").siblings().filter("small").hide().html(code).fadeIn(1000);
+                        $("#conferma-password").siblings().filter("small").hide().html(code).fadeIn(1000);
                         break;
-                    case "4": 
-                        $(emailSmall).hide().html("Email già in uso").fadeIn(1000);
+                    case "Email già in uso": 
+                        $(emailSmall).hide().html(code).fadeIn(1000);
                         break;
                 }
             }
