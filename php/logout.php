@@ -1,5 +1,5 @@
 <?php
-    require_once("bootstrap.php");
+    require_once(dirname(__DIR__)."/php/bootstrap.php");
     session_destroy();
 
     if(isset($_COOKIE["user"]) && !empty($_COOKIE["user"])) {
@@ -7,5 +7,5 @@
     }
 
     unset($_SESSION["user"]);
-    require dirname(__DIR__).'/php/phpPages/base.php';
+    header("Location: ".ROOT."/php/index.php");
 ?>

@@ -1,5 +1,5 @@
 <?php
-    require_once("bootstrap.php");
+    require_once(dirname(__DIR__)."/php/bootstrap.php");
 
     if(isUserLoggedIn() && typeOfUserLogged() == ADMIN) {
         $parameters["title"] = "Admin - EventBook";

@@ -11,7 +11,7 @@
                 <div class="col-12 mt-2">
                     <label for="password">Password</label>
                     <input type="password" class="form-control" id="password" name="password">
-                    <small id="msg" class="text-light"><?php if(isset($parameters["error"])) { echo $parameters["error"]; } ?></small>
+                    <small id="msg" class="text-light"></small>
                 </div>
                 <div class="row mt-4">
                     <div class="col-6">

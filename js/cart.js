@@ -12,7 +12,7 @@ function typeWriter() {
 }
 
 function check() {
-    return $("#cart").children().length == 1 || $("#cart").children().length == 0;
+    return $("#cart").children().length == 0;
 }
 
 function removeElements() {
@@ -38,11 +38,16 @@ function checkAndRemove() {
     }
 }
 
+/* Add elements */
+function addEvents(data) {
+
+}
+
 $(document).ready(function() {
     
-    $.getJSON("../api/api-cart.php", function(data){
+    /*$.getJSON("../api/api-cart.php", function(data){
         
-    });
+    });*/
     /* Check if there aren't products in the cart */
     if(check()) {
         removeElements();
@@ -62,12 +67,12 @@ $(document).ready(function() {
             {
                 $(row).remove();
                 $(hr).remove();
-            }, 500);
-        checkAndRemove();
-
+                checkAndRemove();
+            }, 1000);
         /* Remove from cookie.... */
         //$.ajax()
     });
+    checkAndRemove();
     /* Continue shopping button */
     $("#continua").click(function() {
         document.location.href = "events.php";
@@ -79,7 +84,12 @@ $(document).ready(function() {
             success: function(code) {     
                 console.log(code);
                 if(code == 0) {
-                    $("#alert").fadeIn();
+                    $("#alert").fadeIn(500);
+                    setTimeout(
+                        function() 
+                        {
+                            $("#alert").fadeOut(500);
+                        }, 5000);
                 }    
             }
         });

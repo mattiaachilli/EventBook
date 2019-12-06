@@ -1,5 +1,5 @@
 <?php
-    require_once("bootstrap.php");
+    require_once(dirname(__DIR__)."/php/bootstrap.php");
 
     $parameters["title"] = "Nome evento - EventBook";
     $parameters["content"] = dirname(__DIR__)."/php/phpPages/eventInfoPage.php";
