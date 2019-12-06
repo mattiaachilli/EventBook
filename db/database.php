@@ -25,11 +25,13 @@
         }
 
         public function changePassword($username, $password) {
-            $password_encrypt = md5($password);
+            if (strlen($password) < 32) {
+                $password = md5($password);
+            }
             $stmt = $this->db->prepare("UPDATE utenti 
                                         SET Password = ? 
                                         WHERE Username = ?");
-            $stmt->bind_param("ss", $password_encrypt, $username);
+            $stmt->bind_param("ss", $password, $username);
             $stmt->execute();
         }
 

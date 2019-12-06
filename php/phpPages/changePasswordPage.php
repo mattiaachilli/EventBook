@@ -23,7 +23,11 @@
                         <button type="submit" class="btn btn-primary page-btn float-right">Conferma</button>
                     </div>
                 </div>
-                
+                <div class="row mt-3">
+                    <div class="col-12 text-center">
+                        <label id="changeDone"></label>
+                    </div>
+                </div>
             </form>
         </div>
     </div>
