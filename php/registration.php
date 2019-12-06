@@ -1,8 +1,9 @@
 <?php
-    require_once("bootstrap.php");
-
+    require_once(dirname(__DIR__)."/php/bootstrap.php");
+    
     $parameters["title"] = "Registrazione - EventBook";
-    $parameters["content"] = "phpPages/registrationPage.php";
+    $parameters["content"] = dirname(__DIR__)."/php/phpPages/registrationPage.php";
     $parameters["js"] = array("../js/registration.js", "../js/md5.js");
-    require 'phpPages\base.php';
+
+    require dirname(__DIR__).'/php/phpPages/base.php';
 ?>

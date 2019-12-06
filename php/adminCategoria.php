@@ -1,12 +1,12 @@
 <?php
-    require_once("bootstrap.php");
+    require_once(dirname(__DIR__)."/php/bootstrap.php");
 
     if(isUserLoggedIn() && typeOfUserLogged() == ADMIN) {
         $parameters["title"] = "Admin - EventBook";
-        $parameters["content"] = "phpPages/insertNewCategory.php";
+        $parameters["content"] = dirname(__DIR__)."/php/phpPages/insertNewCategory.php";
     } else {
-        header("Location: index.php");
+        header("Location: ".ROOT."/php/index.php");
     }
     
-    require 'phpPages\base.php';
+    require dirname(__DIR__).'/php/phpPages/base.php';
 ?>

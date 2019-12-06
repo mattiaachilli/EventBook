@@ -1,9 +1,9 @@
 <?php
-    require_once("bootstrap.php");
+    require_once(dirname(__DIR__)."/php/bootstrap.php");
 
     $parameters["title"] = "Nome evento - EventBook";
-    $parameters["content"] = "phpPages/eventInfoPage.php";
+    $parameters["content"] = dirname(__DIR__)."/php/phpPages/eventInfoPage.php";
     $parameters["event"] = $db->getEvent($_GET["ID"]);;
     
-    require 'phpPages\base.php';
+    require dirname(__DIR__).'/php/phpPages/base.php';
 ?>

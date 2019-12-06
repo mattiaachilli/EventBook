@@ -29,9 +29,4 @@
             $_SESSION["user"] = json_decode($_COOKIE["user"], true);
         }
     }
-
-    function isAjaxRequest() {
-        return !empty($_SERVER['HTTP_X_REQUESTED_WITH']) && 
-                strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest';
-    }
 ?>

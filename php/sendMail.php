@@ -1,14 +1,14 @@
 <?php
-    require_once("bootstrap.php");
-
+    require_once(dirname(__DIR__)."/php/bootstrap.php");
+    
     if(isUserLoggedIn()){
-        header("Location: index.php");
+        header("Location: ".ROOT."/php/index.php");
     }
     else{ /* If is not logged */
         $parameters["title"] = "Invia mail - EventBook";
-        $parameters["content"] = "phpPages/sendMailPage.php";
+        $parameters["content"] = dirname(__DIR__)."/php/phpPages/sendMailPage.php";
         $parameters["js"] = array("../js/sendMail.js");
     }
 
-    require 'phpPages\base.php';
+    require dirname(__DIR__).'/php/phpPages/base.php';
 ?>

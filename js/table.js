@@ -1,30 +1,18 @@
-function insertRows(data){
-    let result;
-    for(let i = 0; i < data.length; i++){
-        result += `<tr>
-                <td headers = "organizzatore" class = "text-center">${data[i]["Username"]}</td>
-                <td headers = "evento" class = "text-center">${data[i]["Nome_evento"]}</td>
-                <td headers = "buttons" class = "text-center row m-0">
-                    <div class = "col-6">
-                        <button type="button" id = "yButton_${i}" class="yButton btn btn-primary container-fluid">Y</button>
-                    </div>
-                    <div class = "col-6">
-                        <button type="button" id = "fButton_${i}" class="fButton btn btn-primary container-fluid">N</button>
-                    </div>
-                </td>
-            </tr>`;
-    }
-    return result;
-}
-
 $(document).ready(function(){
-    $.getJSON("../api/api-table.php", function(data){
-        let rows = insertRows(data);
-        $("tbody").append(rows);
-        $(".yButton").click(function(){
-            let user = $(this).closest("td").siblings().first().text();
-            let nome_evento = $(this).closest("td").siblings("td[headers = 'evento']").text();
-            $(this).parent().siblings().first().children().first().prop("disabled",true);
+    $("button").click(function(event){
+        event.preventDefault();
+        const user = $(this).closest("td").siblings("td[headers = 'organizzatore']").text();
+        const nome_evento = $(this).closest("td").siblings("td[headers = 'evento']").text();
+        const id_evento = $(this).closest("div").siblings("input").val();
+        const choice = $(this).hasClass("yButton") ? 1 : 0;
+        $.ajax({
+            url: "../api/api-approvation.php",
+            type: "post",
+            data: {evento: nome_evento, organizzatore: user, id: id_evento, scelta: choice},
+            success: function(code){
+                console.log(code);
+            }
         });
+        $(this).parent().siblings().first().children().first().prop("disabled",true);
     });
 });

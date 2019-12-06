@@ -1,13 +1,13 @@
 <?php
-    require_once("bootstrap.php");
+    require_once(dirname(__DIR__)."/php/bootstrap.php");
 
     if(isUserLoggedIn()){
-        header("Location: index.php");
+        header("Location: ".ROOT."/php/index.php");
     } else {
         $parameters["title"] = "Cambia password - EventBook";
-        $parameters["content"] = "phpPages/changePasswordPage.php";
+        $parameters["content"] = dirname(__DIR__)."/php/phpPages/changePasswordPage.php";
         $parameters["js"] = array("../js/changePassword.js");
     }
     
-    require 'phpPages/base.php';
+    require dirname(__DIR__).'/php/phpPages/base.php';
 ?>

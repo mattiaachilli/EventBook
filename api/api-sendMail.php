@@ -1,5 +1,5 @@
 <?php
-    require_once("../php/bootstrap.php");
+    require_once(dirname(__DIR__)."/php/bootstrap.php");
     
     $response = 1;
     

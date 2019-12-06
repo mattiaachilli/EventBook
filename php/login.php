@@ -1,15 +1,14 @@
 <?php
-    require_once("bootstrap.php");
+    require_once(dirname(__DIR__)."/php/bootstrap.php");
 
     if(isUserLoggedIn()){
-        //$templateParams["title"] = "Home - EventBook";
-        header("Location: index.php");
+        header("Location: ".ROOT."/php/index.php");
     }
     else{ /* If is not logged */
         $parameters["title"] = "Login - EventBook";
-        $parameters["content"] = "phpPages/loginPage.php";
+        $parameters["content"] = dirname(__DIR__)."/php/phpPages/loginPage.php";
         $parameters["js"] = array("../js/login.js", "../js/md5.js");
     }
 
-    require 'phpPages\base.php';
+    require dirname(__DIR__).'/php/phpPages/base.php';
 ?>
