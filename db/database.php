@@ -33,9 +33,15 @@
             $stmt->execute();
         }
 
-        public function getCategories() {
-            $stmt = $this->db->prepare("SELECT Nome
-                                        FROM categorie");
+        public function getCategories($param = "") {
+            $query = "SELECT Nome FROM categorie";
+            if($param !== ""){
+                $query.= " WHERE Nome = ?";
+                $stmt = $this->db->prepare($query);
+                $stmt->bind_param("s", $param);
+            } else {
+                $stmt = $this->db->prepare($query);
+            }
             $stmt->execute();
             $result = $stmt->get_result();
 

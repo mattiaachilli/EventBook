@@ -3,14 +3,15 @@
     <div class="col-md-6 col-12">
         <h2 class="text-light display-4 text-center mb-5">Nuova categoria eventi</h2>
         <div class = "form-div rounded">
-            <form method= "POST" id="form-login">
+            <form action = "<?php echo ROOT."/api/api-category.php"?>" method= "get" id="form-login">
                 <div class="col-12">
                     <label for="category">Inserisci categoria</label>
-                    <input type="text" class="form-control" id="category">
+                    <input type="text" class="form-control" id="category" name = "categoria">
+                    <small id="info-alert" class = "text-white"></small>
                 </div>
                 <div class="row mt-3">
                     <div class="col-12">
-                        <button type="submit" class="btn btn-primary page-btn float-right" >Invia</button>
+                        <button type="submit" class="btn btn-primary page-btn float-right">Invia</button>
                     </div>
                 </div>
             </form>

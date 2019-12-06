@@ -1,1 +1,0 @@
-<i class = "fas fa-times fa-2x"></i>
