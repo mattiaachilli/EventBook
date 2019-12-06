@@ -139,10 +139,25 @@
             $stmt->execute();
         }
         
-        public function getAllEvents() {
-            $stmt = $this->db->prepare("SELECT *
-                                        FROM eventi
-                                        WHERE active = 1");
+        public function getNextOrPrevEvents($currentID = 0, $nextOrPrev = 0) {
+            $eventsPerPage = 4;
+            if ($nextOrPrev == 0) {
+                $stmt = $this->db->prepare("SELECT *
+                                            FROM eventi
+                                            WHERE active = 1
+                                            AND IDevento > ?
+                                            ORDER BY IDevento ASC
+                                            LIMIT ?");
+            } else {
+                $stmt = $this->db->prepare("SELECT *
+                                            FROM eventi
+                                            WHERE active = 1
+                                            AND IDevento < ?
+                                            ORDER BY IDevento DESC
+                                            LIMIT ?");
+            }
+            
+            $stmt->bind_param("ii", $currentID, $eventsPerPage);
             $stmt->execute();
             $result = $stmt->get_result();
 
@@ -161,5 +176,30 @@
 
             return $result->fetch_all(MYSQLI_ASSOC);
         }
+
+        public function getMaxEventID() {
+            $stmt = $this->db->prepare("SELECT IDevento
+                                        FROM eventi 
+                                        WHERE active = 1 AND Deleted = 0
+                                        ORDER BY IDevento DESC
+                                        LIMIT 1");
+            $stmt->execute();
+            $result = $stmt->get_result();
+
+            return $result->fetch_all(MYSQLI_ASSOC);
+        }
+
+        public function getMinEventID() {
+            $stmt = $this->db->prepare("SELECT IDevento
+                                        FROM eventi 
+                                        WHERE active = 1 AND Deleted = 0
+                                        ORDER BY IDevento ASC
+                                        LIMIT 1");
+            $stmt->execute();
+            $result = $stmt->get_result();
+
+            return $result->fetch_all(MYSQLI_ASSOC);
+        }
+
     }
 ?>

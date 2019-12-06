@@ -1,19 +1,36 @@
+<?php 
+    $n = 0; 
+    $absoluteMaxEventID = $db->getMaxEventID()[0]["IDevento"];
+    $absoluteMinEventID = $db->getMinEventID()[0]["IDevento"];
+    $numEvents = count($parameters["events"]);
+    if ($numEvents == 0) {
+        echo '<div class="col-12 text-center mb-5 font-weight-light font-italic">Non ci sono eventi in programma</div>';
+    } else {
+        $maxID = $parameters["events"][$numEvents - 1]["IDevento"];
+        $minID = $parameters["events"][0]["IDevento"];
+        if (isset($_GET["minID"])) {
+            $temp = $maxID; 
+            $maxID = $minID; 
+            $minID = $temp;
+            for ($i = 0; $i < $numEvents / 2; $i++) {
+                $temp = $parameters["events"][$i];
+                $parameters["events"][$i] = $parameters["events"][$numEvents - 1 - $i];
+                $parameters["events"][$numEvents - 1 - $i] = $temp;
+            }
+        }
+    }
+?>
+
 <div class="row">
     <div class="col-md-1 col-sm-0"></div>
     <div class="col-md-10 col-sm-12">
         <h2 class="text-light display-4 mt-5">
-            <?php if (count($parameters["events"]) > 0) echo 'Eventi in programma'; ?>
+            <?php if ($numEvents > 0) echo 'Eventi in programma'; ?>
         </h2>
     </div>
     <div class="col-md-1 col-xs-0"></div>
 </div>
 
-<?php 
-    $n = 0; 
-    if (count($parameters["events"]) == 0) {
-        echo '<div class="col-12 text-center mb-5 font-weight-light font-italic">Non ci sono eventi in programma</div>';
-    }
-?>
 <?php foreach($parameters["events"] as $event) : 
     if ($n % 2 == 0) { echo '<div class="row text-light">'.'<div class="col-sm-0 col-md-1"></div>'; } 
 ?>
@@ -59,7 +76,37 @@
         </div>
     </form>
 </div>
-<?php $n++; if ($n % 2 == 0) { echo '<div class="col-sm-0 col-md-1"></div></div>';  } ?>
+<?php 
+    $n++; 
+    if ($n == $numEvents && $n % 2 != 0) {
+        echo '<div class="col-sm-12 col-md-5"></div>';  
+        echo '<div class="col-sm-0 col-md-1"></div></div>'; 
+    }
+    if ($n % 2 == 0) { 
+        echo '<div class="col-sm-0 col-md-1"></div></div>';  
+    } 
+?>
 <?php endforeach; ?>
+
+<div class="row mt-4">
+    <div class="col-2"></div>
+    <div class="col-4">
+        <form action="../php/events.php">
+            <button name="minID" value="<?php echo $minID; ?>" 
+                    type="submit" class="btn btn-primary mb-2 float-right"
+                    <?php if ($absoluteMinEventID == $minID  || $numEvents == 0) echo "disabled"; ?>><< indietro
+            </button>
+        </form>
+    </div>
+    <div class="col-4">
+        <form action="../php/events.php">
+            <button name="maxID" value="<?php echo $maxID; ?>" 
+                    type="submit" class="btn btn-primary mb-2" 
+                    <?php if ($absoluteMaxEventID == $maxID || $numEvents == 0) echo "disabled"; ?>>avanti >> 
+            </button>
+        </form>
+    </div>
+    <div class="col-2"></div>
+</div>
 
 
