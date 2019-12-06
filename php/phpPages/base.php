@@ -28,6 +28,9 @@
         endforeach;
     endif;
     ?>
+    <noscript>
+        <meta http-equiv="refresh" content="0;url=<?php echo ROOT."/php/phpPages/noScript.php"; ?> ">
+    </noscript>
 </head>
 
 <body>
