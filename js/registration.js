@@ -26,8 +26,7 @@ $(document).ready(function(){
                     case "User registrato":
                         document.location.href = "index.php"
                         break;
-                    case "Campo vuoto": 
-                        console.log("ciao");
+                    case "Questo campo non può essere vuoto": 
                         $("#reg-form input").each(function(){
                             if($(this).val() === ""){
                                 $(this).siblings().filter("small").hide().html(code).fadeIn(1000);
