@@ -13,6 +13,8 @@ $(document).ready(function(){
                 console.log(code);
             }
         });
+        $(this).addClass("d-none");
+        $(this).siblings("i").removeClass("d-none");
         $(this).parent().siblings().first().children().first().prop("disabled",true);
     });
 });
