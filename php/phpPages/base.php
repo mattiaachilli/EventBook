@@ -29,6 +29,7 @@
     endif;
     ?>
     <noscript>
+        <link rel="stylesheet" href="../css/nojavascript.css">
         <meta http-equiv="refresh" content="0;url=<?php echo ROOT."/php/phpPages/noScript.php"; ?> ">
     </noscript>
 </head>
