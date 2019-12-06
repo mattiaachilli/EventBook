@@ -1,5 +1,5 @@
 <?php
-    require_once("../php/bootstrap.php");
+    require_once(dirname(__DIR__)."/php/bootstrap.php");
     if(!isUserLoggedIn()) {
         $code = 0;
         if(isset($_POST["username"]) && isset($_POST["password"]) 

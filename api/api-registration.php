@@ -1,5 +1,5 @@
 <?php
-    require '../php/bootstrap.php';
+    require_once(dirname(__DIR__)."/php/bootstrap.php");
     if((isset($_POST["username"]) 
         && isset($_POST["email"]) 
         && isset($_POST["nome"]) 
