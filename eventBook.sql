@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Dic 03, 2019 alle 17:37
+-- Creato il: Dic 06, 2019 alle 16:01
 -- Versione del server: 10.4.8-MariaDB
 -- Versione PHP: 7.3.11
 
@@ -65,7 +65,7 @@ INSERT INTO `categorie` (`Nome`) VALUES
 --
 
 CREATE TABLE `eventi` (
-  `IDevento` varchar(10) NOT NULL,
+  `IDevento` int(10) NOT NULL,
   `Data` date NOT NULL,
   `Nome_evento` varchar(20) NOT NULL,
   `Nome_location` varchar(20) NOT NULL,
@@ -73,12 +73,26 @@ CREATE TABLE `eventi` (
   `Città_location` varchar(20) NOT NULL,
   `Biglietti_disponibili` int(6) NOT NULL,
   `Categoria` varchar(20) NOT NULL,
-  `Immagine` varchar(50) NOT NULL,
-  `Descrizione` varchar(1000) NOT NULL,
+  `Immagine` varchar(150) NOT NULL,
+  `Descrizione` varchar(500) NOT NULL,
   `Prezzo` int(5) NOT NULL,
   `Username_organizzatore` varchar(15) NOT NULL,
-  `Active` tinyint(1) NOT NULL
+  `Active` tinyint(1) NOT NULL,
+  `Deleted` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dump dei dati per la tabella `eventi`
+--
+
+INSERT INTO `eventi` (`IDevento`, `Data`, `Nome_evento`, `Nome_location`, `Nazione_location`, `Città_location`, `Biglietti_disponibili`, `Categoria`, `Immagine`, `Descrizione`, `Prezzo`, `Username_organizzatore`, `Active`, `Deleted`) VALUES
+(21, '2018-07-08', 'Armin van Buuren ', 'Cocoricò', 'Italia', 'Riccione', 7500, 'Concerto', '../img/events/armin.JPG', 'Evento dell\'anno.', 25, 'Matt', 1, 0),
+(22, '2019-12-08', 'Juventus - Inter', 'Allianz Stadium', 'Italia', 'Torino', 40000, 'Calcio', '../img/events/juventus.JPG', 'Derby!', 70, 'Matt', 1, 0),
+(23, '2015-07-31', 'Martin Garrix', 'Cocoricò', 'Italia', 'Riccione', 7500, 'Concerto', '../img/events/iTLDxVWC_400x400.jpg', 'Martin @ Cocoricò', 30, 'Matt', 1, 0),
+(24, '2019-08-13', 'Alesso', 'Cocoricò', 'Italia', 'Riccione', 7500, 'Concerto', '../img/events/avatars-000638526816-56rgi2-t500x500.jpg', 'La svezia al cocoricò!', 30, 'Matt', 1, 0),
+(25, '2019-08-15', 'Swedish House Mafia', 'Cocoricò', 'Italia', 'Riccione', 7999, 'Concerto', '../img/events/swedish-house-mafia-magento_1_-300x300.jpg', 'Il trio!', 35, 'Matt', 1, 0),
+(26, '2020-05-22', 'This is Me', 'Amsterdam Arena', 'Paesi Bassi', 'Amsterdam', 40000, 'Concerto', '../img/events/1080x1080-FINAL-300x300.jpg', 'I can\'t wait to tell you my whole story. All of it: all of those different things that made me learn and grow as a person.” In This Is Me, I will bring all sides of myself together for one time only in the relative intimacy of the Ziggo Dome. This Is Me will take you back to each moment as if you were actually there, experiencing and learning for yourself. Mainstage performances, A State of Trance, Armin Only, Radio Hits and more.', 50, 'Matt', 1, 0),
+(27, '2019-12-05', 'Avicii Tribute', 'Amsterdam Arena', 'Paesi Bassi', 'Amsterdam', 40000, 'Concerto', '../img/events/avicii-maxw-445.jpg', 'Tributo ad Avicii. \nIn consolle:\n- ......\n-......\n-......\n-......', 55, 'Matt', 1, 0);
 
 -- --------------------------------------------------------
 
@@ -100,7 +114,9 @@ CREATE TABLE `location` (
 --
 
 INSERT INTO `location` (`Nome`, `Nazione`, `Città`, `Capienza`, `Via`, `N_civico`) VALUES
-('Allianz Stadium', 'Italia', 'Torino', 45000, 'Gaetano Scirea', 50);
+('Allianz Stadium', 'Italia', 'Torino', 45000, 'Gaetano Scirea', 50),
+('Amsterdam Arena', 'Paesi Bassi', 'Amsterdam', 55000, 'ArenA Boulevard', 1),
+('Cocoricò', 'Italia', 'Riccione', 8000, 'Chieti', 44);
 
 -- --------------------------------------------------------
 
@@ -122,8 +138,9 @@ CREATE TABLE `utenti` (
 --
 
 INSERT INTO `utenti` (`Username`, `Email`, `Nome`, `Cognome`, `Password`, `Organizzatore`) VALUES
-('InnoJack', 'matteo.innocenti2@studio.unibo.it', 'Matteo', 'Innocenti', '67b5bced5ed9e3efbf68094ef8b622cf', 0),
-('MattSaber', 'innocentimatteo93@gmail.com', 'Matteo', 'Innocenti', '27b59ebf7181a828c2ce688878305a5b', 0);
+('Admin', 'matteo.innocenti2@studio.unibo.it', 'Matteo', 'Inno', '6e6bc4e49dd477ebc98ef4046c067b5f', 0),
+('InnoJack', 'matteoinnocenti93@live.com', 'Matteo', 'Inno', '6e6bc4e49dd477ebc98ef4046c067b5f', 0),
+('Matt', 'innocentimatteo93@gmail.com', 'Matteo', 'Innocenti', '2521a33ad740a5ea010eac7002169c2e', 1);
 
 --
 -- Indici per le tabelle scaricate
@@ -158,6 +175,16 @@ ALTER TABLE `location`
 --
 ALTER TABLE `utenti`
   ADD PRIMARY KEY (`Username`);
+
+--
+-- AUTO_INCREMENT per le tabelle scaricate
+--
+
+--
+-- AUTO_INCREMENT per la tabella `eventi`
+--
+ALTER TABLE `eventi`
+  MODIFY `IDevento` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
