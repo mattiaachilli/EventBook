@@ -4,6 +4,7 @@
     if(isUserLoggedIn() && typeOfUserLogged() == ADMIN) {
         $parameters["title"] = "Admin - EventBook";
         $parameters["content"] = dirname(__DIR__)."/php/phpPages/insertNewCategory.php";
+        $parameters["js"] = array("../js/category.js");
     } else {
         header("Location: ".ROOT."/php/index.php");
     }

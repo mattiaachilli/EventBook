@@ -3,7 +3,7 @@
     <div class="col-md-8 col-sm-8 col-xs-12">
         <h2 class="text-light display-4">Registrati</h2>
         <div class="form-div rounded">
-            <form id = "reg-form" action = "../api/api-registration.php" method = "post">
+            <form id = "reg-form" action = "<?php echo ROOT."/api/api-registration.php"?>" method = "post">
                 <div class="row">
                     <div class="col-md-6 col-s-12">
                             <label for="username">Username</label>
