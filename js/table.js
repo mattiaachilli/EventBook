@@ -5,7 +5,6 @@ $(document).ready(function(){
         const nome_evento = $(this).closest("td").siblings("td[headers = 'evento']").text();
         const id_evento = $(this).closest("div").siblings("input").val();
         const choice = $(this).hasClass("yButton") ? 1 : 0;
-        console.log(choice);
         $.ajax({
             url: "../api/api-approvation.php",
             type: "post",

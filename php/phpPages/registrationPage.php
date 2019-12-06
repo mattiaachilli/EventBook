@@ -8,31 +8,31 @@
                     <div class="col-md-6 col-s-12">
                             <label for="username">Username</label>
                             <input type="text" class="form-control" name = "username" id="username">
-                            <small class = "text-white"></small>
+                            <small class = "text-white"><?php if(isset($parameters["userError"])) { echo $parameters["userError"]; } ?></small>
                     </div>
                     <div class="col-md-6 col-s-12">
                             <label for="email">E-mail</label>
                             <input type="email" class="form-control" name = "email" id="email">
-                            <small class = "text-white"></small>
+                            <small class = "text-white"><?php if(isset($parameters["emailError"])) { echo $parameters["emailError"]; }?></small>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-6 col-s-12">
                         <label for="nome">Nome</label>
                         <input type="text" class="form-control" name = "nome" id="nome">
-                        <small class = "text-white"></small>
+                        <small class = "text-white"><?php if(isset($parameters["error"])) { echo $parameters["error"]; } ?></small>
                     </div>
                     <div class="col-md-6 col-s-12">
                         <label for="cognome">Cognome</label>
                         <input type="text" class="form-control" name = "cognome" id="cognome">
-                        <small class = "text-white"></small>
+                        <small class = "text-white"><?php if(isset($parameters["error"])) { echo $parameters["error"]; } ?></small>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-6 col-s-12">
                         <label for="password">Password</label>
                         <input type="password" class="form-control" name = "password" id="password">
-                        <small class = "text-white"></small>
+                        <small class = "text-white"><?php if(isset($parameters["pswError"])) { echo $parameters["pswError"]; } ?></small>
                     </div>
                     <div class="col-md-6 col-s-12"></div>
                 </div>
@@ -40,14 +40,14 @@
                     <div class="col-md-6 col-s-12">
                         <label for="conferma-password">Conferma password</label>
                         <input type="password" class="form-control" name = "confermaPassword" id="conferma-password">
-                        <small class = "text-white"></small>
+                        <small class = "text-white"><?php if(isset($parameters["pswError"])) { echo $parameters["pswError"]; } ?></small>
                     </div>
                     <div class="col-md-6 col-s-12"></div>
                 </div>
                 <div class="form-row align-items-center pl-3 pr-3 mt-4">
                     <div class="col-12 col-lg-4">
                         <div class="form-check custom-control custom-checkbox mb-2">
-                            <input type="checkbox" class="form-check-input custom-control-input" id="checkbox">
+                            <input type="checkbox" name = "organizzatore" class="form-check-input custom-control-input" id="checkbox">
                             <label class="form-check-label custom-control-label" for="checkbox">Organizzatore</label>
                         </div>
                     </div>
