@@ -1,4 +1,5 @@
 let capacity = 0;
+let imageIsCorrect = true;
 
 $(document).ready(function() {
     initializeLabels();
@@ -15,7 +16,7 @@ $(document).ready(function() {
         const location = $("#location").val();
         const path = $("#image").val().replace(/^.*[\\\/]/, '');
 
-        if (checkFields(eventName, desc, price, tickets, date, category, location, path)) {
+        if (checkFields(eventName, desc, price, tickets, date, category, location, path) && imageIsCorrect) {
             const nomeLocation = location.split(" - ")[0];
             const city = location.split(" - ")[1].split(" ")[0];
             const country = location.split(" (")[1].split(")")[0];
@@ -59,6 +60,10 @@ $(document).ready(function() {
     $("#image").on("change", function(event) {
         const fileName = $("#image").val().replace(/^.*[\\\/]/, '');
         $("#pathImg").text(fileName);
+        if (fileName != "") {
+            checkImage();
+            $("#wrongImg").hide();
+        }
     });
 });
 
@@ -67,8 +72,8 @@ function uploadImage() {
     let form_data = new FormData();                  
     form_data.append('image', file_data);                         
     $.ajax({
-        url: '../api/api-uploadImage.php', // point to server-side PHP script 
-        dataType: 'text',  // what to expect back from the PHP script, if anything
+        url: '../api/api-uploadImage.php', 
+        dataType: 'text',  
         cache: false,
         contentType: false,
         processData: false,
@@ -79,6 +84,31 @@ function uploadImage() {
                 $("#wrongImg").text(code);
                 $("#wrongImg").fadeIn();
             } else {
+                $("#wrongImg").hide();
+            }
+        }
+    });
+}
+
+function checkImage() {  
+    let file_data = $('#image').prop('files')[0];   
+    let form_data = new FormData();                  
+    form_data.append('image', file_data);                         
+    $.ajax({
+        url: '../api/api-checkImage.php', 
+        dataType: 'text',  
+        cache: false,
+        contentType: false,
+        processData: false,
+        data: form_data,                  
+        type: 'post',
+        success: function(code){
+            if (code != 0) {
+                $("#wrongImg").text(code);
+                $("#wrongImg").fadeIn();
+                imageIsCorrect = false;
+            } else {
+                imageIsCorrect = true;
                 $("#wrongImg").hide();
             }
         }

@@ -11,7 +11,7 @@
         <div class="form-div rounded p-5">
             <div class="row">
                 <div class="col-xl-4 col-xs-12 col-sm-12">
-                    <img src=<?php echo $parameters["event"][0]["Immagine"]; ?> width="75%"/>
+                    <img src="<?php echo $parameters["event"][0]["Immagine"]; ?>" width="75%"/>
                 </div>
                 <div class="col-xl-8 col-xs-12 col-sm-12">
                     <div class="row">

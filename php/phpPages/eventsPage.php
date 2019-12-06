@@ -21,7 +21,7 @@
     <form action="../php/eventInfo.php" class="form-div rounded p-4" method="get">
         <div class="row">
             <div class="col-xl-4 col-xs-12 col-sm-12">
-                <img src=<?php echo $event["Immagine"]?> width="75%"/>
+                <img src="<?php echo $event["Immagine"]?>" width="75%"/>
             </div>
             <div class="col-xl-8 col-xs-12 col-sm-12">
                 <div class="row font-weight-bold">
