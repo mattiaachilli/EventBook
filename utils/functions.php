@@ -29,4 +29,31 @@
             $_SESSION["user"] = json_decode($_COOKIE["user"], true);
         }
     }
+
+    function setCookieCart($id, $n_ticket) {
+        if(!isset($_COOKIE["cart"])) {
+            $array = array($id, $n_ticket);
+            setcookie("cart", json_encode($array), time() + 3600 * 24 * 365, "/"); 
+        } else {
+            $arr = json_decode($_COOKIE["cart"]);
+            $found = 0;
+            for($i = 0; $i < count($arr) && !$found; $i+=2) {
+                if($arr[$i] == $id) {
+                    $arr[++$i] += $n_ticket;
+                    $found = 1;
+                }
+            }
+            if(!$found) {
+                array_push($arr, $id, $n_ticket);
+            }
+            setcookie("cart", json_encode($arr), time() + 3600 * 24 * 365, "/"); 
+        }
+    }
+
+    function printCookie() {
+        if(isset($_COOKIE["cart"]) && !empty($_COOKIE["cart"])) {
+            var_dump($_COOKIE["cart"]);
+        }
+    }
+
 ?>

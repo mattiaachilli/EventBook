@@ -209,5 +209,16 @@
             return $result->fetch_all(MYSQLI_ASSOC);
         }
 
+        public function getTicketsAvailable($id) {
+            $stmt = $this->db->prepare("SELECT Biglietti_disponibili
+                                FROM eventi e
+                                where e.IDevento = ?");
+            $stmt->bind_param("i", $id);
+            $stmt->execute();
+            $result = $stmt->get_result();
+
+            return $result->fetch_all(MYSQLI_ASSOC);
+        }
+
     }
 ?>
