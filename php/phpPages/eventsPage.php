@@ -4,7 +4,7 @@
     $absoluteMinEventID = $db->getMinEventID()[0]["IDevento"];
     $numEvents = count($parameters["events"]);
     if ($numEvents == 0) {
-        echo '<div class="col-12 text-center mb-5 font-weight-light font-italic">Non ci sono eventi in programma</div>';
+        echo '<div class="col-12 text-center text-light mb-5 font-weight-light font-italic">Non ci sono eventi in programma</div>';
     } else {
         $maxID = $parameters["events"][$numEvents - 1]["IDevento"];
         $minID = $parameters["events"][0]["IDevento"];
