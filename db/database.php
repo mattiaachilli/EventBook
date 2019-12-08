@@ -230,5 +230,57 @@
             return $result->fetch_all(MYSQLI_ASSOC);
         }
 
+        public function getRows($id) {
+            $stmt = $this->db->prepare("SELECT * FROM biglietti WHERE IDevento = ?");
+            $stmt->bind_param("i", $id);
+            $stmt->execute();
+            $result = $stmt->get_result();
+
+            return $result->fetch_all(MYSQLI_ASSOC);
+        }
+
+        public function getIdTicketByEvent($id) {
+            $stmt = $this->db->prepare("SELECT MAX(IDbiglietto) AS IDbiglietto FROM biglietti WHERE IDevento = ?");
+            $stmt->bind_param("i", $id);
+            $stmt->execute();
+            $result = $stmt->get_result();
+
+            return $result->fetch_all(MYSQLI_ASSOC);
+        }
+
+        public function insertTicket($username, $arr) {
+            $array = array();
+            for($i = 0; $i < count($arr); $i+=2) {
+                $quantity = $arr[$i + 1];
+                $id = $arr[$i];
+                $n = 0;
+                $query = $this->getTicketsAvailable($id);
+                $quantityAvailable = $query[0]["Biglietti_disponibili"] - $quantity;
+                if($quantityAvailable >= 0) {
+                    $stmt = $this->db->prepare("UPDATE eventi set Biglietti_disponibili = ? WHERE IDevento = ?");
+                    $stmt->bind_param("ii", $quantityAvailable, $id);
+                    $stmt->execute();
+                    for($j = 0; $j < $quantity; $j++) {
+                        $query_1 = $this->getRows($id);
+                        if(count($query_1) == 0) {
+                            $idTicketMax = 1;
+                        } else if(count($query_1) > 0) {
+                            $query_2 = $this->getIdTicketByEvent($id);
+                            $idTicketMax = $query_2[0]["IDbiglietto"] + 1;
+                        }
+                        $stmt = $this->db->prepare("INSERT INTO biglietti(IDbiglietto, IDevento, N_posto, Username_acquirente) 
+                                                    VALUES (?, ?, ?, ?)");
+                        $stmt->bind_param("iiis", $idTicketMax, $id, $n , $username); /* N_posto 0 for the moment */
+                        $stmt->execute();
+                    }
+                } else {
+                    $array[$id] = $query[0]["Biglietti_disponibili"];
+                }
+            }
+            if(count($array) > 0) {
+                return $array;
+            }
+            return 1;
+        }
     }
 ?>

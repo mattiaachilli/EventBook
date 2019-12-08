@@ -11,6 +11,7 @@ function typeWriter() {
   }
 }
 
+/* Delete elements */
 function check() {
     return $("#cart").children().length == 0;
 }
@@ -38,24 +39,24 @@ function checkAndRemove() {
     }
 }
 
-/* Add elements */
-function addEvents(data) {
-
-}
-
 $(document).ready(function() {
-    
-    /*$.getJSON("../api/api-cart.php", function(data){
-        
-    });*/
     /* Check if there aren't products in the cart */
     if(check()) {
         removeElements();
         $("#title-cart").text("");
-        typeWriter();
+        $("#title-cart").html(txt);
     }
+
+    $(".price").each(function() {
+        const val = $(this).text();
+        console.log(val);
+    });
+
+    /* Click on trash */
     $(".trash").click(function() {
         const row = $(this).parents(".row")[1];
+        const id = $(row).children('input[type="hidden"]').val();
+        console.log(id);
         $(row).hide(1000);
         const hr = $(row).next();
         if($(hr).is("hr")) {
@@ -70,27 +71,45 @@ $(document).ready(function() {
                 checkAndRemove();
             }, 1000);
         /* Remove from cookie.... */
-        //$.ajax()
+        $.ajax({
+            url: '../api/api-removeFromCookie.php',
+            type: 'post',
+            data: {id_event: id}
+        });
     });
-    checkAndRemove();
+
     /* Continue shopping button */
-    $("#continua").click(function() {
+    $("#continue").click(function() {
         document.location.href = "events.php";
     });
+
     /* Buy button */
     $("#buy").click(function() {
         $.ajax({
-            url: '../api/api-checklogin.php',
+            url: '../api/api-pay.php',
             success: function(code) {     
                 console.log(code);
                 if(code == 0) {
-                    $("#alert").fadeIn(500);
-                    setTimeout(
-                        function() 
-                        {
-                            $("#alert").fadeOut(500);
-                        }, 5000);
-                }    
+                    $("#alert_class").addClass("alert-warning");
+                    $("#alert_heading").html("Attenzione!");
+                    $("#alert_class > p").html("Per procedere con l'acquisto devi essere loggato!");
+                } else if(code == 1) {
+                    $("#alert_class").addClass("alert-success");
+                    $("#alert_heading").html("Acquisto effettuato con successo!");
+                    $("#alert_class > p").html("Il suo acquisto è stato effettuato con successo, può visualizzare l'acquisto nell'apposita sezione");
+                } else {
+                    $("#alert_class").addClass("alert-warning");
+                    $("#alert_class > p").html(code);
+                }
+                $("#alert").fadeIn(500); 
+                setTimeout(
+                    function() 
+                    {
+                        $("#alert").fadeOut(500);
+                        if(code == 1) {
+                            document.location.href = "cart.php"; /* Riepilogo poi */
+                        }
+                    }, 5000);
             }
         });
     });

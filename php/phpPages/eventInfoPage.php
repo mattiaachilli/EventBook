@@ -46,7 +46,6 @@
                         <?php if($availableTickets[0]["Biglietti_disponibili"] > 0) : ?>
                             <div class="col-xl-3 col-sm-5 col-xs-5 w-75 mt-2">
                                 <select class="custom-select" id="ticket">
-                                <option value="">N. biglietti</option>
                                     <?php
                                         $ticket = 20;
                                         if($availableTickets[0]["Biglietti_disponibili"] < 20) {
