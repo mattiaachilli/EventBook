@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Dic 08, 2019 alle 15:40
+-- Creato il: Dic 08, 2019 alle 17:41
 -- Versione del server: 10.4.8-MariaDB
 -- Versione PHP: 7.3.11
 
@@ -134,7 +134,7 @@ CREATE TABLE `utenti` (
   `Cognome` varchar(45) NOT NULL,
   `Password` varchar(45) NOT NULL,
   `Organizzatore` tinyint(1) NOT NULL,
-  `Active` tinyint(1) NOT NULL
+  `Active` tinyint(1) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -143,7 +143,7 @@ CREATE TABLE `utenti` (
 
 INSERT INTO `utenti` (`Username`, `Email`, `Nome`, `Cognome`, `Password`, `Organizzatore`, `Active`) VALUES
 ('Admin', 'matteo.innocenti2@studio.unibo.it', 'Matteo', 'Inno', '85144fbcc3839adb5dc33d99c139869e', 0, 0),
-('Matt', 'innocentimatteo93@gmail.com', 'Matteo', 'Innocenti', '2521a33ad740a5ea010eac7002169c2e', 1, 0),
+('MattSaber', 'innocentimatteo93@gmail.com', 'Matteo', 'Innocenti', '2521a33ad740a5ea010eac7002169c2e', 1, 0),
 ('Prova', 'matteoinnocenti93@live.com', 'Matteo', 'Innocenti', '6e6bc4e49dd477ebc98ef4046c067b5f', 0, 0);
 
 --
