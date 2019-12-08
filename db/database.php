@@ -212,6 +212,12 @@
         public function getUser(){
             $stmt = $this->db->prepare("SELECT Username, Email, Password FROM utenti WHERE Username = ?");
             $stmt->bind_param("s", $_SESSION["user"][0]);
+            $stmt->execute();
+            $result = $stmt->get_result();
+
+            return $result->fetch_all(MYSQLI_ASSOC);
+        }
+            
 
         public function getTicketsAvailable($id) {
             $stmt = $this->db->prepare("SELECT Biglietti_disponibili
