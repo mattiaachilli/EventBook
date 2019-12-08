@@ -3,6 +3,7 @@
     <div class="col-12 col-lg-8 p-0">
         <h2 class="text-light display-4">Lista eventi da approvare</h2>
         <div class = "form-div rounded">
+        <?php if(count($parameters["events"]) >= 1): ?>
             <table class="table text-white border-bottom" id = "table">
                 <thead>
                     <tr>
@@ -33,6 +34,9 @@
                     <?php endforeach; ?>
                 </tbody>
             </table>
+        <?php else: ?>
+            <div class="col-12 text-center font-weight-light font-italic text-white">Non ci sono eventi da approvare</div>'
+        <?php endif; ?>
         </div>
     </div>
     <div class="col-2"></div>
