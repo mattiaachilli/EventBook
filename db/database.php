@@ -49,7 +49,7 @@
         }
         
         public function checkRegistration($username, $email){
-            $stmnt = $this->db->prepare("SELECT username, email FROM utenti WHERE Username = ? OR Email = ?");
+            $stmnt = $this->db->prepare("SELECT username, email FROM utenti WHERE (Username = ? OR Email = ?) AND Active = 1");
             $stmnt->bind_param("ss", $username, $email);
             $stmnt->execute();
             $result = $stmnt->get_result();
@@ -217,7 +217,7 @@
         }
 
         public function getUser(){
-            $stmt = $this->db->prepare("SELECT Username, Email, Password FROM utenti WHERE Username = ?");
+            $stmt = $this->db->prepare("SELECT Username, Email, Password FROM utenti WHERE Username = ? AND Active = 1");
             $stmt->bind_param("s", $_SESSION["user"][0]);
             $stmt->execute();
             $result = $stmt->get_result();
@@ -248,6 +248,11 @@
             return $result->fetch_all(MYSQLI_ASSOC);
         }
         
+        public function removeUser(){
+            $stmt = $this->db->prepare("UPDATE utenti SET Active = 0 WHERE Username = ?");
+            $stmt->bind_param("s", $_SESSION["user"][0]);
+            $stmt->execute();
+        }
 
     }
 ?>

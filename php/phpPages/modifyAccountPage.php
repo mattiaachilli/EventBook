@@ -34,7 +34,9 @@
                     <div class = "col-0 col-md-2"></div>
                     <div class="col-12 col-md-8 p-2">
                         <button type="submit" id = "salvaButton" class="btn btn-primary mb-2 float-right">Salva</button>
-                        <button type="submit" id = "eliminaButton" class="btn btn-danger mb-2 float-left">Elimina</button>
+                        <button type="button" id = "eliminaButton" class="btn btn-danger mb-2 float-left">
+                            <a href = "<?php echo ROOT."/php/remove.php"?>">Elimina</a>
+                        </button>
                     </div>
                     <div class = "col-0 col-md-2"></div>
                 </div>
