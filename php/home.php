@@ -17,8 +17,6 @@
 <font size="13"><a href="adminApprovazione.php">Admin HomePage</a></font>
 <br>
 <font size="13"><a href="newEvent.php">Nuovo evento</a></font>
-<br>
-<font size="13"><a href="publishedEvents.php">Eventi pubblicati</a></font>
 
 <?php
     if(isUserLoggedIn()) {

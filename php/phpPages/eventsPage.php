@@ -35,12 +35,12 @@
     if ($n % 2 == 0) { echo '<div class="row text-light">'.'<div class="col-sm-0 col-md-1"></div>'; } 
 ?>
 <div class="col-sm-12 col-md-5">
-    <form action="../php/eventInfo.php" class="form-div rounded p-4" method="get">
+    <form action="../php/eventInfo.php" class="form-div rounded p-0" method="get">
         <div class="row">
-            <div class="col-xl-4 col-xs-12 col-sm-12">
-                <img src="<?php echo $event["Immagine"]?>" width="75%"/>
+            <div class="col-xl-4 col-xs-12 col-sm-12 p-3">
+                <img src="<?php echo $event["Immagine"]?>" width="100%"/>
             </div>
-            <div class="col-xl-8 col-xs-12 col-sm-12">
+            <div class="col-xl-8 col-xs-12 col-sm-12 mt-4">
                 <div class="row font-weight-bold">
                     <div class="col-12 text-truncate">
                         <?php echo $event["Nome_evento"] ?>
