@@ -8,6 +8,5 @@
     } else {
         header("Location: ".ROOT."/php/index.php");
     }
-
     require dirname(__DIR__).'/php/phpPages/base.php';
 ?>
