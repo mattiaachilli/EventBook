@@ -30,6 +30,12 @@
         }
     }
 
+    function modifyCookie(){
+        if(isset($_COOKIE["user"]) && !empty($_COOKIE["user"])){
+            setcookie("user", json_encode($_SESSION["user"]), time() + 3600 * 24 * 365, "/");
+        }
+    }
+
     function setCookieCart($id, $n_ticket) {
         if(!isset($_COOKIE["cart"])) {
             $array = array($id, $n_ticket);
