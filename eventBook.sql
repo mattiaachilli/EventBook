@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Dic 06, 2019 alle 16:01
+-- Creato il: Dic 08, 2019 alle 17:41
 -- Versione del server: 10.4.8-MariaDB
 -- Versione PHP: 7.3.11
 
@@ -29,8 +29,8 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `biglietti` (
-  `IDbiglietto` varchar(10) NOT NULL,
-  `IDevento` varchar(10) NOT NULL,
+  `IDbiglietto` int(10) NOT NULL,
+  `IDevento` int(10) NOT NULL,
   `N_posto` int(6) NOT NULL,
   `Username_acquirente` varchar(15) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -55,6 +55,7 @@ INSERT INTO `categorie` (`Nome`) VALUES
 ('Evento culinario'),
 ('Festival'),
 ('Musica elettronica'),
+('Serata in discoteca'),
 ('Sport'),
 ('Workshop');
 
@@ -92,7 +93,9 @@ INSERT INTO `eventi` (`IDevento`, `Data`, `Nome_evento`, `Nome_location`, `Nazio
 (24, '2019-08-13', 'Alesso', 'Cocoricò', 'Italia', 'Riccione', 7500, 'Concerto', '../img/events/avatars-000638526816-56rgi2-t500x500.jpg', 'La svezia al cocoricò!', 30, 'Matt', 1, 0),
 (25, '2019-08-15', 'Swedish House Mafia', 'Cocoricò', 'Italia', 'Riccione', 7999, 'Concerto', '../img/events/swedish-house-mafia-magento_1_-300x300.jpg', 'Il trio!', 35, 'Matt', 1, 0),
 (26, '2020-05-22', 'This is Me', 'Amsterdam Arena', 'Paesi Bassi', 'Amsterdam', 40000, 'Concerto', '../img/events/1080x1080-FINAL-300x300.jpg', 'I can\'t wait to tell you my whole story. All of it: all of those different things that made me learn and grow as a person.” In This Is Me, I will bring all sides of myself together for one time only in the relative intimacy of the Ziggo Dome. This Is Me will take you back to each moment as if you were actually there, experiencing and learning for yourself. Mainstage performances, A State of Trance, Armin Only, Radio Hits and more.', 50, 'Matt', 1, 0),
-(27, '2019-12-05', 'Avicii Tribute', 'Amsterdam Arena', 'Paesi Bassi', 'Amsterdam', 40000, 'Concerto', '../img/events/avicii-maxw-445.jpg', 'Tributo ad Avicii. \nIn consolle:\n- ......\n-......\n-......\n-......', 55, 'Matt', 1, 0);
+(27, '2019-12-05', 'Avicii Tribute', 'Amsterdam Arena', 'Paesi Bassi', 'Amsterdam', 40000, 'Concerto', '../img/events/avicii-maxw-445.jpg', 'Tributo ad Avicii. \nIn consolle:\n- ......\n-......\n-......\n-......', 55, 'Matt', 1, 0),
+(32, '2019-10-17', 'AlmaFest', 'Allianz Stadium', 'Italia', 'Torino', 2500, 'Festival', '../img/events/come-calcolare-le-radici-quadrate.jpg', 'Inaugurazione del nuovo anno accademico!', 0, 'Matt', 1, 0),
+(33, '2019-12-07', 'Evento da iPhone', 'Allianz Stadium', 'Italia', 'Torino', 4000, 'Sport', '../img/events/B5568D97-5005-48F9-BFE9-FFC9C57575D7.jpeg', 'Figata!', 55, 'Matt', 1, 0);
 
 -- --------------------------------------------------------
 
@@ -130,17 +133,18 @@ CREATE TABLE `utenti` (
   `Nome` varchar(45) NOT NULL,
   `Cognome` varchar(45) NOT NULL,
   `Password` varchar(45) NOT NULL,
-  `Organizzatore` tinyint(1) NOT NULL
+  `Organizzatore` tinyint(1) NOT NULL,
+  `Active` tinyint(1) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dump dei dati per la tabella `utenti`
 --
 
-INSERT INTO `utenti` (`Username`, `Email`, `Nome`, `Cognome`, `Password`, `Organizzatore`) VALUES
-('Admin', 'matteo.innocenti2@studio.unibo.it', 'Matteo', 'Inno', '6e6bc4e49dd477ebc98ef4046c067b5f', 0),
-('InnoJack', 'matteoinnocenti93@live.com', 'Matteo', 'Inno', '6e6bc4e49dd477ebc98ef4046c067b5f', 0),
-('Matt', 'innocentimatteo93@gmail.com', 'Matteo', 'Innocenti', '2521a33ad740a5ea010eac7002169c2e', 1);
+INSERT INTO `utenti` (`Username`, `Email`, `Nome`, `Cognome`, `Password`, `Organizzatore`, `Active`) VALUES
+('Admin', 'matteo.innocenti2@studio.unibo.it', 'Matteo', 'Inno', '85144fbcc3839adb5dc33d99c139869e', 0, 0),
+('MattSaber', 'innocentimatteo93@gmail.com', 'Matteo', 'Innocenti', '2521a33ad740a5ea010eac7002169c2e', 1, 0),
+('Prova', 'matteoinnocenti93@live.com', 'Matteo', 'Innocenti', '6e6bc4e49dd477ebc98ef4046c067b5f', 0, 0);
 
 --
 -- Indici per le tabelle scaricate
@@ -184,7 +188,7 @@ ALTER TABLE `utenti`
 -- AUTO_INCREMENT per la tabella `eventi`
 --
 ALTER TABLE `eventi`
-  MODIFY `IDevento` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `IDevento` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

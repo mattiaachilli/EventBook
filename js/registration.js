@@ -19,6 +19,7 @@ $(document).ready(function(){
             type: 'post',
             data: {username: user, password: psw, confermaPassword: confermPsw, email: email, nome: nome, cognome: cognome, organizzatore: checkbox},
             success: function(code){
+                console.log(code);
                 switch(code){
                     case "Username già in uso":
                         $(usernameSmall).hide().html(code).fadeIn(1000);
