@@ -24,17 +24,6 @@
             return $result->fetch_all(MYSQLI_ASSOC);
         }
 
-        public function changePassword($username, $password) {
-            if (strlen($password) < 32) {
-                $password = md5($password);
-            }
-            $stmt = $this->db->prepare("UPDATE utenti 
-                                        SET Password = ? 
-                                        WHERE Username = ?");
-            $stmt->bind_param("ss", $password, $username);
-            $stmt->execute();
-        }
-
         public function getCategories($param = "") {
             $query = "SELECT Nome FROM categorie";
             if($param !== ""){
@@ -60,7 +49,7 @@
         }
         
         public function checkRegistration($username, $email){
-            $stmnt = $this->db->prepare("SELECT username, email FROM utenti WHERE username = ? OR Email = ?");
+            $stmnt = $this->db->prepare("SELECT username, email FROM utenti WHERE Username = ? OR Email = ?");
             $stmnt->bind_param("ss", $username, $email);
             $stmnt->execute();
             $result = $stmnt->get_result();
@@ -170,6 +159,24 @@
             $result = $stmt->get_result();
 
             return $result->fetch_all(MYSQLI_ASSOC);
+        }
+
+        public function modifyUser($username, $email, $password = ""){
+            $query = "UPDATE utenti SET Username = ?, Email = ?";
+            if($password !== ""){
+                if (strlen($password) < 32) {
+                    $password = md5($password);
+                }
+                $query.= ", Password = ?";
+            }
+            $query .= " WHERE Username = ?";
+            $stmt = $this->db->prepare($query);
+            if($password !== ""){
+                $stmt->bind_param("ssss", $username, $email, $password, $_SESSION["user"][0]);
+            } else {
+                $stmt->bind_param("sss", $username, $email, $_SESSION["user"][0]);
+            }
+            $stmt->execute();
         }
 
         public function getEvent($id) {
