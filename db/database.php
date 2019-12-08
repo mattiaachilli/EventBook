@@ -185,7 +185,7 @@
                                         WHERE IDevento = ? AND E.Nome_location = L.Nome 
                                                            AND E.Nazione_location = L.Nazione
                                                            AND E.Città_location = L.Città");
-            $stmt->bind_param("s", $id);
+            $stmt->bind_param("i", $id);
             $stmt->execute();
             $result = $stmt->get_result();
 
@@ -247,7 +247,13 @@
 
             return $result->fetch_all(MYSQLI_ASSOC);
         }
-        
 
+        public function deleteEvent($id) {
+            $imgToDelete = $this->getEvent($id);
+            unlink($imgToDelete[0]["Immagine"]); 
+            $stmt = $this->db->prepare("DELETE FROM eventi WHERE IDevento = ?");
+            $stmt->bind_param("i", $id);
+            $stmt->execute();
+        }
     }
 ?>
