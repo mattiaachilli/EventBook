@@ -2,21 +2,24 @@
     require_once(dirname(__DIR__)."/php/bootstrap.php");
 
     if(isset($_COOKIE["cart"]) && !empty($_COOKIE["cart"]) && isset($_POST["id_event"])) {
-        $found = 0;
+        $found = false;
         $id = $_POST["id_event"];
         $arr = json_decode($_COOKIE["cart"]);
         for($i = 0; $i < count($arr); $i++) {
-            if($i % 2 == 0 || $i == 0) {
+            if($i == 0 || $i % 2 == 0) {
                 if($id == $arr[$i]) {
+                    $found = true;
                     break;
                 }
             }
         }
-        if($i < count($arr)) {
+        if($found) {
             unset($arr[$i]);
             unset($arr[++$i]);
-            setcookie("cart", json_encode($arr), time() + 3600 * 24 * 365, "/"); 
-            if(count($arr) == 0) {
+            $arr2 = array_values($arr); // 'reindex' array
+            setcookie("cart", json_encode($arr2), time() + 3600 * 24 * 365, "/");
+            if(count($arr2) == 0) {
+                unset($_COOKIE["cart"]);
                 setcookie("cart", null, -1, "/");
             }
             echo 1;

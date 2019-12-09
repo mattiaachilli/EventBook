@@ -8,7 +8,11 @@
         if($n_ticket > $query[0]["Biglietti_disponibili"]) {
             echo 0;
         } else {
-            setCookieCart($id, $n_ticket);
+            $change = 0;
+            if(isset($_POST["change"])) {
+                $change = 1;
+            }
+            setCookieCart($id, $n_ticket, $change);
             echo 1;
         }
     }

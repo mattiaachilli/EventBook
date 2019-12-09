@@ -39,18 +39,27 @@ function checkAndRemove() {
     }
 }
 
+/* Add total of shopping cart */
+function insertTotal() {
+    let somma = 0;
+    $("#total").text("");
+    $(".price").each(function() {
+        const val = parseInt($(this).text());
+        const quantity = $(this).parents(".row")[0];
+        const quantityTag = $(quantity).children(".col-4").children(".quantity");
+        somma += parseInt($(quantityTag).val() * val);
+        $("#total").text(somma+",00€");
+    });
+}
+
 $(document).ready(function() {
+    insertTotal();
     /* Check if there aren't products in the cart */
     if(check()) {
         removeElements();
         $("#title-cart").text("");
         $("#title-cart").html(txt);
     }
-
-    $(".price").each(function() {
-        const val = $(this).text();
-        console.log(val);
-    });
 
     /* Click on trash */
     $(".trash").click(function() {
@@ -69,6 +78,7 @@ $(document).ready(function() {
                 $(row).remove();
                 $(hr).remove();
                 checkAndRemove();
+                insertTotal();
             }, 1000);
         /* Remove from cookie.... */
         $.ajax({
@@ -76,6 +86,25 @@ $(document).ready(function() {
             type: 'post',
             data: {id_event: id}
         });
+    });
+
+    $(".quantity").on("change", function() {
+        const quantityVal = $(this).val();
+        const row = $(this).parents(".row")[0];
+        const id = $(row).children('input[type="hidden"]').val();
+        if(quantityVal > 0) {
+            $.ajax({
+                url: '../api/api-addShoppingCart.php',
+                type: 'post',
+                data: {tickets: quantityVal, id: id, change: 1},
+                success: function(code) {
+                    console.log(code);
+                    if(code == 1) {
+                        insertTotal();
+                    }
+                }
+            });
+        }
     });
 
     /* Continue shopping button */
@@ -88,7 +117,6 @@ $(document).ready(function() {
         $.ajax({
             url: '../api/api-pay.php',
             success: function(code) {     
-                console.log(code);
                 if(code == 0) {
                     $("#alert_class").addClass("alert-warning");
                     $("#alert_heading").html("Attenzione!");
