@@ -4,7 +4,7 @@ let imageIsCorrect = true;
 $(document).ready(function() {
     initializeLabels();
     
-    $("form").submit(function(event) {
+    $("button[name='createEvent']").click(function(event) {
         event.preventDefault();
         
         const eventName = $("#name").val();

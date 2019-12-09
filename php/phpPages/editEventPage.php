@@ -89,7 +89,7 @@
                     </div>
                 </div>
                 <div class="row mt-4">
-                    <div class="col-9"></div>
+                    <div class="col-9 text-light">Manca il tasto "Nuova location"</div>
                     <div class="col-3">
                         <button type="submit" name="save" value="<?php echo $_POST["edit"];?>" 
                                 class="btn btn-primary page-btn float-right">
