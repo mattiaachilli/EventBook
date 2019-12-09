@@ -316,5 +316,57 @@
             
             return $result->fetch_all(MYSQLI_ASSOC);
         }
+
+        public function getMaxEventOrderID() {
+            $stmt = $this->db->prepare("SELECT IDevento
+                                        FROM biglietti 
+                                        WHERE Username_acquirente = ?
+                                        ORDER BY IDevento DESC
+                                        LIMIT 1");
+            $stmt->bind_param("s", $_SESSION["user"][0]); 
+            $stmt->execute();
+            $result = $stmt->get_result();
+
+            return $result->fetch_all(MYSQLI_ASSOC);
+        }
+
+        public function getMinEventOrderID() {
+            $stmt = $this->db->prepare("SELECT IDevento
+                                        FROM biglietti 
+                                        WHERE Username_acquirente = ?
+                                        ORDER BY IDevento ASC
+                                        LIMIT 1");
+            $stmt->bind_param("s", $_SESSION["user"][0]); 
+            $stmt->execute();
+            $result = $stmt->get_result();
+
+            return $result->fetch_all(MYSQLI_ASSOC);
+        }
+
+        public function getOrders($currentID = 0, $nextOrPrev = 0) {
+            $ordersPerPage = 4;
+            if ($nextOrPrev == 0) {
+                $stmt = $this->db->prepare("SELECT b.*, e.* , COUNT(*) AS Quantita 
+                                            FROM biglietti b, eventi e WHERE 
+                                            b.Username_acquirente = ? AND e.IDevento = b.IDevento 
+                                            AND b.IDevento > ? 
+                                            GROUP BY b.IDevento 
+                                            ORDER BY b.IDevento ASC
+                                            LIMIT ?");
+            } else {
+                $stmt = $this->db->prepare("SELECT b.*, e.* , COUNT(*) AS Quantita 
+                                            FROM biglietti b, eventi e WHERE 
+                                            b.Username_acquirente = ? AND e.IDevento = b.IDevento 
+                                            AND b.IDevento < ? 
+                                            GROUP BY b.IDevento 
+                                            ORDER BY b.IDevento DESC
+                                            LIMIT ?");
+            }
+            $stmt->bind_param("sii", $_SESSION["user"][0], $currentID, $ordersPerPage);
+            $stmt->execute();
+            $result = $stmt->get_result();
+
+            return $result->fetch_all(MYSQLI_ASSOC);
+        }
     }
 ?>
