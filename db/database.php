@@ -320,14 +320,15 @@
             return $result->fetch_all(MYSQLI_ASSOC);
         }
 
-<<<<<<< HEAD
         public function deleteEvent($id) {
             $imgToDelete = $this->getEvent($id);
             unlink($imgToDelete[0]["Immagine"]); 
 
             $stmt = $this->db->prepare("DELETE FROM eventi WHERE IDevento = ?");
             $stmt->bind_param("i", $id);
-=======
+
+        }
+        
         public function getMaxEventOrderID() {
             $stmt = $this->db->prepare("SELECT IDevento
                                         FROM biglietti 
@@ -335,7 +336,7 @@
                                         ORDER BY IDevento DESC
                                         LIMIT 1");
             $stmt->bind_param("s", $_SESSION["user"][0]); 
->>>>>>> 67587d2d338eaa6cb9883123552513cc56b31f04
+
             $stmt->execute();
             $result = $stmt->get_result();
 
