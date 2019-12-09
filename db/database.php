@@ -73,7 +73,7 @@
         }
 
         public function getEvents(){
-            $stmt = $this->db->prepare("SELECT Username, Nome_evento, IDevento FROM eventi, utenti WHERE Username = Username_organizzatore AND (Active = 0 AND Deleted = 0)");
+            $stmt = $this->db->prepare("SELECT Username, Nome_evento, IDevento FROM eventi e, utenti u WHERE Username = Username_organizzatore AND (e.Active = 0 AND e.Deleted = 0)");
             $stmt->execute();
             $result = $stmt->get_result();
             return $result->fetch_all(MYSQLI_ASSOC);
@@ -268,8 +268,22 @@
         public function deleteEvent($id) {
             $imgToDelete = $this->getEvent($id);
             unlink($imgToDelete[0]["Immagine"]); 
+
             $stmt = $this->db->prepare("DELETE FROM eventi WHERE IDevento = ?");
             $stmt->bind_param("i", $id);
+            $stmt->execute();
+        }
+
+        public function editEvent($nome, $data, $desc, $immagine, $prezzo, $n_biglietti, $categoria, 
+                                  $nomeLocation, $nazioneLocation, $cittàLocation, $oldEventID) {
+
+            $stmt = $this->db->prepare("UPDATE eventi
+                                        SET Data = ?, Nome_evento = ?, Nome_location = ?, Nazione_location = ?, Città_location = ?,
+                                            Biglietti_disponibili = ?, Categoria = ?, Immagine = ?, Descrizione = ?, Prezzo = ?
+                                        WHERE IDevento = ?");
+
+            $stmt->bind_param("sssssisssii", $data, $nome, $nomeLocation, $nazioneLocation, $cittàLocation, $n_biglietti, 
+                                             $categoria, $immagine, $desc, $prezzo, $oldEventID);
             $stmt->execute();
         }
     }

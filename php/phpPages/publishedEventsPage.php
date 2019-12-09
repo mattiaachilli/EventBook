@@ -59,8 +59,8 @@
                     </form>
                 </div>
                 <div class="col-12 mt-2">
-                    <form id="edit">
-                        <button name="ID" value="<?php echo $event["IDevento"]; ?>" 
+                    <form action="../php/editEvent.php" id="edit" method="post">
+                        <button name="edit" value="<?php echo $event["IDevento"]; ?>" 
                                 type="submit" class="btn btn-primary mb-2 container-fluid">Modifica
                         </button>
                     </form>

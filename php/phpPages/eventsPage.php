@@ -1,11 +1,15 @@
 <?php 
     $n = 0; 
-    $absoluteMaxEventID = $db->getMaxEventID()[0]["IDevento"];
-    $absoluteMinEventID = $db->getMinEventID()[0]["IDevento"];
     $numEvents = count($parameters["events"]);
+    $absoluteMaxEventID = 0;
+    $absoluteMinEventID = 0;
+    $maxID = 0;
+    $minID = 0;
     if ($numEvents == 0) {
         echo '<div class="col-12 text-center text-light mb-5 font-weight-light font-italic">Non ci sono eventi in programma</div>';
     } else {
+        $absoluteMaxEventID = $db->getMaxEventID()[0]["IDevento"];
+        $absoluteMinEventID = $db->getMinEventID()[0]["IDevento"];
         $maxID = $parameters["events"][$numEvents - 1]["IDevento"];
         $minID = $parameters["events"][0]["IDevento"];
         if (isset($_GET["minID"])) {
