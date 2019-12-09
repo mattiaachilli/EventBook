@@ -232,6 +232,17 @@
             return $result->fetch_all(MYSQLI_ASSOC);
         }
 
+        public function getPublishiedEvents($organizer) {
+            $stmt = $this->db->prepare("SELECT *
+                                        FROM eventi 
+                                        where Username_organizzatore = ?");
+            $stmt->bind_param("s", $organizer);
+            $stmt->execute();
+            $result = $stmt->get_result();
+
+            return $result->fetch_all(MYSQLI_ASSOC);
+        }
+
         public function getRows($id) {
             $stmt = $this->db->prepare("SELECT * FROM biglietti WHERE IDevento = ?");
             $stmt->bind_param("i", $id);
