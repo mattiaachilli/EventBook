@@ -47,11 +47,11 @@
                                 </button>
                             </div>
                             <div class="modal-body">
-                                ...
+                                Sei sicuro di volerci lasciare?
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
-                                <button type="button" id = "eliminaButton" class="btn btn-danger mb-2 float-left">
+                                <button type="button" class="btn btn-primary" data-dismiss="modal">No</button>
+                                <button type="button" id = "eliminaButton" class="btn btn-danger">
                                     <a href = "<?php echo ROOT."/php/remove.php"?>">Elimina</a>
                                 </button>
                             </div>

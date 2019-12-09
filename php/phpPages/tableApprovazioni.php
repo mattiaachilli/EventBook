@@ -18,7 +18,7 @@
                             <td headers = "organizzatore" class = "text-center"><?php echo $event["Username"]?></td>
                             <td headers = "evento" class = "text-center"><?php echo $event["Nome_evento"]?></td>
                             <td headers = "buttons" class = "text-center row m-0">
-                                <form class = "text-center row container-fluid mt-0" action = "../api/api-approvation.php" class = "button-form" type = "post">
+                                <form class = "text-center row container-fluid mt-0" action = "../api/api-approvation.php" id = "button-form" type = "post">
                                     <div class = "col-6">
                                         <button type="submit" class="yButton btn btn-primary container-fluid">Sì</i></button>
                                         <i class = "fas fa-check fa-2x d-none"></i>
