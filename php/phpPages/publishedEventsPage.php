@@ -17,7 +17,7 @@
     if ($n % 2 == 0) { echo '<div class="row text-light">'.'<div class="col-sm-0 col-md-1"></div>'; } 
 ?>
 <div class="col-sm-12 col-md-5">
-    <form action="../php/eventInfo.php" class="form-div rounded p-0" method="get">
+    <div class="form-div rounded p-0">
         <div class="row">
             <div class="col-xl-3 col-lg-12 col-xs-12 col-sm-12 p-3">
                 <img src="<?php echo $event["Immagine"]?>" width="100%"/>
@@ -52,29 +52,28 @@
             </div>
             <div class="col-xl-4 col-lg-5 col-sm-12 col-xs-12 col-md-6">
                 <div class="col-12 mt-4">
-                    <form action="../php/eventInfo.php" method="get">
+                    <form action="../php/eventInfo.php" id="info">
                         <button name="ID" value="<?php echo $event["IDevento"]; ?>" 
                                 type="submit" class="btn btn-primary mb-2 container-fluid">Info
                         </button>
                     </form>
                 </div>
                 <div class="col-12 mt-2">
-                    <form action="../php/editEvent.php" method="get">
+                    <form id="edit">
                         <button name="ID" value="<?php echo $event["IDevento"]; ?>" 
                                 type="submit" class="btn btn-primary mb-2 container-fluid">Modifica
                         </button>
                     </form>
                 </div>
                 <div class="col-12 mt-2">
-                    <form action="../php/deleteEvent.php" method="get">
-                        <button name="ID" value="<?php echo $event["IDevento"]; ?>" 
-                                type="submit" class="btn btn-danger mb-2 container-fluid">Elimina
-                        </button>
-                    </form>
+                    <button name="delete" value="<?php echo $event["IDevento"]; ?>" 
+                            type="submit" class="btn btn-danger mb-2 container-fluid">Elimina
+                    </button>
                 </div>
             </div>
         </div>
-    </form>
+        <div id="areUSure<?php echo $event["IDevento"]; ?>"></div>
+    </div>
 </div>
 <?php 
     $n++; 
