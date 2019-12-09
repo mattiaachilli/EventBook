@@ -3,7 +3,7 @@
 
     if(isUserLoggedIn() && typeOfUserLogged() == ADMIN) {
         $parameters["title"] = "Admin - EventBook";
-        $parameters["js"] = array("../js/table.js", "../js/insertRows.js");
+        $parameters["js"] = array("../js/table.js");
         $parameters["events"] = $db->getEvents();
         $parameters["content"] = dirname(__DIR__)."/php/phpPages/tableApprovazioni.php";
     } else {
