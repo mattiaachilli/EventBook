@@ -1,5 +1,5 @@
 $(document).ready(function(){
-    $("button").click(function(event){
+    $("#button-form button").click(function(event){
         event.preventDefault();
         const user = $(this).closest("td").siblings("td[headers = 'organizzatore']").text();
         const nome_evento = $(this).closest("td").siblings("td[headers = 'evento']").text();

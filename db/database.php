@@ -84,7 +84,7 @@
         }
 
         public function getEvents(){
-            $stmt = $this->db->prepare("SELECT Username, Nome_evento, IDevento FROM eventi, utenti WHERE Username = Username_organizzatore AND (Active = 0 AND Deleted = 0)");
+            $stmt = $this->db->prepare("SELECT Username, Nome_evento, IDevento FROM eventi e, utenti u WHERE Username = Username_organizzatore AND (e.Active = 0 AND Deleted = 0)");
             $stmt->execute();
             $result = $stmt->get_result();
             return $result->fetch_all(MYSQLI_ASSOC);
@@ -217,8 +217,7 @@
 
             return $result->fetch_all(MYSQLI_ASSOC);
         }
-            
-
+        
         public function getTicketsAvailable($id) {
             $stmt = $this->db->prepare("SELECT Biglietti_disponibili
                                 FROM eventi e
@@ -237,6 +236,12 @@
             $result = $stmt->get_result();
 
             return $result->fetch_all(MYSQLI_ASSOC);
+        }
+
+        public function updateUser($i){
+            $stmt = $this->db->prepare("UPDATE utenti SET Active = ? WHERE Username = ?");
+            $stmt->bind_param("is", $i, $_SESSION["user"][0]);
+            $stmt->execute();
         }
 
         public function getIdTicketByEvent($id) {
