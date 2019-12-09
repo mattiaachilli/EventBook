@@ -306,4 +306,15 @@
             return 1;
         }
     }
+
+    public function searchingEvent($str){
+        $query = "SELECT * FROM eventi WHERE Nome_evento LIKE '%$str%' OR Descrizione LIKE '%$str%'";
+        $stmt = $this->db->prepare("SELECT * FROM eventi 
+                                             WHERE Nome_evento 
+                                             LIKE '%$str%' OR Descrizione LIKE '%$str%'");
+        $stmt->execute();
+        $result = $stmt->get_result();
+        
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
 ?>
