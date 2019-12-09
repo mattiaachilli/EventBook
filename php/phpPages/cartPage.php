@@ -3,14 +3,13 @@
     <div class="panel-heading col-lg-8 col-md-8 col-sm-12 col-12">
         <div class="panel-title">
             <div class="row">
-                <div class="col-6">
+                <div class="col-12">
                     <h1 class="text-light display-4" id="title-cart">Carrello</h1>
                 </div>
-                <div class="col-6"></div>
             </div>
             <div class="row">
                 <div class="col-12">
-                    <button type="button" class="btn btn-primary btn-sm btn-block mt-4" id="continua">
+                    <button type="button" class="btn btn-primary btn-sm btn-block mt-4" id="continue">
                         <span class="glyphicon glyphicon-share-alt w-50"></span> Continua ad acquistare
                     </button>
                 </div>
@@ -23,9 +22,9 @@
     <div class="row">
         <div class="col-lg-2 col-md-2"></div>
         <div class="col-lg-8 col-md-8 col-sm-12 col-12">
-            <div class="alert alert-danger" role="alert">
-                <h4 class="alert-heading">Attenzione!</h4>
-                <p>Per procedere con l'acquisto devi essere loggato!</p>
+            <div class="alert" role="alert" id="alert_class">
+                <h4 class="alert-heading" id="alert_heading"></h4>
+                <p></p>
             </div>
         </div>
         <div class="col-lg-2 col-md-2"></div>
@@ -36,7 +35,7 @@
     <div class="col-lg-8 col-md-8 col-sm-12 col-12 rounded shopping-cart">
         <div class="panel panel-info text-light">
             <div class="panel-body" id="cart">
-                <?php if(isset($_COOKIE["cart"])) :
+                <?php if(isset($_COOKIE["cart"]) && !empty($_COOKIE["cart"])) :
                         $arr = json_decode($_COOKIE["cart"]);
                         for($i = 0; $i < count($arr); $i++) :    
                             if($i % 2 == 0 || $i == 0) {
@@ -49,23 +48,28 @@
                         </div>
                         <div class="col-3">
                             <h5 class="product-name">
-                                <strong><?php echo $q[0]["Nome_evento"]; ?></strong>
+                                <a href=<?php echo "eventInfo.php?ID=".$q[0]["IDevento"]; ?>> <strong><?php echo $q[0]["Nome_evento"]; ?></strong></a>
                             </h5>
                             <h6>
                                 <?php echo $q[0]["Descrizione"]; ?>
                             </h6>
                         </div>
                         <div class="col-1">
-                            <strong> <?php echo $q[0]["Prezzo"].",00€"; ?> </strong>
+                            <strong class="price"> <?php echo $q[0]["Prezzo"].",00€"; ?> </strong>
                         </div>
                         <div class="col-4">
-                            <input type="number" class="form-control input-sm w-50 ml-5" value=<?php echo $arr[++$i]; ?> id="quantity" readonly="true">
+                            <input type="number" class="form-control input-sm w-50 ml-5 quantity" value=<?php echo $arr[++$i]; ?> min="1">
                         </div>
                         <div class="row">
                             <i class="fas fa-trash trash"></i>
                         </div>
+                        <input type="hidden" value=<?php echo $q[0]["IDevento"]; ?>>
                     </div>
-                    <hr>
+                    <?php if($i != count($arr) - 1) : ?>
+                        <hr>
+                    <?php
+                        endif;
+                    ?>
                 <?php
                         endfor;
                     endif;
@@ -83,7 +87,7 @@
                 <div class ="col-sm-10 col-8"></div>
                 <div class="col-sm-2 col-2">
                     <h4">Totale 
-                        <strong id="total">50.00€</strong>
+                        <strong id="total"></strong>
                     </h4>
                 </div>
                 <div class="col-2"></div>

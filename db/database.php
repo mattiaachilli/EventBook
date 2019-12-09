@@ -24,6 +24,17 @@
             return $result->fetch_all(MYSQLI_ASSOC);
         }
 
+        public function changePassword($username, $password) {
+            if (strlen($password) < 32) {
+                $password = md5($password);
+            }
+            $stmt = $this->db->prepare("UPDATE utenti 
+                                        SET Password = ? 
+                                        WHERE Username = ?");
+            $stmt->bind_param("ss", $password, $username);
+            $stmt->execute();
+        }
+
         public function getCategories($param = "") {
             $query = "SELECT Nome FROM categorie";
             if($param !== ""){
@@ -49,7 +60,7 @@
         }
         
         public function checkRegistration($username, $email){
-            $stmnt = $this->db->prepare("SELECT username, email FROM utenti WHERE (Username = ? OR Email = ?) AND Active = 1");
+            $stmnt = $this->db->prepare("SELECT username, email FROM utenti WHERE username = ? OR Email = ?");
             $stmnt->bind_param("ss", $username, $email);
             $stmnt->execute();
             $result = $stmnt->get_result();
@@ -73,7 +84,10 @@
         }
 
         public function getEvents(){
-            $stmt = $this->db->prepare("SELECT Username, Nome_evento, IDevento FROM eventi e, utenti u WHERE Username = Username_organizzatore AND (e.Active = 0 AND e.Deleted = 0)");
+            $stmt = $this->db->prepare("SELECT Username, Nome_evento, IDevento 
+                                        FROM eventi e, utenti u 
+                                        WHERE Username = Username_organizzatore 
+                                        AND (e.Active = 0 AND e.Deleted = 0)");
             $stmt->execute();
             $result = $stmt->get_result();
             return $result->fetch_all(MYSQLI_ASSOC);
@@ -161,31 +175,13 @@
             return $result->fetch_all(MYSQLI_ASSOC);
         }
 
-        public function modifyUser($username, $email, $password = ""){
-            $query = "UPDATE utenti SET Username = ?, Email = ?";
-            if($password !== ""){
-                if (strlen($password) < 32) {
-                    $password = md5($password);
-                }
-                $query.= ", Password = ?";
-            }
-            $query .= " WHERE Username = ?";
-            $stmt = $this->db->prepare($query);
-            if($password !== ""){
-                $stmt->bind_param("ssss", $username, $email, $password, $_SESSION["user"][0]);
-            } else {
-                $stmt->bind_param("sss", $username, $email, $_SESSION["user"][0]);
-            }
-            $stmt->execute();
-        }
-
         public function getEvent($id) {
             $stmt = $this->db->prepare("SELECT *
                                         FROM eventi E, location L
                                         WHERE IDevento = ? AND E.Nome_location = L.Nome 
                                                            AND E.Nazione_location = L.Nazione
                                                            AND E.Città_location = L.Città");
-            $stmt->bind_param("i", $id);
+            $stmt->bind_param("s", $id);
             $stmt->execute();
             $result = $stmt->get_result();
 
@@ -217,15 +213,14 @@
         }
 
         public function getUser(){
-            $stmt = $this->db->prepare("SELECT Username, Email, Password FROM utenti WHERE Username = ? AND Active = 1");
+            $stmt = $this->db->prepare("SELECT Username, Email, Password FROM utenti WHERE Username = ?");
             $stmt->bind_param("s", $_SESSION["user"][0]);
             $stmt->execute();
             $result = $stmt->get_result();
 
             return $result->fetch_all(MYSQLI_ASSOC);
         }
-            
-
+        
         public function getTicketsAvailable($id) {
             $stmt = $this->db->prepare("SELECT Biglietti_disponibili
                                 FROM eventi e
@@ -237,21 +232,81 @@
             return $result->fetch_all(MYSQLI_ASSOC);
         }
 
-        public function getPublishiedEvents($organizer) {
-            $stmt = $this->db->prepare("SELECT *
-                                        FROM eventi 
-                                        where Username_organizzatore = ?");
-            $stmt->bind_param("s", $organizer);
+        public function getRows($id) {
+            $stmt = $this->db->prepare("SELECT * FROM biglietti WHERE IDevento = ?");
+            $stmt->bind_param("i", $id);
             $stmt->execute();
             $result = $stmt->get_result();
 
             return $result->fetch_all(MYSQLI_ASSOC);
         }
-        
-        public function removeUser(){
-            $stmt = $this->db->prepare("UPDATE utenti SET Active = 0 WHERE Username = ?");
-            $stmt->bind_param("s", $_SESSION["user"][0]);
+
+        public function updateUser($i){
+            $stmt = $this->db->prepare("UPDATE utenti SET Active = ? WHERE Username = ?");
+            $stmt->bind_param("is", $i, $_SESSION["user"][0]);
             $stmt->execute();
+        }
+
+        public function modifyUser($username, $email, $password = ""){
+            $query = "UPDATE utenti SET Username = ?, Email = ?";
+            if($password !== ""){
+                if (strlen($password) < 32) {
+                    $password = md5($password);
+                }
+                $query.= ", Password = ?";
+            }
+            $query .= " WHERE Username = ?";
+            $stmt = $this->db->prepare($query);
+            if($password !== ""){
+                $stmt->bind_param("ssss", $username, $email, $password, $_SESSION["user"][0]);
+            } else {
+                $stmt->bind_param("sss", $username, $email, $_SESSION["user"][0]);
+            }
+            $stmt->execute();
+        }
+
+        public function getIdTicketByEvent($id) {
+            $stmt = $this->db->prepare("SELECT MAX(IDbiglietto) AS IDbiglietto FROM biglietti WHERE IDevento = ?");
+            $stmt->bind_param("i", $id);
+            $stmt->execute();
+            $result = $stmt->get_result();
+
+            return $result->fetch_all(MYSQLI_ASSOC);
+        }
+
+        public function insertTicket($username, $arr) {
+            $array = array();
+            for($i = 0; $i < count($arr); $i+=2) {
+                $quantity = $arr[$i + 1];
+                $id = $arr[$i];
+                $n = 0;
+                $query = $this->getTicketsAvailable($id);
+                $quantityAvailable = $query[0]["Biglietti_disponibili"] - $quantity;
+                if($quantityAvailable >= 0) {
+                    $stmt = $this->db->prepare("UPDATE eventi set Biglietti_disponibili = ? WHERE IDevento = ?");
+                    $stmt->bind_param("ii", $quantityAvailable, $id);
+                    $stmt->execute();
+                    for($j = 0; $j < $quantity; $j++) {
+                        $query_1 = $this->getRows($id);
+                        if(count($query_1) == 0) {
+                            $idTicketMax = 1;
+                        } else if(count($query_1) > 0) {
+                            $query_2 = $this->getIdTicketByEvent($id);
+                            $idTicketMax = $query_2[0]["IDbiglietto"] + 1;
+                        }
+                        $stmt = $this->db->prepare("INSERT INTO biglietti(IDbiglietto, IDevento, N_posto, Username_acquirente) 
+                                                    VALUES (?, ?, ?, ?)");
+                        $stmt->bind_param("iiis", $idTicketMax, $id, $n , $username); /* N_posto 0 for the moment */
+                        $stmt->execute();
+                    }
+                } else {
+                    $array[$id] = $query[0]["Biglietti_disponibili"];
+                }
+            }
+            if(count($array) > 0) {
+                return $array;
+            }
+            return 1;
         }
 
         public function searchingEvent($str){
@@ -265,13 +320,65 @@
             return $result->fetch_all(MYSQLI_ASSOC);
         }
 
+<<<<<<< HEAD
         public function deleteEvent($id) {
             $imgToDelete = $this->getEvent($id);
             unlink($imgToDelete[0]["Immagine"]); 
 
             $stmt = $this->db->prepare("DELETE FROM eventi WHERE IDevento = ?");
             $stmt->bind_param("i", $id);
+=======
+        public function getMaxEventOrderID() {
+            $stmt = $this->db->prepare("SELECT IDevento
+                                        FROM biglietti 
+                                        WHERE Username_acquirente = ?
+                                        ORDER BY IDevento DESC
+                                        LIMIT 1");
+            $stmt->bind_param("s", $_SESSION["user"][0]); 
+>>>>>>> 67587d2d338eaa6cb9883123552513cc56b31f04
             $stmt->execute();
+            $result = $stmt->get_result();
+
+            return $result->fetch_all(MYSQLI_ASSOC);
+        }
+
+        public function getMinEventOrderID() {
+            $stmt = $this->db->prepare("SELECT IDevento
+                                        FROM biglietti 
+                                        WHERE Username_acquirente = ?
+                                        ORDER BY IDevento ASC
+                                        LIMIT 1");
+            $stmt->bind_param("s", $_SESSION["user"][0]); 
+            $stmt->execute();
+            $result = $stmt->get_result();
+
+            return $result->fetch_all(MYSQLI_ASSOC);
+        }
+
+        public function getOrders($currentID = 0, $nextOrPrev = 0) {
+            $ordersPerPage = 4;
+            if ($nextOrPrev == 0) {
+                $stmt = $this->db->prepare("SELECT b.*, e.* , COUNT(*) AS Quantita 
+                                            FROM biglietti b, eventi e WHERE 
+                                            b.Username_acquirente = ? AND e.IDevento = b.IDevento 
+                                            AND b.IDevento > ? 
+                                            GROUP BY b.IDevento 
+                                            ORDER BY b.IDevento ASC
+                                            LIMIT ?");
+            } else {
+                $stmt = $this->db->prepare("SELECT b.*, e.* , COUNT(*) AS Quantita 
+                                            FROM biglietti b, eventi e WHERE 
+                                            b.Username_acquirente = ? AND e.IDevento = b.IDevento 
+                                            AND b.IDevento < ? 
+                                            GROUP BY b.IDevento 
+                                            ORDER BY b.IDevento DESC
+                                            LIMIT ?");
+            }
+            $stmt->bind_param("sii", $_SESSION["user"][0], $currentID, $ordersPerPage);
+            $stmt->execute();
+            $result = $stmt->get_result();
+
+            return $result->fetch_all(MYSQLI_ASSOC);
         }
 
         public function editEvent($nome, $data, $desc, $immagine, $prezzo, $n_biglietti, $categoria, 

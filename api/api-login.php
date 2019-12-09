@@ -22,7 +22,10 @@
                 } else {
                     $code = 1;
                 }
-            } 
+            }
+            if($code == 1 || $code == 2) {
+                $db->updateUser(1);
+            }
         }
         echo $code;
     } else {

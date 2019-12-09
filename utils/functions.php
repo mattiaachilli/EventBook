@@ -36,7 +36,7 @@
         }
     }
 
-    function setCookieCart($id, $n_ticket) {
+    function setCookieCart($id, $n_ticket, $change) {
         if(!isset($_COOKIE["cart"])) {
             $array = array($id, $n_ticket);
             setcookie("cart", json_encode($array), time() + 3600 * 24 * 365, "/"); 
@@ -45,7 +45,11 @@
             $found = 0;
             for($i = 0; $i < count($arr) && !$found; $i+=2) {
                 if($arr[$i] == $id) {
-                    $arr[++$i] += $n_ticket;
+                    if(!$change) {
+                        $arr[++$i] += $n_ticket;
+                    } else {
+                        $arr[++$i] = $n_ticket;
+                    }
                     $found = 1;
                 }
             }

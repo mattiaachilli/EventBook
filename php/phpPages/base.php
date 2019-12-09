@@ -30,7 +30,7 @@
     ?>
     <noscript>
         <link rel="stylesheet" href="../css/nojavascript.css">
-        <meta http-equiv="refresh" content="0;url=<?php echo ROOT."/php/phpPages/noScript.php"; ?> ">
+        <meta http-equiv="refresh" content="0; url=<?php echo ROOT."/php/phpPages/noScript.php";?>">
     </noscript>
 </head>
 
@@ -40,7 +40,7 @@
             <div class = "row">
                 <div class = "col-12 col-lg-4 text-center">
                     <a href = "index.php">
-                        <img id="logoImg" class="img-fluid w-auto mt-2" src="../img/logo2.png" alt="" />
+                        <img id="logoImg" class="img-fluid w-auto mt-2" src="../img/logo2.png" alt="home" />
                     </a>
                 </div>
                 <nav class="navbar container-fluid navbar-expand-lg navbar-dark bg-transaparent col-12 col-lg-8">
@@ -50,11 +50,11 @@
                             <form action = "search.php" method = "get" class="input-group">
                                 <input type="search" name = "search" placeholder="Cerca evento per titolo o descrizione.." aria-describedby="button-addon1" class="form-control rounded-pill border-0 bg-light">
                                 <div class="input-group-append">
-                                    <button id="button-addon1" type="submit" class="btn btn-link text-primary"><i class="fa fa-search"></i></button>
+                                    <button id="button-addon1" type="submit" class="btn btn-link text-primary"><em class="fa fa-search"></em></button>
                                 </div>
                                 <div class="dropdown rounded-pill">
                                     <button class="btn btn btn-link text-primary" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <i class = "fas fa-bars"></i>
+                                        <em class = "fas fa-bars"></em>
                                     </button>
                                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
                                         <?php

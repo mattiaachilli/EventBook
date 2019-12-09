@@ -67,7 +67,8 @@ a:hover{
 }
 
 #cart{
-    height: 60vh;
+    min-height: 20vh;
+    max-height: 60vh;
     overflow-y: scroll;
 }
 

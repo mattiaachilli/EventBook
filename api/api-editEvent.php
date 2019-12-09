@@ -22,7 +22,7 @@
                 $db->editEvent($_POST["eventName"], $_POST["date"], $_POST["desc"], $pathImage,
                                     $_POST["price"], $_POST["tickets"], $_POST["category"], $_POST["location"],
                                     $_POST["nazione"], $_POST["città"], $_POST["oldEventID"]);
-            }  else {
+            } else {
                 $response = "Location già occupata per la data scelta.";
             }
     } else {
