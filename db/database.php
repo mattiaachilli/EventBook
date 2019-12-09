@@ -244,6 +244,24 @@
             $stmt->execute();
         }
 
+        public function modifyUser($username, $email, $password = ""){
+            $query = "UPDATE utenti SET Username = ?, Email = ?";
+            if($password !== ""){
+                if (strlen($password) < 32) {
+                    $password = md5($password);
+                }
+                $query.= ", Password = ?";
+            }
+            $query .= " WHERE Username = ?";
+            $stmt = $this->db->prepare($query);
+            if($password !== ""){
+                $stmt->bind_param("ssss", $username, $email, $password, $_SESSION["user"][0]);
+            } else {
+                $stmt->bind_param("sss", $username, $email, $_SESSION["user"][0]);
+            }
+            $stmt->execute();
+        }
+
         public function getIdTicketByEvent($id) {
             $stmt = $this->db->prepare("SELECT MAX(IDbiglietto) AS IDbiglietto FROM biglietti WHERE IDevento = ?");
             $stmt->bind_param("i", $id);

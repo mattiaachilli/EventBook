@@ -34,9 +34,30 @@
                     <div class = "col-0 col-md-2"></div>
                     <div class="col-12 col-md-8 p-2">
                         <button type="submit" id = "salvaButton" class="btn btn-primary mb-2 float-right">Salva</button>
-                        <button type="button" id = "eliminaButton" class="btn btn-danger mb-2 float-left">
-                            <a href = "<?php echo ROOT."/php/remove.php"?>">Elimina</a>
-                        </button>
+                        <!-- Button trigger modal -->
+                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Elimina</button>
+                        <!-- Modal -->
+                        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                ...
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+                                <button type="button" id = "eliminaButton" class="btn btn-danger mb-2 float-left">
+                                    <a href = "<?php echo ROOT."/php/remove.php"?>">Elimina</a>
+                                </button>
+                            </div>
+                            </div>
+                        </div>
+                        </div>
                     </div>
                     <div class = "col-0 col-md-2"></div>
                 </div>
