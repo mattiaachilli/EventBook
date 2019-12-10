@@ -8,6 +8,7 @@ if(isset($_POST["evento"]) && isset($_POST["organizzatore"]) && isset($_POST["id
     } else {
         echo "Evento rifiutato"; 
     }
+    require("api-sendApprovationEmail.php");
 } else {
     echo "Errore"; 
 }

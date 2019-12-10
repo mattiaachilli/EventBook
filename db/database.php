@@ -240,9 +240,13 @@
             return $result->fetch_all(MYSQLI_ASSOC);
         }
 
-        public function getUser(){
+        public function getUser($user = ""){
             $stmt = $this->db->prepare("SELECT Username, Email, Password FROM utenti WHERE Username = ?");
-            $stmt->bind_param("s", $_SESSION["user"][0]);
+            if($user !== ""){
+                $stmt->bind_param("s", $user);
+            } else {
+                $stmt->bind_param("s", $_SESSION["user"][0]);
+            }
             $stmt->execute();
             $result = $stmt->get_result();
 

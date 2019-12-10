@@ -25,6 +25,7 @@
                 } else {
                     $db->registerUser($_POST["username"], $_POST["email"], $_POST["nome"], $_POST["cognome"], $_POST["password"], $_POST["organizzatore"]);
                     registerLoggedUser($_POST["username"], 1, $_POST["organizzatore"]);
+                    require("api-sendEmailRegistration.php");
                     echo "User registrato";
                 }
             } else {

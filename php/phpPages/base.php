@@ -41,7 +41,7 @@
             <div class = "row">
                 <div class = "col-12 col-lg-4 text-center">
                     <a href = "index.php">
-                        <img id="logoImg" class="img-fluid w-auto mt-2" src="../img/logo2.png" alt="home" />
+                        <img id="logoImg" class="img-fluid w-auto mt-2" src="../img/logo2.png" alt="home"/>
                     </a>
                 </div>
                 <nav class="navbar container-fluid navbar-expand-lg navbar-dark bg-transaparent col-12 col-lg-8">
