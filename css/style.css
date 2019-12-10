@@ -90,3 +90,7 @@ a:hover{
 #alert{
     display: none;
 }
+
+#spinner {
+    display: none;
+}

@@ -59,11 +59,4 @@
             setcookie("cart", json_encode($arr), time() + 3600 * 24 * 365, "/"); 
         }
     }
-
-    function printCookie() {
-        if(isset($_COOKIE["cart"]) && !empty($_COOKIE["cart"])) {
-            var_dump($_COOKIE["cart"]);
-        }
-    }
-
 ?>
