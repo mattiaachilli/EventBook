@@ -43,10 +43,11 @@ $(document).ready(function(){
                             $(label).fadeIn("slow");
                         } else {
                             $(label).hide();
-                            const deleted = '<div class="col-12 text-center mb-2">' +
-                                                'Evento cancellato con successo!' + 
-                                            '</div>';
-                            $(label).html(deleted);
+                            const wheel = '</br><div class="spinner-border text-primary" role="status">' +
+                                          '<span class="sr-only"/>' +
+                                          '</div>';
+                            const deleted = '<div class="col-12 text-center mb-2">Evento cancellato con successo!';
+                            $(label).html(deleted + wheel + '</div>');
                             $(label).fadeIn("slow");
                             setTimeout(reloadPage, timeToWait);
                         }

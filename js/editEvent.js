@@ -30,11 +30,14 @@ $(document).ready(function() {
                         tickets: tickets, date: date, category: category, location: nomeLocation, nazione: country,
                         città: city, path: path, oldEventID: oldEventID },
                 success: function(code) {
+                    const wheel = '</br><div class="spinner-border text-primary" role="status">' +
+                                  '<span class="sr-only"/>' +
+                                  '</div>';
                     if (code == 0) {
-                        $("#result").text("Evento modificato con successo!");
+                        $("#result").html("Evento modificato con successo!" + wheel);
                         setTimeout(reloadPage, timeToWait);
                     } else if (code == 1) {
-                        $("#result").text("Evento e immagine modificati con successo!");
+                        $("#result").html("Evento e immagine modificati con successo!" + wheel);
                         uploadImage();
                         setTimeout(reloadPage, timeToWait);
                     } else {
@@ -69,7 +72,6 @@ $(document).ready(function() {
         $("#pathImg").text(fileName);
         if (fileName != "") {
             checkImage();
-            $("#wrongImg").hide();
         }
     });
 });

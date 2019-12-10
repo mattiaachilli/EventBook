@@ -4,7 +4,7 @@
     if(isUserLoggedIn() && typeOfUserLogged() == ORGANIZER) {
         $parameters["title"] = "Eventi pubblicati";
         $parameters["content"] = dirname(__DIR__)."/php/phpPages/publishedEventsPage.php";
-        $parameters["events"] = $db->getPublishiedEvents($_SESSION["user"][0]);
+        $parameters["events"] = $db->getPublishedEvents($_SESSION["user"][0]);
         $parameters["js"] = array("../js/deleteEvent.js");
     } else {
         header("Location: ".ROOT."/php/index.php");

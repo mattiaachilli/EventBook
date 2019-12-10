@@ -1,5 +1,6 @@
 let capacity = 0;
 let imageIsCorrect = true;
+const timeToWait = 1000;
 
 $(document).ready(function() {
     initializeLabels();
@@ -27,15 +28,20 @@ $(document).ready(function() {
                         tickets: tickets, date: date, category: category, location: nomeLocation, nazione: country,
                         città: city, path: path},
                 success: function(code) {
+                    const wheel = '</br><div class="spinner-border text-primary" role="status">' +
+                                  '<span class="sr-only"/>' +
+                                  '</div>';
                     if (code == 0) {
-                        $("#result").text("Nuovo evento registrato con successo!");
+                        $("#result").html("Nuovo evento registrato con successo!" + wheel);
                         uploadImage();
+                        setTimeout(reloadPage, timeToWait);
                     } else {
                         $("#result").text(code);
                     } 
                 }
             });
         }
+        checkImage();
     });
 
     $("#location").on("change", function(event) {
@@ -62,7 +68,6 @@ $(document).ready(function() {
         $("#pathImg").text(fileName);
         if (fileName != "") {
             checkImage();
-            $("#wrongImg").hide();
         }
     });
 });
@@ -158,7 +163,7 @@ function checkFields(name, desc, price, tickets, date, category, location, path)
     }
     if (path == "") {
         check = false;
-        $("#wrongImg").text("Caricare un'immagine (formato quadrato)");
+        $("#wrongImg").text("Caricare un'immagine (formato quadrato).");
         $("#wrongImg").fadeIn();
     }
     return check;
@@ -173,4 +178,8 @@ function initializeLabels() {
     $("#wrongCategory").hide();
     $("#wrongLocation").hide();
     $("#wrongImg").hide();
+}
+
+function reloadPage() {
+    window.location="../php/publishedEvents.php";
 }

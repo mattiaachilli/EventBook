@@ -158,7 +158,8 @@
         public function checkExistingEvent($data, $nazione, $città, $location) {
             $stmt = $this->db->prepare("SELECT *
                                         FROM eventi
-                                        WHERE Data = ? AND Nazione_location = ? AND Città_location = ? AND Nome_location = ?");
+                                        WHERE Data = ? AND Nazione_location = ? AND Città_location = ? AND Nome_location = ?
+                                        AND Deleted = 0");
             $stmt->bind_param("ssss", $data, $nazione, $città, $location);
             $stmt->execute();
             $result = $stmt->get_result();
@@ -259,10 +260,10 @@
             return $result->fetch_all(MYSQLI_ASSOC);
         }
 
-        public function getPublishiedEvents($organizer) {
+        public function getPublishedEvents($organizer) {
             $stmt = $this->db->prepare("SELECT *
                                         FROM eventi 
-                                        where Username_organizzatore = ?");
+                                        where Username_organizzatore = ? AND Deleted = 0");
             $stmt->bind_param("s", $organizer);
             $stmt->execute();
             $result = $stmt->get_result();
