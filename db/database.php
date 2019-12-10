@@ -443,5 +443,22 @@
                                              $categoria, $immagine, $desc, $prezzo, $oldEventID);
             $stmt->execute();
         }
+
+        public function insertNewLocation($nome, $capienza, $nazione, $città, $via, $n_civico){
+            $stmt = $this->db->prepare("INSERT INTO location VALUES (?, ?, ?, ?, ?, ?)");
+            $stmt->bind_param("sssisi", $nome, $città, $nazione, $capienza, $via, $n_civico);
+            $stmt->execute();
+        }
+
+        public function checkIfLocationExists($nome, $nazione, $città) {
+            $stmt = $this->db->prepare("SELECT * 
+                                        FROM location
+                                        WHERE Nome = ? AND Città = ? AND Nazione = ?");
+            $stmt->bind_param("sss", $nome, $città, $nazione);
+            $stmt->execute();
+            $result = $stmt->get_result();
+
+            return $result->fetch_all(MYSQLI_ASSOC);
+        }
     }
 ?>

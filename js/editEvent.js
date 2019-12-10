@@ -6,7 +6,7 @@ $(document).ready(function() {
     initializeLabels();
     capacity = $("#maxTickets").html().replace(/[^0-9]/g, ''); 
 
-    $("form").submit(function(event) {
+    $("button[name='editEvent']").click(function(event) {
         event.preventDefault();
         
         const oldEventID = $("button[name='save']").val();
