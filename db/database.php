@@ -332,12 +332,9 @@
         }
 
         public function deleteEvent($id) {
-            $imgToDelete = $this->getEvent($id);
-            unlink($imgToDelete[0]["Immagine"]); 
-
-            $stmt = $this->db->prepare("DELETE FROM eventi WHERE IDevento = ?");
+            $stmt = $this->db->prepare("UPDATE eventi SET Active = 0, Deleted = 1 WHERE IDevento = ?");
             $stmt->bind_param("i", $id);
-
+            $stmt->execute();
         }
         
         public function getMaxEventOrderID() {
