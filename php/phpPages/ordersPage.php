@@ -1,15 +1,13 @@
 <?php 
-    $n = 0; 
+    $n = 0;
     $numEvents = count($parameters["events"]);
-    $absoluteMaxEventID = 0;
-    $absoluteMinEventID = 0;
-    $maxID = 0;
-    $minID = 0;
+    if($numEvents > 0) {
+        $absoluteMaxEventID = $db->getMaxEventOrderID()[0]["IDevento"];
+        $absoluteMinEventID = $db->getMinEventOrderID()[0]["IDevento"];
+    }
     if ($numEvents == 0) {
-        echo '<div class="col-12 text-center text-light mb-5 font-weight-light font-italic">Non ci sono eventi in programma</div>';
+        echo '<div class="col-12 text-center text-light mb-5 font-weight-light font-italic">Non hai ancora effettuato acquisti</div>';
     } else {
-        $absoluteMaxEventID = $db->getMaxEventID()[0]["IDevento"];
-        $absoluteMinEventID = $db->getMinEventID()[0]["IDevento"];
         $maxID = $parameters["events"][$numEvents - 1]["IDevento"];
         $minID = $parameters["events"][0]["IDevento"];
         if (isset($_GET["minID"])) {
@@ -29,7 +27,7 @@
     <div class="col-md-1 col-sm-0"></div>
     <div class="col-md-10 col-sm-12">
         <h2 class="text-light display-4 mt-5">
-            <?php if ($numEvents > 0) echo 'Eventi in programma'; ?>
+            <?php if ($numEvents > 0) echo 'Ordini'; ?>
         </h2>
     </div>
     <div class="col-md-1 col-xs-0"></div>
@@ -67,8 +65,13 @@
                     </div>
                 </div>
                 <div class="row mt-4">
+                    <div class="row">
+                        <div class="col-12 font-weight-light font-italic text-truncate">
+                            <?php echo "Prezzo singolo: ". $event["Prezzo"]. ",00€<br> Biglietti acquistati: ". $event["Quantita"]; ?>
+                        </div>
+                    </div>
                     <div class="col-xl-8 col-sm-12 col-xs-12">
-                        Prezzo: <?php echo $event["Prezzo"]; ?>€
+                        Totale acquisto: <?php echo $event["Prezzo"] * $event["Quantita"];  ?>€
                     </div>
                     <div class="col-xl-4 col-sm-12 col-xs-12">
                         <button name="ID" value="<?php echo $event["IDevento"]; ?>" 
@@ -90,27 +93,27 @@
         echo '<div class="col-sm-0 col-md-1"></div></div>';  
     } 
 ?>
-<?php endforeach; ?>
+<?php 
+    endforeach;
+?>
 
 <div class="row mt-4">
     <div class="col-1"></div>
     <div class="col-5">
-        <form action="../php/events.php">
+        <form action="../php/orders.php">
             <button name="minID" value="<?php echo $minID; ?>" 
                     type="submit" class="btn btn-primary mb-2 float-right"
-                    <?php if ($absoluteMinEventID == $minID  || $numEvents == 0) echo "disabled"; ?>><i class="fas fa-arrow-left"></i> back
+                    <?php if ($numEvents == 0 || $absoluteMinEventID == $minID) echo "disabled"; ?>><i class="fas fa-arrow-left"></i> back
             </button>
         </form>
     </div>
     <div class="col-5">
-        <form action="../php/events.php">
+        <form action="../php/orders.php">
             <button name="maxID" value="<?php echo $maxID; ?>" 
                     type="submit" class="btn btn-primary mb-2" 
-                    <?php if ($absoluteMaxEventID == $maxID || $numEvents == 0) echo "disabled"; ?>>next <i class="fas fa-arrow-right"></i> 
+                    <?php if ($numEvents == 0 || $absoluteMaxEventID == $maxID) echo "disabled"; ?>>next <i class="fas fa-arrow-right"></i> 
             </button>
         </form>
     </div>
     <div class="col-1"></div>
 </div>
-
-

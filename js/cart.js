@@ -135,7 +135,7 @@ $(document).ready(function() {
                     {
                         $("#alert").fadeOut(500);
                         if(code == 1) {
-                            document.location.href = "cart.php"; /* Riepilogo poi */
+                            document.location.href = "orders.php"; /* Riepilogo poi */
                         }
                     }, 5000);
             }

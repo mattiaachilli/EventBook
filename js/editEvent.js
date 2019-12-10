@@ -1,12 +1,15 @@
-let capacity = 0;
+let capacity = 0; 
 let imageIsCorrect = true;
+const timeToWait = 1000;
 
 $(document).ready(function() {
     initializeLabels();
-    
-    $("button[name='createEvent']").click(function(event) {
+    capacity = $("#maxTickets").html().replace(/[^0-9]/g, ''); 
+
+    $("form").submit(function(event) {
         event.preventDefault();
         
+        const oldEventID = $("button[name='save']").val();
         const eventName = $("#name").val();
         const desc = $("#description").val();
         const price = $("#price").val();
@@ -21,18 +24,22 @@ $(document).ready(function() {
             const city = location.split(" - ")[1].split(" ")[0];
             const country = location.split(" (")[1].split(")")[0];
             $.ajax({
-                url: '../api/api-newEvent.php',
+                url: '../api/api-editEvent.php',
                 type: 'post',
                 data: { eventName: eventName, desc: desc, price: price, 
                         tickets: tickets, date: date, category: category, location: nomeLocation, nazione: country,
-                        città: city, path: path},
+                        città: city, path: path, oldEventID: oldEventID },
                 success: function(code) {
                     if (code == 0) {
-                        $("#result").text("Nuovo evento registrato con successo!");
+                        $("#result").text("Evento modificato con successo!");
+                        setTimeout(reloadPage, timeToWait);
+                    } else if (code == 1) {
+                        $("#result").text("Evento e immagine modificati con successo!");
                         uploadImage();
+                        setTimeout(reloadPage, timeToWait);
                     } else {
                         $("#result").text(code);
-                    } 
+                    }
                 }
             });
         }
@@ -156,10 +163,8 @@ function checkFields(name, desc, price, tickets, date, category, location, path)
         $("#wrongLocation").text("Scegli una location.");
         $("#wrongLocation").fadeIn();
     }
-    if (path == "") {
-        check = false;
-        $("#wrongImg").text("Caricare un'immagine (formato quadrato)");
-        $("#wrongImg").fadeIn();
+    if (!imageIsCorrect) {
+        checkImage();
     }
     return check;
 }
@@ -173,4 +178,8 @@ function initializeLabels() {
     $("#wrongCategory").hide();
     $("#wrongLocation").hide();
     $("#wrongImg").hide();
+}
+
+function reloadPage() {
+    window.location="../php/publishedEvents.php";
 }

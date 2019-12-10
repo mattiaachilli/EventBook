@@ -113,7 +113,10 @@
         }
 
         public function getEvents(){
-            $stmt = $this->db->prepare("SELECT Username, Nome_evento, IDevento FROM eventi e, utenti u WHERE Username = Username_organizzatore AND (e.Active = 0 AND Deleted = 0)");
+            $stmt = $this->db->prepare("SELECT Username, Nome_evento, IDevento 
+                                        FROM eventi e, utenti u 
+                                        WHERE Username = Username_organizzatore 
+                                        AND (e.Active = 0 AND e.Deleted = 0)");
             $stmt->execute();
             $result = $stmt->get_result();
             return $result->fetch_all(MYSQLI_ASSOC);
@@ -256,6 +259,17 @@
             return $result->fetch_all(MYSQLI_ASSOC);
         }
 
+        public function getPublishiedEvents($organizer) {
+            $stmt = $this->db->prepare("SELECT *
+                                        FROM eventi 
+                                        where Username_organizzatore = ?");
+            $stmt->bind_param("s", $organizer);
+            $stmt->execute();
+            $result = $stmt->get_result();
+
+            return $result->fetch_all(MYSQLI_ASSOC);
+        }
+
         public function getRows($id) {
             $stmt = $this->db->prepare("SELECT * FROM biglietti WHERE IDevento = ?");
             $stmt->bind_param("i", $id);
@@ -351,6 +365,81 @@
             $result = $stmt->get_result();
             
             return $result->fetch_all(MYSQLI_ASSOC);
+        }
+
+        public function deleteEvent($id) {
+            $imgToDelete = $this->getEvent($id);
+            unlink($imgToDelete[0]["Immagine"]); 
+
+            $stmt = $this->db->prepare("DELETE FROM eventi WHERE IDevento = ?");
+            $stmt->bind_param("i", $id);
+
+        }
+        
+        public function getMaxEventOrderID() {
+            $stmt = $this->db->prepare("SELECT IDevento
+                                        FROM biglietti 
+                                        WHERE Username_acquirente = ?
+                                        ORDER BY IDevento DESC
+                                        LIMIT 1");
+            $stmt->bind_param("s", $_SESSION["user"][0]); 
+
+            $stmt->execute();
+            $result = $stmt->get_result();
+
+            return $result->fetch_all(MYSQLI_ASSOC);
+        }
+
+        public function getMinEventOrderID() {
+            $stmt = $this->db->prepare("SELECT IDevento
+                                        FROM biglietti 
+                                        WHERE Username_acquirente = ?
+                                        ORDER BY IDevento ASC
+                                        LIMIT 1");
+            $stmt->bind_param("s", $_SESSION["user"][0]); 
+            $stmt->execute();
+            $result = $stmt->get_result();
+
+            return $result->fetch_all(MYSQLI_ASSOC);
+        }
+
+        public function getOrders($currentID = 0, $nextOrPrev = 0) {
+            $ordersPerPage = 4;
+            if ($nextOrPrev == 0) {
+                $stmt = $this->db->prepare("SELECT b.*, e.* , COUNT(*) AS Quantita 
+                                            FROM biglietti b, eventi e WHERE 
+                                            b.Username_acquirente = ? AND e.IDevento = b.IDevento 
+                                            AND b.IDevento > ? 
+                                            GROUP BY b.IDevento 
+                                            ORDER BY b.IDevento ASC
+                                            LIMIT ?");
+            } else {
+                $stmt = $this->db->prepare("SELECT b.*, e.* , COUNT(*) AS Quantita 
+                                            FROM biglietti b, eventi e WHERE 
+                                            b.Username_acquirente = ? AND e.IDevento = b.IDevento 
+                                            AND b.IDevento < ? 
+                                            GROUP BY b.IDevento 
+                                            ORDER BY b.IDevento DESC
+                                            LIMIT ?");
+            }
+            $stmt->bind_param("sii", $_SESSION["user"][0], $currentID, $ordersPerPage);
+            $stmt->execute();
+            $result = $stmt->get_result();
+
+            return $result->fetch_all(MYSQLI_ASSOC);
+        }
+
+        public function editEvent($nome, $data, $desc, $immagine, $prezzo, $n_biglietti, $categoria, 
+                                  $nomeLocation, $nazioneLocation, $cittàLocation, $oldEventID) {
+
+            $stmt = $this->db->prepare("UPDATE eventi
+                                        SET Data = ?, Nome_evento = ?, Nome_location = ?, Nazione_location = ?, Città_location = ?,
+                                            Biglietti_disponibili = ?, Categoria = ?, Immagine = ?, Descrizione = ?, Prezzo = ?
+                                        WHERE IDevento = ?");
+
+            $stmt->bind_param("sssssisssii", $data, $nome, $nomeLocation, $nazioneLocation, $cittàLocation, $n_biglietti, 
+                                             $categoria, $immagine, $desc, $prezzo, $oldEventID);
+            $stmt->execute();
         }
     }
 ?>
