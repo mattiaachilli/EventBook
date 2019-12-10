@@ -23,7 +23,12 @@
         <div class="col-lg-2 col-md-2"></div>
         <div class="col-lg-8 col-md-8 col-sm-12 col-12">
             <div class="alert" role="alert" id="alert_class">
-                <h4 class="alert-heading" id="alert_heading"></h4>
+                <h4 class="alert-heading" id="alert_heading">Attenzione!</h4>
+                <div id="spinner">
+                    <div class="spinner-border text-center" role="status">
+                        <span class="sr-only">Loading...</span>
+                    </div>
+                </div>
                 <p></p>
             </div>
         </div>
@@ -44,9 +49,9 @@
                 ?>
                     <div class="row">
                         <div class="col-3">
-                            <img class="img-responsive w-100 border border-light rounded" src=<?php echo $q[0]["Immagine"]; ?>>
+                            <img class="img-responsive w-100 border border-light rounded" src=<?php echo $q[0]["Immagine"]; ?> alt="">
                         </div>
-                        <div class="col-3">
+                        <div class="col-3 text-truncate">
                             <h5 class="product-name">
                                 <a href=<?php echo "eventInfo.php?ID=".$q[0]["IDevento"]; ?>> <strong><?php echo $q[0]["Nome_evento"]; ?></strong></a>
                             </h5>
@@ -58,10 +63,11 @@
                             <strong class="price"> <?php echo $q[0]["Prezzo"].",00€"; ?> </strong>
                         </div>
                         <div class="col-4">
-                            <input type="number" class="form-control input-sm w-50 ml-5 quantity" value=<?php echo $arr[++$i]; ?> min="1">
+                                <input id=<?php echo "quantity".$i; ?> type="number" class="form-control input-sm w-50 ml-5 quantity" value=<?php echo $arr[++$i]; ?> min="1">
+                                <label for=<?php echo "quantity".($i - 1); ?> class="ml-5"> Quantità</label>
                         </div>
                         <div class="row">
-                            <i class="fas fa-trash trash"></i>
+                            <em class="fas fa-trash trash"></em>
                         </div>
                         <input type="hidden" value=<?php echo $q[0]["IDevento"]; ?>>
                     </div>
@@ -86,7 +92,7 @@
             <div class="row">
                 <div class ="col-sm-10 col-8"></div>
                 <div class="col-sm-2 col-2">
-                    <h4">Totale 
+                    <h4>Totale 
                         <strong id="total"></strong>
                     </h4>
                 </div>

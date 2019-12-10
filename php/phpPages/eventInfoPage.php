@@ -63,7 +63,11 @@
                                 </button>
                                 <i class = "fas fa-check fa-2x d-none" id="checkOk"></i>
                             </div>
-                        <?php endif; ?>
+                                <?php else: ?> 
+                                    <div class="col-xl-3 col-sm-5 col-xs-5 mt-2">
+                                        <small class="text-light"> <strong> Evento sold out </strong> </small>
+                                    </div>
+                                <?php endif; ?>
                     </div>
                 </div>
             </div>

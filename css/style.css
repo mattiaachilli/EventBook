@@ -124,3 +124,8 @@ a:hover{
 .buttonCookie:hover{
     text-decoration: underline;
 }
+
+#spinner {
+    display: none;
+}
+

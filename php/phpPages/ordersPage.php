@@ -40,7 +40,7 @@
     <form action="../php/eventInfo.php" class="form-div rounded p-0" method="get">
         <div class="row">
             <div class="col-xl-4 col-xs-12 col-sm-12 p-3">
-                <img src="<?php echo $event["Immagine"]?>" width="100%"/>
+                <img src="<?php echo $event["Immagine"]?>" class="w-100" alt=""/>
             </div>
             <div class="col-xl-8 col-xs-12 col-sm-12 mt-4">
                 <div class="row font-weight-bold">
@@ -103,7 +103,7 @@
         <form action="../php/orders.php">
             <button name="minID" value="<?php echo $minID; ?>" 
                     type="submit" class="btn btn-primary mb-2 float-right"
-                    <?php if ($numEvents == 0 || $absoluteMinEventID == $minID) echo "disabled"; ?>><i class="fas fa-arrow-left"></i> back
+                    <?php if ($numEvents == 0 || $absoluteMinEventID == $minID) echo "disabled"; ?>><em class="fas fa-arrow-left"></em> back
             </button>
         </form>
     </div>
@@ -111,7 +111,7 @@
         <form action="../php/orders.php">
             <button name="maxID" value="<?php echo $maxID; ?>" 
                     type="submit" class="btn btn-primary mb-2" 
-                    <?php if ($numEvents == 0 || $absoluteMaxEventID == $maxID) echo "disabled"; ?>>next <i class="fas fa-arrow-right"></i> 
+                    <?php if ($numEvents == 0 || $absoluteMaxEventID == $maxID) echo "disabled"; ?>>next <em class="fas fa-arrow-right"></em> 
             </button>
         </form>
     </div>

@@ -9,10 +9,10 @@
                                 </button>
                         </div>
                         <div class="modal-body">
-                                Usiamo cookie tecnici per mettere in opera alcune funzioni o rendere più agile la navigazione.<br>
+                                Usiamo cookie tecnici per mettere in opera alcune funzioni o rendere più agile la navigazione.<br><br>
                                 Tale tecnologia consente ai nostri utenti di: <br>
                                 – Autenticarsi per accedere ad aree riservate.<br>
-                                – Aggiungere o rimuovere prodotti nel carrello.<br>
+                                – Aggiungere o rimuovere prodotti nel carrello.<br><br>
                                 Il nostro scopo è rendere l'esperienza di acquisto su EventBook migliore e più conveniente.
                         </div>
                 </div>

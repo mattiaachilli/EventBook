@@ -123,21 +123,30 @@ $(document).ready(function() {
                     $("#alert_class > p").html("Per procedere con l'acquisto devi essere loggato!");
                 } else if(code == 1) {
                     $("#alert_class").addClass("alert-success");
-                    $("#alert_heading").html("Acquisto effettuato con successo!");
-                    $("#alert_class > p").html("Il suo acquisto è stato effettuato con successo, può visualizzare l'acquisto nell'apposita sezione");
+                    $("#alert_class > p").html("Acquisto in elaborazione, attendere...");
                 } else {
                     $("#alert_class").addClass("alert-warning");
                     $("#alert_class > p").html(code);
                 }
                 $("#alert").fadeIn(500); 
+                if(code == 1) {
+                    $("#spinner").fadeIn(500); 
+                    setTimeout(
+                        function() 
+                        {
+                            $("#alert_heading").html("Acquisto effettuato con successo!");
+                            $("#alert_class > p").html("Il suo acquisto è stato effettuato con successo, può visualizzare l'acquisto nell'apposita sezione");
+                            $("#spinner").fadeOut(500);
+                        }, 3000);
+                }
                 setTimeout(
                     function() 
                     {
                         $("#alert").fadeOut(500);
                         if(code == 1) {
-                            document.location.href = "orders.php"; /* Riepilogo poi */
+                            document.location.href = "orders.php";
                         }
-                    }, 5000);
+                    }, 6000);
             }
         });
     });
