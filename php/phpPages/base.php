@@ -17,7 +17,6 @@
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <link rel="stylesheet" href="../css/bootstrap/bootstrap.min.css">
     <script src="../js/bootstrap/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Wruczek/Bootstrap-Cookie-Alert@gh-pages/cookiealert.css">
     <link rel="stylesheet" href="../fontawesome-free-5.11.2-web/css/all.css">
     <link rel="stylesheet" href="../css/style.css">
     <?php
