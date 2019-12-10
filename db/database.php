@@ -1,6 +1,35 @@
 <?php
     class Database{
         private $db;
+        //function for search
+        private function getQuery($str){
+            $first = 1;
+            $strings = array();
+            $word = "";
+            $query = "SELECT * FROM eventi 
+                               WHERE Active = 1";
+            if($str != ""){
+                array_push($strings, strtok($str, " \n\t"));
+                while($word !== false){
+                    $word = strtok(" \n\t");
+                    array_push($strings, $word);
+                }
+                foreach($strings as $token){
+                    if(strlen($token) > 0){
+                        if($first){
+                            $query.= " AND (";
+                            $first = 0;
+                        } else {
+                            $query.= " OR ";
+                        }
+                        $query.= "Nome_evento LIKE '%$token%' 
+                                OR Descrizione LIKE '%$token%'";
+                    }
+                }
+            }
+            $query .= ")";
+            return $query;
+        }
 
         public function __construct($servername, $username, $password, $dbname) {
             $this->db = new mysqli($servername, $username, $password, $dbname);
@@ -185,24 +214,22 @@
             return $result->fetch_all(MYSQLI_ASSOC);
         }
 
-        public function getMaxEventID() {
-            $stmt = $this->db->prepare("SELECT IDevento
-                                        FROM eventi 
-                                        WHERE active = 1 AND Deleted = 0
-                                        ORDER BY IDevento DESC
-                                        LIMIT 1");
+        public function getMaxEventID($str = "") {
+            $query = $this->getQuery($str);
+            $query.= " ORDER BY IDevento DESC
+            LIMIT 1";
+            $stmt = $this->db->prepare($query);
             $stmt->execute();
             $result = $stmt->get_result();
 
             return $result->fetch_all(MYSQLI_ASSOC);
         }
 
-        public function getMinEventID() {
-            $stmt = $this->db->prepare("SELECT IDevento
-                                        FROM eventi 
-                                        WHERE active = 1 AND Deleted = 0
-                                        ORDER BY IDevento ASC
-                                        LIMIT 1");
+        public function getMinEventID($str = "") {
+            $query = $this->getQuery($str);
+            $query.= " ORDER BY IDevento ASC
+            LIMIT 1";
+            $stmt = $this->db->prepare($query);
             $stmt->execute();
             $result = $stmt->get_result();
 
@@ -306,11 +333,20 @@
             return 1;
         }
 
-        public function searchingEvent($str){
-            $query = "SELECT * FROM eventi WHERE Nome_evento LIKE '%$str%' OR Descrizione LIKE '%$str%'";
-            $stmt = $this->db->prepare("SELECT * FROM eventi 
-                                                 WHERE Nome_evento 
-                                                 LIKE '%$str%' OR Descrizione LIKE '%$str%'");
+        public function searchingEvent($str, $id = 0, $nextOrPrev = 0){
+            $count = 4;
+            $query = $this->getQuery($str);
+            if($nextOrPrev == 0){
+                $query.=" AND IDevento > ?
+                         ORDER BY IDevento ASC
+                         LIMIT ?";
+            } else {
+                $query.=" AND IDevento < ?
+                         ORDER BY IDevento DESC
+                         LIMIT ?";
+            }
+            $stmt = $this->db->prepare($query);
+            $stmt->bind_param("ii",$id, $count);
             $stmt->execute();
             $result = $stmt->get_result();
             

@@ -17,6 +17,7 @@
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <link rel="stylesheet" href="../css/bootstrap/bootstrap.min.css">
     <script src="../js/bootstrap/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Wruczek/Bootstrap-Cookie-Alert@gh-pages/cookiealert.css">
     <link rel="stylesheet" href="../fontawesome-free-5.11.2-web/css/all.css">
     <link rel="stylesheet" href="../css/style.css">
     <?php
@@ -35,6 +36,7 @@
 </head>
 
 <body>
+    <?php require_once("cookieBar.php");?>
     <div class="container-fluid p-0">
         <header>
             <div class = "row">
@@ -83,29 +85,29 @@
     </main>
     <hr/>
     <footer class="page-footer font-small blue p-4">
-            <div class="container-fluid text-center text-light">
-                <div class="row ">
-                    <div class="col-md-4 col-sm-4 col-12">
-                        <h5 class="text-uppercase">Chi siamo</h5>
-                        <p>
-                            Achilli Mattia <br />
-                            Innocenti Matteo <br />
-                            D'errico Christian <br />
-                        </p>
-                    </div>
-                    <div class="col-md-4 col-sm-4 col-12">
-                        <h5 class="text-uppercase">Contatti</h5>
-                        <p> mattia.achilli@studio.unibo.it</p>
-                    </div>
-                    <div class="col-md-4 col-sm-4 col-12">
-                        <h5 class="text-uppercase">Info utili</h5>
-                        <p> E via </p>
-                    </div>
+        <div class="container-fluid text-center text-light">
+            <div class="row ">
+                <div class="col-md-4 col-sm-4 col-12">
+                    <h5 class="text-uppercase">Chi siamo</h5>
+                    <p>
+                        Achilli Mattia <br />
+                        Innocenti Matteo <br />
+                        D'errico Christian <br />
+                    </p>
                 </div>
-                <div class="footer-copyright text-center">© 2019 Copyright:
-                    <a href="#"> Eventbook.it </a>
+                <div class="col-md-4 col-sm-4 col-12">
+                    <h5 class="text-uppercase">Contatti</h5>
+                    <p> mattia.achilli@studio.unibo.it</p>
+                </div>
+                <div class="col-md-4 col-sm-4 col-12">
+                    <h5 class="text-uppercase">Info utili</h5>
+                    <p> E via </p>
                 </div>
             </div>
-        </footer>
+            <div class="footer-copyright text-center">© 2019 Copyright:
+                <a href="#"> Eventbook.it </a>
+            </div>
+        </div>
+    </footer>
 </body>
 </html>
