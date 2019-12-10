@@ -6,5 +6,5 @@
     $parameters["user"] = $db->getUser();
     $parameters["js"] = array("../js/modify.js", "../js/md5.js");
 
-    require dirname(__DIR__).'/php/phpPages/base.php';
+    require_once dirname(__DIR__).'/php/phpPages/base.php';
 ?>

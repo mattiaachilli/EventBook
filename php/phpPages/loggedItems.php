@@ -8,14 +8,14 @@
 <?php 
     switch($_SESSION["user"][1]){
         case USER:
-            require_once('userListItem.php');
+            require('userListItem.php');
         break;
         case ORGANIZER:
-            require_once('organizerListItem.php');
+            require('organizerListItem.php');
         break;
         case ADMIN:
-            require_once('adminListItem.php');
+            require('adminListItem.php');
         break;
     }
 ?>
-    <a class="dropdown-item text-primary" href="logout.php">Esci</a>
+    <a class="dropdown-item text-primary" href="../php/logout.php">Esci</a>
