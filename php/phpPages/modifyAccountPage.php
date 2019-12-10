@@ -38,25 +38,25 @@
                         <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modalDel">Elimina</button>
                         <!-- Modal -->
                         <div class="modal fade" id="modalDel" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Elimina account</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                                </button>
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Elimina account</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        Sei sicuro di volerci lasciare?
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-primary" data-dismiss="modal">No</button>
+                                        <button type="button" id = "eliminaButton" class="btn btn-danger">
+                                            <a href = "<?php echo ROOT."/php/remove.php"?>">Elimina</a>
+                                        </button>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="modal-body">
-                                Sei sicuro di volerci lasciare?
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-primary" data-dismiss="modal">No</button>
-                                <button type="button" id = "eliminaButton" class="btn btn-danger">
-                                    <a href = "<?php echo ROOT."/php/remove.php"?>">Elimina</a>
-                                </button>
-                            </div>
-                            </div>
-                        </div>
                         </div>
                     </div>
                     <div class = "col-0 col-md-2"></div>
