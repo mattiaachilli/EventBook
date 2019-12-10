@@ -26,8 +26,8 @@
                                 OR Descrizione LIKE '%$token%'";
                     }
                 }
+                $query .= ")";
             }
-            $query .= ")";
             return $query;
         }
 
