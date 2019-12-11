@@ -52,7 +52,7 @@
             </div>
             <div class="col-xl-4 col-lg-5 col-sm-12 col-xs-12 col-md-6">
                 <div class="col-12 mt-4">
-                    <form action="../php/eventInfo.php" id="info">
+                    <form action="../php/eventInfo.php" id="info" method="post">
                         <button name="ID" value="<?php echo $event["IDevento"]; ?>" 
                                 type="submit" class="btn btn-primary mb-2 container-fluid">Info
                         </button>
