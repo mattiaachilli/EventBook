@@ -17,7 +17,8 @@ if(isset($_POST["user"]) && isset($_POST["email"])
             }
             $_SESSION["user"][0] = $_POST["user"];
             modifyCookie();
-            require("api-SendModifyEmail.php");
+            $modify = true;
+            require("api-sendModifyEmail.php");
             echo "Modifica effettuata";
         }                         
     } else {

@@ -1,4 +1,8 @@
 $(document).ready(function(){
+    $("#eliminaButton").click(function(){
+        $(this).hide();
+        $("#eliminaSpinner").removeClass("d-none");
+    });
     $("form").submit(function(event) {
         event.preventDefault();
         $("#salvaButton").hide();

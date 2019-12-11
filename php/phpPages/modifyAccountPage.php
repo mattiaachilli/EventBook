@@ -57,6 +57,9 @@
                                         <button type="button" id = "eliminaButton" class="btn btn-danger">
                                             <a href = "<?php echo ROOT."/php/remove.php"?>">Elimina</a>
                                         </button>
+                                        <div class="spinner-border text-danger float-right mt-1 mr-3 d-none" role="status" id = "eliminaSpinner">
+                                            <span class="sr-only">Loading...</span>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
