@@ -43,31 +43,33 @@
                             Prezzo: <?php echo $parameters["event"][0]["Prezzo"];?>€
                         </div>
                         <div class="col-xl-3 col-sm-0 col-xs-0"></div>
-                        <?php if($availableTickets[0]["Biglietti_disponibili"] > 0) : ?>
-                            <div class="col-xl-3 col-sm-5 col-xs-5 w-75 mt-2">
-                                <select class="custom-select" id="ticket">
-                                    <?php
-                                        $ticket = 20;
-                                        if($availableTickets[0]["Biglietti_disponibili"] < 20) {
-                                            $ticket = $availableTickets[0]["Biglietti_disponibili"];
-                                        }
-                                        for($i = 1; $i <= $ticket; $i++) {
-                                            echo '<option>'.$i.'</option>';
-                                        }
-                                    ?>
-                                </select>
-                            </div>
-                            <div class="col-xl-4 col-sm-12 col-xs-12 mt-2">
-                                <button id="addCart" type="submit" class="btn btn-primary">
-                                    Aggiungi al carrello
-                                </button>
-                                <i class = "fas fa-check fa-2x d-none" id="checkOk"></i>
-                            </div>
-                                <?php else: ?> 
-                                    <div class="col-xl-3 col-sm-5 col-xs-5 mt-2">
-                                        <small class="text-light"> <strong> Evento sold out </strong> </small>
-                                    </div>
-                                <?php endif; ?>
+                        <?php if(!isset($_GET["Admin"])): ?>
+                            <?php if($availableTickets[0]["Biglietti_disponibili"] > 0) : ?>
+                                <div class="col-xl-3 col-sm-5 col-xs-5 w-75 mt-2">
+                                    <select class="custom-select" id="ticket">
+                                        <?php
+                                            $ticket = 20;
+                                            if($availableTickets[0]["Biglietti_disponibili"] < 20) {
+                                                $ticket = $availableTickets[0]["Biglietti_disponibili"];
+                                            }
+                                            for($i = 1; $i <= $ticket; $i++) {
+                                                echo '<option>'.$i.'</option>';
+                                            }
+                                        ?>
+                                    </select>
+                                </div>
+                                <div class="col-xl-4 col-sm-12 col-xs-12 mt-2">
+                                    <button id="addCart" type="submit" class="btn btn-primary">
+                                        Aggiungi al carrello
+                                    </button>
+                                    <i class = "fas fa-check fa-2x d-none" id="checkOk"></i>
+                                </div>
+                            <?php else: ?> 
+                                <div class="col-xl-3 col-sm-5 col-xs-5 mt-2">
+                                    <small class="text-light"> <strong> Evento sold out </strong> </small>
+                                </div>
+                            <?php endif; ?>
+                        <?php endif; ?>
                     </div>
                 </div>
             </div>

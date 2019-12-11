@@ -16,7 +16,13 @@
                     <?php foreach($parameters["events"] as $event): ?>
                         <tr>
                             <td headers = "organizzatore" class = "text-center"><?php echo $event["Username"]?></td>
-                            <td headers = "evento" class = "text-center"><?php echo $event["Nome_evento"]?></td>
+                            <td headers = "evento" class = "text-center">
+                                <form action= id = "info">
+                                    <a href = "../php/eventInfo.php?ID=<?php echo $event["IDevento"];?>&Admin=1">
+                                        <?php echo $event["Nome_evento"]?>
+                                    </a>
+                                </form>
+                            </td>
                             <td headers = "buttons" class = "text-center row m-0">
                                 <form class = "text-center row container-fluid mt-0" action = "../api/api-approvation.php" id = "button-form" type = "post">
                                     <div class = "col-6">
