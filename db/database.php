@@ -23,7 +23,9 @@
                             $query.= " OR ";
                         }
                         $query.= "Nome_evento LIKE '%$token%' 
-                                OR Descrizione LIKE '%$token%'";
+                                  OR Descrizione LIKE '%$token%'
+                                  OR Nome_location LIKE '%$token%'
+                                  OR Città_location LIKE '%$token%'";
                     }
                 }
                 $query .= ")";
