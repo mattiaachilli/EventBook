@@ -6,9 +6,10 @@ $(document).ready(function() {
 
         const e_mail = $("#mail").val();
         $("#info-alert").hide();
+        alert(e_mail);
 
         $.ajax({
-            url: '../api/api-sendMail.php',
+            url: '../api/api-sendRecoveryPassword.php',
             type: 'post',
             data: { mail: e_mail },
             success: function(code) {

@@ -89,18 +89,24 @@
                 <div class="col-md-4 col-sm-4 col-12">
                     <h5 class="text-uppercase">Chi siamo</h5>
                     <p>
-                        Achilli Mattia <br />
-                        Innocenti Matteo <br />
-                        D'errico Christian <br />
+                        Achilli Mattia <br/>
+                        D'errico Christian <br/>
+                        Innocenti Matteo <br/>
                     </p>
                 </div>
                 <div class="col-md-4 col-sm-4 col-12">
                     <h5 class="text-uppercase">Contatti</h5>
-                    <p> mattia.achilli@studio.unibo.it</p>
+                    <p> mattia.achilli@studio.unibo.it <br/>
+                        christian.derrico@studio.unibo.it <br/>
+                        matteo.innocenti2@studio.unibo.it <br/>
+                    </p>                    
+
                 </div>
                 <div class="col-md-4 col-sm-4 col-12">
                     <h5 class="text-uppercase">Info utili</h5>
-                    <p> E via </p>
+                    <p> Se sei su PC prova <br/>
+                        il nostro sito anche da smartphone,<br/> 
+                        non te ne pentirai! </p>
                 </div>
             </div>
             <div class="footer-copyright text-center">© 2019 Copyright:
