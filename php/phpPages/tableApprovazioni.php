@@ -17,8 +17,8 @@
                         <tr>
                             <td headers = "organizzatore" class = "text-center"><?php echo $event["Username"]?></td>
                             <td headers = "evento" class = "text-center">
-                                <form action= id = "info">
-                                    <a href = "../php/eventInfo.php?ID=<?php echo $event["IDevento"];?>&Admin=1">
+                                <form id="info">
+                                    <a href = "../php/eventInfo.php?ID=<?php echo $event["IDevento"];?>">
                                         <?php echo $event["Nome_evento"]?>
                                     </a>
                                 </form>

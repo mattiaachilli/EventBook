@@ -51,28 +51,28 @@
                     </div>
                     <input type="hidden" value= <?php echo $event["IDevento"]; ?>/>
                 </div>
-                <div class="row">
+                <div class="row mt-2">
                     <div class="col-12 text-truncate">
-                        <?php echo $event["Nome_location"].' - '.$event["Città_location"] ?>
+                        Luogo: <?php echo $event["Nome_location"].' - '.$event["Città_location"] ?>
                     </div>
                 </div>
-                <div class="row">
+                <div class="row mt-2">
                     <div class="col-12 text-truncate">
-                        <?php echo $event["Data"]; ?>
+                        Data: <?php echo $event["Data"]; ?>
                     </div>
                 </div>
-                <div class="row">
+                <div class="row mt-2">
                     <div class="col-12 font-weight-light font-italic text-truncate">
-                        <?php echo $event["Categoria"]; ?>
+                        Categoria: <?php echo $event["Categoria"]; ?>
                     </div>
                 </div>
                 <div class="row mt-4">
-                    <div class="col-xl-8 col-sm-12 col-xs-12">
+                    <div class="col-xl-6 col-lg-6 col-md-5 col-sm-6 col-xs-12">
                         Prezzo: <?php echo $event["Prezzo"]; ?>€
                     </div>
-                    <div class="col-xl-4 col-sm-12 col-xs-12">
+                    <div class="col-xl-6 col-lg-6 col-md-7 col-sm-6 col-xs-12 mt-4">
                         <button name="ID" value="<?php echo $event["IDevento"]; ?>" 
-                                type="submit" class="btn btn-primary mb-2 float-right">Informazioni
+                                type="submit" class="btn btn-primary mb-2 float-right container-fluid">Informazioni
                         </button>
                     </div>
                 </div>
