@@ -1,7 +1,13 @@
 <div class="row">
-    <div class="col-3"></div>
-    <div class="col-md-6 col-12">
-        <h2 class="text-light display-4 text-center mb-5">Nuova categoria eventi</h2>
+    <div class="col-sm-2 col-xl-4"></div>
+    <div class="col-sm-8 col-xl-4">
+        <h2 class="text-light display-4 mt-4">Nuova categoria eventi</h2>
+    </div>
+    <div class="col-sm-2 col-xl-4"></div>
+</div>
+<div class="row">
+    <div class="col-sm-2 col-xl-4"></div>
+    <div class="col-sm-8 col-xl-4 col-12">
         <div class = "form-div rounded">
             <form action = "<?php echo ROOT."/api/api-category.php"?>" method= "get" id="form-login">
                 <div class="col-12">
@@ -17,5 +23,11 @@
             </form>
         </div>
     </div>
-    <div class="col-3"></div>
+    <div class="col-sm-2 col-xl-4"></div>
+</div>
+<div class="row mb-5">
+    <div class="col-sm-10 col-xl-8 col-xs-12 text-right">
+        <button onclick="history.back();" type="submit" class="btn btn-primary"><i class="fas fa-arrow-left"></i> back</button> 
+    </div>
+    <div class="col-sm-2 col-xl-4 col-xs-0"></div>
 </div>

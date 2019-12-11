@@ -9,6 +9,7 @@
         <h2 class="text-light display-4 mt-5">
             <?php if ($numEvents > 0) echo 'Eventi che hai pubblicato'; ?>
         </h2>
+        <?php if ($numEvents == 0) echo '<div class="text-center font-weight-light font-italic text-light">Non hai ancora pubblicato alcun evento.</div>' ?>
     </div>
     <div class="col-md-1 col-xs-0"></div>
 </div>
@@ -86,5 +87,12 @@
     } 
 ?>
 <?php endforeach; ?>
+
+<div class="row mb-5">
+    <div class="col-md-11 col-sm-12 col-xs-12 text-right">
+        <button onclick="history.back();" type="submit" class="btn btn-primary"><i class="fas fa-arrow-left"></i> back</button> 
+    </div>
+    <div class="col-md-1 col-sm-0 col-xs-0"></div>
+</div>
 
 

@@ -47,3 +47,9 @@
     </div>
     <div class="col-2"></div>
 </div>
+<div class="row mb-5">
+    <div class="col-sm-10 col-xs-12 text-right">
+        <button onclick="history.back();" type="submit" class="btn btn-primary"><i class="fas fa-arrow-left"></i> back</button> 
+    </div>
+    <div class="col-sm-2 col-xs-0"></div>
+</div>
