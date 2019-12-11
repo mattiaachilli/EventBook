@@ -54,7 +54,7 @@
                         </div>
                         <div class="col-3 text-truncate">
                             <h5 class="product-name">
-                                <a href=<?php echo "eventInfo.php?ID=".$q[0]["IDevento"]; ?>> <strong><?php echo $q[0]["Nome_evento"]; ?></strong></a>
+                                <strong><?php echo $q[0]["Nome_evento"]; ?></strong>
                             </h5>
                             <h6>
                                 <?php echo $q[0]["Descrizione"]; ?>

@@ -19,7 +19,7 @@
         </div>
 </div>
 <div class="alert text-center cookie" role="alert" id = "cookiealert">
-        <b>Do you like cookies?</b> &#x1F36A; Noi utilizziamo cookie tecnici per ottimizzare l'esperienza con il nostro sito. 
+        <em>Do you like cookies?</em> &#x1F36A; Noi utilizziamo cookie tecnici per ottimizzare l'esperienza con il nostro sito. 
         <!-- Button trigger modal -->
         <button type="button" class="btn text-white mb-1 buttonCookie" data-toggle="modal" data-target="#modalCookie">Per saperne di più</button>
         <button type="button" class="btn btn-primary btn-sm acceptcookies" aria-label="Close">Ok</button>
