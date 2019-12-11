@@ -1,9 +1,8 @@
 $(document).ready(function(){
-    /*$('#modalDel').on('shown.bs.modal', function () {
-        $('#eliminaButton').trigger('focus')
-    });*/
     $("form").submit(function(event) {
         event.preventDefault();
+        $("#salvaButton").hide();
+        $(".spinner-border").removeClass("d-none");
         $("small").each(function(){
             $(this).hide();
         });

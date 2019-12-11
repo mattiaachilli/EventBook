@@ -33,6 +33,9 @@
                 <div class="form-row align-items-center pl-3 pr-3 mt-4">
                     <div class = "col-0 col-md-2"></div>
                     <div class="col-12 col-md-8 p-2">
+                        <div class="spinner-border text-white float-right mt-1 d-none mr-3" role="status">
+                            <span class="sr-only">Loading...</span>
+                        </div>
                         <button type="submit" id = "salvaButton" class="btn btn-primary mb-2 float-right">Salva</button>
                         <!-- Button trigger modal -->
                         <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modalDel">Elimina</button>
