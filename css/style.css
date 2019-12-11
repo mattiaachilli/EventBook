@@ -3,7 +3,6 @@ body {
     background: url(../img/bg2.jpg);
     background-attachment: fixed;
     background-size: cover;
-    background-repeat: no-repeat;
 }
 
 label {
