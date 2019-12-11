@@ -40,8 +40,8 @@
                 </div>
             </div>
             <div class="row mt-4">
-                <div class="col-9"></div>
-                <div class="col-3">
+                <div class="col-sm-6 col-md-7 col-xl-9"></div>
+                <div class="col-sm-6 col-md-5 col-xl-3">
                     <button type="submit" class="btn btn-primary page-btn float-right container-fluid">Inserisci</button>
                 </div>
             </div>
@@ -53,4 +53,10 @@
         </form>
     </div>
     <div class="col-md-2 col-sm-2"></div>
+</div>
+<div class="row mb-5">
+    <div class="col-sm-10 col-xs-12 text-right">
+        <button onclick="history.back();" type="submit" class="btn btn-primary"><i class="fas fa-arrow-left"></i> back</button> 
+    </div>
+    <div class="col-sm-2 col-xs-0"></div>
 </div>
