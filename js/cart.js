@@ -144,7 +144,7 @@ $(document).ready(function() {
                     {
                         $("#alert").fadeOut(500);
                         if(code == 1) {
-                            document.location.href = "orders.php";
+                            document.location.href = "../api/api-sendEmailOrder.php";
                         }
                     }, 6000);
             }
