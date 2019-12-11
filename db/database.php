@@ -55,17 +55,6 @@
             return $result->fetch_all(MYSQLI_ASSOC);
         }
 
-        public function changePassword($username, $password) {
-            if (strlen($password) < 32) {
-                $password = md5($password);
-            }
-            $stmt = $this->db->prepare("UPDATE utenti 
-                                        SET Password = ? 
-                                        WHERE Username = ?");
-            $stmt->bind_param("ss", $password, $username);
-            $stmt->execute();
-        }
-
         public function getCategories($param = "") {
             $query = "SELECT Nome FROM categorie";
             if($param !== ""){
