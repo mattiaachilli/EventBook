@@ -7,8 +7,6 @@
         if(isset($_COOKIE["cart"]) && !empty($_COOKIE["cart"])) {
             $return = $db->insertTicket($_SESSION["user"][0], json_decode($_COOKIE["cart"]));
             if($return == 1) {
-                unset($_COOKIE["cart"]);
-                setcookie("cart", null, -1, "/");
                 echo 1;
             } else {
                 $arr = array();
