@@ -37,7 +37,7 @@
     if ($n % 2 == 0) { echo '<div class="row text-light">'.'<div class="col-sm-0 col-md-1"></div>'; } 
 ?>
 <div class="col-sm-12 col-md-5">
-    <form action="../php/eventInfo.php" class="form-div rounded p-0" method="get">
+    <form action="../php/eventInfo.php" class="form-div rounded p-0" method="post">
         <div class="row">
             <div class="col-xl-4 col-xs-12 col-sm-12 p-3">
                 <img src="<?php echo $event["Immagine"]?>" class="w-100" alt=""/>

@@ -40,7 +40,8 @@
     <div class="col-lg-8 col-md-8 col-sm-12 col-12 rounded shopping-cart">
         <div class="panel panel-info text-light">
             <div class="panel-body" id="cart">
-                <?php if(isset($_COOKIE["cart"]) && !empty($_COOKIE["cart"])) :
+                <?php 
+                    if(isset($_COOKIE["cart"]) && !empty($_COOKIE["cart"])) :
                         $arr = json_decode($_COOKIE["cart"]);
                         for($i = 0; $i < count($arr); $i++) :    
                             if($i % 2 == 0 || $i == 0) {
