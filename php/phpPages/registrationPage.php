@@ -54,6 +54,9 @@
                     <div class="col-0 col-lg-4"></div>
                     <div class="col-12 col-lg-4">
                         <button type="submit" id = "regButton" class="btn btn-primary mb-2 float-right">Registrati</button>
+                        <div class="spinner-border text-white float-right mt-1 mr-3 d-none" role="status" id = "regSpinner">
+                            <span class="sr-only">Loading...</span>
+                        </div>
                     </div>
                 </div>
             </form>

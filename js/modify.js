@@ -1,16 +1,5 @@
-$(document).ready(function(){
-    $("#eliminaButton").click(function(){
-        $(this).hide();
-        $("#eliminaSpinner").removeClass("d-none");
-    });
-    $("form").submit(function(event) {
-        event.preventDefault();
-        $("#salvaButton").hide();
-        $(".spinner-border").removeClass("d-none");
-        $("small").each(function(){
-            $(this).hide();
-        });
-        const user = $("#user").val();
+function submitModifyData(){
+    const user = $("#user").val();
         const email = $("#email").val();
         let psw = $("#password").val();
         if(psw !== ""){
@@ -40,7 +29,26 @@ $(document).ready(function(){
                         $("#emailSmall").hide().html(code).fadeIn(1000);
                         break;
                 }
+                $("#salvaButton").show();
+                $(".spinner-border").addClass("d-none");
             }
         });
+}
+
+$(document).ready(function(){
+
+    $("#eliminaButton").click(function(){
+        $(this).hide();
+        $("#eliminaSpinner").removeClass("d-none");
+    });
+    
+    $("form").submit(function(event) {
+        event.preventDefault();
+        $("small").each(function(){
+            $(this).hide();
+        });
+        $("#salvaButton").hide();
+        $(".spinner-border").removeClass("d-none");
+        setTimeout(function(){submitModifyData()}, 1500);
     });
 });
