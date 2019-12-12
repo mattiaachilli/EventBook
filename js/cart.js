@@ -89,18 +89,21 @@ $(document).ready(function() {
     });
 
     $(".quantity").on("change", function() {
+        const pointer = $(this);
         const quantityVal = $(this).val();
         const row = $(this).parents(".row")[0];
         const id = $(row).children('input[type="hidden"]').val();
+        const max = $(this).attr('max');
         if(quantityVal > 0) {
             $.ajax({
                 url: '../api/api-addShoppingCart.php',
                 type: 'post',
                 data: {tickets: quantityVal, id: id, change: 1},
                 success: function(code) {
-                    console.log(code);
                     if(code == 1) {
                         insertTotal();
+                    } else {
+                        pointer.val(max);
                     }
                 }
             });

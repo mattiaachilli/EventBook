@@ -64,7 +64,7 @@
                             <strong class="price"> <?php echo $q[0]["Prezzo"].",00€"; ?> </strong>
                         </div>
                         <div class="col-4">
-                                <input id=<?php echo "quantity".$i; ?> type="number" class="form-control input-sm w-50 ml-5 quantity" value=<?php echo $arr[++$i]; ?> min="1">
+                                <input id=<?php echo "quantity".$i; ?> type="number" class="form-control input-sm w-50 ml-5 quantity" value=<?php echo $arr[++$i]; ?> min="1" max=<?php echo $q[0]["Biglietti_disponibili"]; ?>>
                                 <label for=<?php echo "quantity".($i - 1); ?> class="ml-5"> Quantità</label>
                         </div>
                         <div class="row">
