@@ -27,7 +27,7 @@
 </div>
 <div class="row mb-5">
     <div class="col-sm-10 col-xl-8 col-xs-12 text-right">
-        <button onclick="history.back();" type="submit" class="btn btn-primary"><i class="fas fa-arrow-left"></i> back</button> 
+        <button onclick="history.back();" type="submit" class="btn btn-primary"><em class="fas fa-arrow-left"></em> back</button> 
     </div>
     <div class="col-sm-2 col-xl-4 col-xs-0"></div>
 </div>
