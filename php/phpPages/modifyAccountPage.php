@@ -54,10 +54,8 @@
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-primary" data-dismiss="modal">No</button>
-                                        <button type="button" id = "eliminaButton" class="btn btn-danger">
-                                            <a href = "<?php echo ROOT."/php/remove.php"?>">Elimina</a>
-                                        </button>
-                                        <div class="spinner-border text-danger float-right mt-1 mr-3 d-none" role="status" id = "eliminaSpinner">
+                                        <a id = "eliminaButton" class = "btn btn-danger" href = "<?php echo ROOT."/php/remove.php"?>">Elimina</a>
+                                        <div class="spinner-border text-danger float-right ml-2 mt-1 mr-3 d-none" role="status" id = "eliminaSpinner">
                                             <span class="sr-only">Loading...</span>
                                         </div>
                                     </div>

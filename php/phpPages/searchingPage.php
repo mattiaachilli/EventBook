@@ -14,7 +14,7 @@
     $maxID = -1;
     $minID = -1;
     if ($numEvents == 0) {
-        echo '<div class="col-12 text-center text-light mb-5 font-weight-light font-italic">Non ci sono eventi in programma</div>';
+        echo '<div class="col-12 text-center text-light mb-5 font-weight-light font-italic">La ricerca non ha prodotto alcun risultato</div>';
     } else {
         $maxID = $parameters["events"][$numEvents - 1]["IDevento"];
         $minID = $parameters["events"][0]["IDevento"];
@@ -43,10 +43,10 @@
     if ($n % 2 == 0) { echo '<div class="row text-light">'.'<div class="col-sm-0 col-md-1"></div>'; } 
 ?>
 <div class="col-sm-12 col-md-5">
-    <form action="../php/eventInfo.php" class="form-div rounded p-0" method="get">
+    <form action="../php/eventInfo.php" class="form-div rounded p-0" method="post">
         <div class="row">
             <div class="col-xl-4 col-xs-12 col-sm-12 p-3">
-                <img src="<?php echo $event["Immagine"]?>" width="100%"/>
+                <img src="<?php echo $event["Immagine"]?>" class ="w-100" alt = ""/>
             </div>
             <div class="col-xl-8 col-xs-12 col-sm-12 mt-4">
                 <div class="row font-weight-bold">
@@ -101,7 +101,7 @@
         <form action="../php/search.php" method="get">
             <button name="minID" value="<?php echo $minID; ?>" 
                     type="submit" class="btn btn-primary mb-2 float-right"
-                    <?php if ($absoluteMinEventID == $minID || $numEvents == 0) echo "disabled"; ?>><i class="fas fa-arrow-left"></i> back
+                    <?php if ($absoluteMinEventID == $minID || $numEvents == 0) echo "disabled"; ?>><em class="fas fa-arrow-left"></em> back
             </button>
             <input type = "hidden" name = "search" value ="<?php echo $_GET["search"] ?>">
         </form>
@@ -110,7 +110,7 @@
         <form action="../php/search.php">
             <button name="maxID" value="<?php echo $maxID; ?>" 
                     type="submit" class="btn btn-primary mb-2" 
-                    <?php if ($absoluteMaxEventID == $maxID || $numEvents == 0) echo "disabled"; ?>>next <i class="fas fa-arrow-right"></i> 
+                    <?php if ($absoluteMaxEventID == $maxID || $numEvents == 0) echo "disabled"; ?>>next <em class="fas fa-arrow-right"></em> 
             </button>
             <input type = "hidden" name = "search" value ="<?php echo $_GET["search"] ?>">
         </form>
