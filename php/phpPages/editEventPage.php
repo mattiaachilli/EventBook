@@ -95,7 +95,10 @@
                 </div>
                 <div class="col-xs-0 col-sm-0 col-md-3 col-lg-5 col-xl-6"></div>
                 <div class="col-xs-12 col-sm-12 col-md-4 col-lg-3 col-xl-3">
-                    <button name="editEvent" type="submit" class="btn btn-primary page-btn float-right container-fluid">Salva</button>
+                    <button name="save" value="<?php echo $_POST["edit"];?>" 
+                            class="btn btn-primary page-btn float-right">
+                            Salva
+                    </button>
                 </div>
             </div>
             <div class="row text-center">

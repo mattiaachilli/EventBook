@@ -6,7 +6,7 @@ $(document).ready(function() {
     initializeLabels();
     capacity = $("#maxTickets").html().replace(/[^0-9]/g, ''); 
 
-    $("button[name='editEvent']").click(function(event) {
+    $("button[name='save']").click(function(event) {
         event.preventDefault();
         
         const oldEventID = $("button[name='save']").val();
@@ -18,6 +18,7 @@ $(document).ready(function() {
         const category = $("#category").val();
         const location = $("#location").val();
         const path = $("#image").val().replace(/^.*[\\\/]/, '');
+        alert(oldEventID);
 
         if (checkFields(eventName, desc, price, tickets, date, category, location, path) && imageIsCorrect) {
             const nomeLocation = location.split(" - ")[0];
@@ -134,9 +135,9 @@ function checkFields(name, desc, price, tickets, date, category, location, path)
         $("#wrongName").text("Inserisci un nome (max. 20)");
         $("#wrongName").fadeIn();
     }
-    if (desc == "" || desc.length > 500) {
+    if (desc == "" || desc.length > 1000) {
         check = false;
-        $("#wrongDesc").text("Inserisci una breve descrizione (max. 500).");
+        $("#wrongDesc").text("Inserisci una breve descrizione (max. 1000).");
         $("#wrongDesc").fadeIn();
     }
     if (date == "") {
