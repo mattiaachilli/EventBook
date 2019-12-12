@@ -9,6 +9,13 @@
         && isset($_POST["città"]) && isset($_POST["path"])) {
             
             $pathImage = "../img/events/".$_POST["path"];
+            if (file_exists($pathImage)) {
+                $i = 1;
+                while (file_exists($pathImage)) {
+                    $pathImage = '../img/events/'.$i.' - '.$_POST["path"];
+                    $i++;
+                }
+            }
             if (count($db->checkExistingEvent($_POST["date"], $_POST["nazione"], $_POST["città"], $_POST["location"])) == 0) {
                 $db->insertNewEvent($_POST["eventName"], $_POST["date"], $_POST["desc"], $pathImage,
                                     $_POST["price"], $_POST["tickets"], $_POST["category"], $_POST["location"],

@@ -41,7 +41,6 @@ $(document).ready(function() {
                 }
             });
         }
-        checkImage();
     });
 
     $("#location").on("change", function(event) {

@@ -8,8 +8,6 @@
             $msg = "L'immagine deve essere quadrata.";
         } else if (($type!=1) && ($type!=2) && ($type!=3)) {
             $msg = "Formati supportati: .jpg, .png, .gif.";
-        } else if (file_exists("../img/events/".$_FILES['image']['name'])){
-            $msg = "L'immagine esiste già con questo nome, rinominarla.";
         }
     }
     echo $msg;
