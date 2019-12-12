@@ -25,7 +25,7 @@
                 <div class="row">
                     <div class = "col-0 col-md-2"></div>
                     <div class="col-12 col-md-8">
-                        <label for="precPassword">Inserisci nuova password</label>
+                        <label for="password">Inserisci nuova password</label>
                         <input type="password" class="form-control" name = "password" id="password">
                     </div>
                     <div class = "col-0 col-md-2"></div>
@@ -40,11 +40,11 @@
                         <!-- Button trigger modal -->
                         <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modalDel">Elimina</button>
                         <!-- Modal -->
-                        <div class="modal fade" id="modalDel" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal fade" id="modalDel" tabindex="-1" role="dialog" aria-labelledby="modalDelhead" aria-hidden="true">
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLabel">Elimina account</h5>
+                                        <h5 class="modal-title" id="modalDelhead">Elimina account</h5>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                         </button>
@@ -74,7 +74,7 @@
 </div>
 <div class="row mb-5">
     <div class="col-sm-10 col-xs-12 text-right">
-        <button onclick="history.back();" type="submit" class="btn btn-primary"><i class="fas fa-arrow-left"></i> back</button> 
+        <button onclick="history.back();" type="submit" class="btn btn-primary"><em class="fas fa-arrow-left"></em> back</button> 
     </div>
     <div class="col-sm-2 col-xs-0"></div>
 </div>

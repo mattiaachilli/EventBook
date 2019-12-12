@@ -35,7 +35,6 @@
 </head>
 
 <body>
-    <?php require_once("cookieBar.php");?>
     <div class="container-fluid p-0">
         <header>
             <div class = "row">
@@ -82,6 +81,7 @@
                 require($parameters["content"]);
             }
         ?>
+        <?php require_once("cookieBar.php");?>
     </main>
     <hr/>
     <footer class="page-footer font-small blue p-4">

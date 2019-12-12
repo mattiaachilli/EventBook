@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col-2"></div>
     <div class="col-12 col-lg-8 p-0">
-        <h1 class="text-light display-4">Lista eventi da approvare</h1>
+        <h2 class="text-light display-4">Lista eventi da approvare</h2>
         <div class = "form-div rounded">
         <?php if(count($parameters["events"]) >= 1): ?>
             <table class="table text-white border-bottom" id = "table">
@@ -18,7 +18,9 @@
                             <td headers = "organizzatore" class = "text-center"><?php echo $event["Username"]?></td>
                             <td headers = "evento" class = "text-center">
                                 <form action = "../php/eventInfo.php" method = "post">
-                                    <input type="submit" class="btn-title bg-transparent text-white border-0" value = "<?php echo $event["Nome_evento"]?>">
+                                    <button type="submit" class="btn-title bg-transparent text-white border-0">
+                                        <?php echo $event["Nome_evento"]?>
+                                    </button>
                                     <input type = "hidden" name = "ID" value = "<?php echo $event["IDevento"]?>">
                                 </form>
                             </td>
