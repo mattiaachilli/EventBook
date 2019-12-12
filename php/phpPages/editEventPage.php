@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col-md-2 col-sm-2"></div>
     <div class="col-md-8 col-sm-8 col-xs-12">
-        <h2 class="text-light display-4">Modifica evento</h2>
+        <h1 class="text-light display-4">Modifica evento</h1>
         <div class="form-div rounded">    
             <div class="row">
                 <div class="col-md-6 col-sm-12 col-xs-12 mt-2">
@@ -10,7 +10,7 @@
                     <small id="wrongName" class="text-white"></small>
                 </div>
                 <div class="col-md-6 col-sm-12 col-xs-12 mt-2">
-                    <label for="example-date-input">Data</label>
+                    <label for="date">Data</label>
                     <input class="form-control" type="date" id="date" value="<?php echo $parameters["event"][0]["Data"];?>">
                     <small id="wrongDate" class="text-white"></small>
                 </div>
@@ -22,9 +22,9 @@
                     <small id="wrongDesc" class="text-white"></small>
                 </div>
                 <div class="col-md-6 col-sm-12 col-xs-12 mt-2">
-                    <label for="file">Immagine evento</label>
+                    <label for="image">Immagine evento</label>
                     <div class="input-group">
-                        <input class="custom-file-input" name="image" type="file" id="image" value="<?php echo $parameters["event"][0]["Immagine"];?>">
+                        <input class="custom-file-input" name="image" type="file" id="image">
                         <label class="custom-file-label text-truncate" id="pathImg"><?php echo $parameters["event"][0]["Immagine"];?></label>
                         <small id="wrongImg" class = "text-white"></small>
                     </div>
@@ -32,7 +32,7 @@
             </div>
             <div class="row">
                 <div class="col-md-6 col-sm-12 col-xs-12 mt-2">
-                    <label for="name">Prezzo biglietti</label>
+                    <label for="price">Prezzo biglietti</label>
                     <div class="input-group">
                         <input type="text" class="form-control" id="price" value="<?php echo $parameters["event"][0]["Prezzo"];?>">
                         <div class="input-group-append">
@@ -60,7 +60,7 @@
                             foreach($categories as $category) {
                                 $currentCategory = $category["Nome"];
                                 if ($currentCategory != $categorySelected) {
-                                    echo '<option value="'.$currentCategory.'">'.$currentCategory.'</option>';
+                                    echo '<option>'.$currentCategory.'</option>';
                                 }
                             }
                         ?>
@@ -79,7 +79,7 @@
                             foreach($location_s as $location) {
                                 $currentLocation = $location["Nome"]." - ".$location["Città"]." (".$location["Nazione"].")";
                                 if ($locationSelected != $currentLocation) {
-                                    echo '<option id="'.$location["Nome"].'-'.$location["Città"].'-'.$location["Nazione"].'">'.$currentLocation.'</option>';
+                                    echo '<option>'.$currentLocation.'</option>';
                                 }
                             }
                         ?>
