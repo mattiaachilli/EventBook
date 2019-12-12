@@ -17,7 +17,7 @@ $(document).ready(function(){
                     } else if (code == 1) { /* Normal user */
                         document.location.href = "index.php";
                     } else if(code == 2) { /* Oganizer */
-                        document.location.href = "newEvent.php";
+                        document.location.href = "publishedEvents.php";
                     } else if (code == 3) { /* Administrator */
                         document.location.href = "adminApprovazione.php";
                     }
