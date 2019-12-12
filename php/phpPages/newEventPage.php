@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col-md-2 col-sm-2"></div>
     <div class="col-md-8 col-sm-8 col-xs-12">
-        <h2 class="text-light display-4">Nuovo evento</h2>
+        <h1 class="text-light display-4">Nuovo evento</h1>
         <div class="form-div rounded">    
             <div class="row">
                 <div class="col-md-6 col-sm-12 col-xs-12 mt-2">
@@ -10,36 +10,36 @@
                     <small id="wrongName" class="text-white"></small>
                 </div>
                 <div class="col-md-6 col-sm-12 col-xs-12 mt-2">
-                    <label for="example-date-input">Data</label>
+                    <label for="date">Data</label>
                     <input class="form-control" type="date" id="date">
-                    <small id="wrongDate" class="text-white"></small>
+                    <small id="wrongDate" class="text-light"></small>
                 </div>
             </div>        
             <div class="row">
                 <div class="col-md-6 col-sm-12 col-xs-12 mt-2">
                     <label for="description">Breve descrizione</label>
                     <textarea id="description" class="md-textarea form-control" rows="1"></textarea>
-                    <small id="wrongDesc" class="text-white"></small>
+                    <small id="wrongDesc" class="text-light"></small>
                 </div>
                 <div class="col-md-6 col-sm-12 col-xs-12 mt-2">
-                    <label for="file">Immagine evento</label>
+                    <label for="image">Immagine evento</label>
                     <div class="input-group">
                         <input class="custom-file-input" name="image" type="file" id="image">
                         <label class="custom-file-label text-truncate" id="pathImg"></label>
-                        <small id="wrongImg" class = "text-white"></small>
+                        <small id="wrongImg" class="text-light"></small>
                     </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-6 col-sm-12 col-xs-12 mt-2">
-                    <label for="name">Prezzo biglietti</label>
+                    <label for="price">Prezzo biglietti</label>
                     <div class="input-group">
                         <input type="text" class="form-control" id="price">
                         <div class="input-group-append">
                             <div class="input-group-text">€</div>
                         </div>
                     </div>    
-                    <small id="wrongPrice" class="text-white"></small>   
+                    <small id="wrongPrice" class="text-light"></small>   
                 </div>
                 <div class="col-md-6 col-sm-12 col-xs-12 mt-2">
                     <label id="maxTickets" for="tickets">Biglietti disponibili (max. 0)</label>
@@ -51,7 +51,7 @@
                 <div class="col-lg-6 col-sm-12 col-xs-12 mt-2">
                     <label for="category">Categoria</label>
                     <select class="custom-select" id="category">
-                        <option selected></option>
+                        <option>...</option>
                         <?php
                             $categories = $db->getCategories();
                             foreach($categories as $category) {
@@ -59,21 +59,21 @@
                             }
                         ?>
                     </select>
-                    <small id="wrongCategory" class="text-white"></small>
+                    <small id="wrongCategory" class="text-light"></small>
                 </div>
                 <div class="col-lg-6 col-sm-12 col-xs-12 mt-2">
                     <label for="location">Location</label>
                     <select class="custom-select" id="location">
-                        <option id="selected" value=""></option>
+                        <option>...</option>
                         <?php
                             $location_s = $db->getLocations();
                             foreach($location_s as $location) {
-                                echo '<option id="'.$location["Nome"].'-'.$location["Città"].'-'.$location["Nazione"].
-                                                    '">'.$location["Nome"]." - ".$location["Città"]." (".$location["Nazione"].")</option>";
+                                echo '<option>'.$location["Nome"]." - ".$location["Città"]." (".$location["Nazione"].")</option>";
+                                                    
                             }
                         ?>
                     </select>
-                    <small id="wrongLocation" class = "text-white"></small>
+                    <small id="wrongLocation" class = "text-light"></small>
                 </div>
             </div>
             <div class="row mt-4">
@@ -89,7 +89,7 @@
             </div>
             <div class="row text-center">
                 <div class="col-12">
-                    <label id="result" class = "text-white"></label>
+                    <label id="result" class = "text-light"></label>
                 </div>
             </div>
         </div>
@@ -98,7 +98,7 @@
 </div>
 <div class="row mb-5">
     <div class="col-sm-10 col-xs-12 text-right">
-        <button onclick="history.back();" type="submit" class="btn btn-primary"><i class="fas fa-arrow-left"></i> back</button> 
+        <button onclick="history.back();" type="submit" class="btn btn-primary"><em class="fas fa-arrow-left"></em> back</button> 
     </div>
     <div class="col-sm-2 col-xs-0"></div>
 </div>

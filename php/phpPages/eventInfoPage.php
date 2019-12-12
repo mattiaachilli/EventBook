@@ -12,7 +12,7 @@
         <div class="form-div rounded p-2">
             <div class="row">
                 <div class="col-xl-4 col-md-8 col-sm-12 col-xs-12">
-                    <img src="<?php echo $parameters["event"][0]["Immagine"]; ?>" width="100%"/>
+                    <img alt="" class="w-100" src="<?php echo $parameters["event"][0]["Immagine"]; ?>"/>
                 </div>
                 <div class="col-xl-8 col-xs-12 col-sm-12">
                     <div class="row mt-4">

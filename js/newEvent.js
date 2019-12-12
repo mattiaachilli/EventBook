@@ -150,12 +150,12 @@ function checkFields(name, desc, price, tickets, date, category, location, path)
         $("#wrongTickets").text("Inserisci il numero di biglietti disponibili. (max. "+ capacity +").");
         $("#wrongTickets").fadeIn();
     }
-    if (category == "") {
+    if (category == "...") {
         check = false;
         $("#wrongCategory").text("Scegli una categoria.");
         $("#wrongCategory").fadeIn();
     }
-    if (location == "") {
+    if (location == "...") {
         check = false;
         $("#wrongLocation").text("Scegli una location.");
         $("#wrongLocation").fadeIn();
