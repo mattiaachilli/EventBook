@@ -6,7 +6,6 @@ $(document).ready(function() {
 
         const e_mail = $("#mail").val();
         $("#info-alert").hide();
-        alert(e_mail);
 
         $.ajax({
             url: '../api/api-sendRecoveryPassword.php',
