@@ -35,7 +35,6 @@
 </head>
 
 <body>
-    <?php require_once("cookieBar.php");?>
     <div class="container-fluid p-0">
         <header>
             <div class = "row">
@@ -49,7 +48,8 @@
                     <div class="collapse navbar-collapse col-12 col-lg-8 p-0 container-fluid" id="navbarColor03">
                         <div class="mt-1 p-1 bg-light container-fluid rounded rounded-pill shadow-sm">
                             <form action = "search.php" method = "get" class="input-group">
-                                <input type="search" name = "search" placeholder="Cerca evento per titolo, descrizione, location o città.." aria-describedby="button-addon1" class="form-control rounded-pill border-0 bg-light">
+                                <label for = "search-bar" class = "sr-only">Cerca evento</label>
+                                <input type="search" id = "search-bar" name = "search" placeholder="Cerca evento per titolo, descrizione, location o città.." aria-describedby="button-addon1" class="form-control rounded-pill border-0 bg-light">
                                 <div class="input-group-append">
                                     <button id="button-addon1" type="submit" class="btn btn-link text-primary"><em class="fa fa-search"></em></button>
                                 </div>
@@ -81,6 +81,7 @@
                 require($parameters["content"]);
             }
         ?>
+        <?php require_once("cookieBar.php");?>
     </main>
     <hr/>
     <footer class="page-footer font-small blue p-4">
