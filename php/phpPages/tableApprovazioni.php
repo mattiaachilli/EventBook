@@ -7,8 +7,8 @@
             <table class="table text-white border-bottom" id = "table">
                 <thead>
                     <tr>
-                        <th class = "border-top-0 text-center" id = "organizzatore" scope="col">Organizzatore</th>
-                        <th class = "border-top-0 text-center" id = "evento" scope="col">Evento</th>
+                        <th class = "border-0 text-center" id = "organizzatore" scope="col">Organizzatore</th>
+                        <th class = "border-0 text-center" id = "evento" scope="col">Evento</th>
                         <th class = "border-0 text-center" id = "buttons" scope = "col">Approvare evento?</th>
                     </tr>
                 </thead>
