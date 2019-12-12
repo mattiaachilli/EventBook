@@ -16,8 +16,9 @@
                         <p>';
                         for($i = 0 ; $i < count($arr); $i += 2) {
                             $data = $db->getEvent($arr[$i]);
-                            $quantità = $i + 1;
+                            $quantità = $arr[$i + 1];
                             $body .= "Evento: ". $data[0]["Nome_evento"].", Location: ".$data[0]["Nome_location"].", Data: ".$data[0]["Data"]. ", quantità: ".$quantità.' <br>';
+                            $body .= "Totale: ". $data[0]["Prezzo"] * $quantità. ",00€ <br><br>";
                         }
                         $body .='
                         </p>
