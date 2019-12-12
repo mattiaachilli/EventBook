@@ -142,6 +142,10 @@ a:hover{
 
 @media (max-width: 576px){
     .table-div{
-        padding: 0 2% 10% 2%;
+        padding: 0 0 10% 0;
+    }
+
+    .button-form {
+        padding: 0;
     }
 }
