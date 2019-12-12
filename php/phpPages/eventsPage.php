@@ -28,9 +28,9 @@
 <div class="row">
     <div class="col-md-1 col-sm-0"></div>
     <div class="col-md-10 col-sm-12">
-        <h2 class="text-light display-4 mt-5">
+        <h1 class="text-light display-4 mt-5">
             <?php if ($numEvents > 0) echo 'Eventi in programma'; ?>
-        </h2>
+        </h1>
     </div>
     <div class="col-md-1 col-xs-0"></div>
 </div>
@@ -98,7 +98,7 @@
         <form action="../php/events.php">
             <button name="minID" value="<?php echo $minID; ?>" 
                     type="submit" class="btn btn-primary mb-2 float-right"
-                    <?php if ($absoluteMinEventID == $minID  || $numEvents == 0) echo "disabled"; ?>><i class="fas fa-arrow-left"></i> back
+                    <?php if ($absoluteMinEventID == $minID  || $numEvents == 0) echo "disabled"; ?>><em class="fas fa-arrow-left"></em> back
             </button>
         </form>
     </div>
@@ -106,7 +106,7 @@
         <form action="../php/events.php">
             <button name="maxID" value="<?php echo $maxID; ?>" 
                     type="submit" class="btn btn-primary mb-2" 
-                    <?php if ($absoluteMaxEventID == $maxID || $numEvents == 0) echo "disabled"; ?>>next <i class="fas fa-arrow-right"></i> 
+                    <?php if ($absoluteMaxEventID == $maxID || $numEvents == 0) echo "disabled"; ?>>next <em class="fas fa-arrow-right"></em> 
             </button>
         </form>
     </div>
