@@ -1,5 +1,5 @@
 $(document).ready(function(){
-    $("#button-form button").click(function(event){
+    $(".button-form button").click(function(event){
         event.preventDefault();
         const user = $(this).closest("td").siblings("td[headers = 'organizzatore']").text();
         const nome_evento = $(this).closest("td").siblings("td[headers = 'evento']").text();
@@ -14,7 +14,7 @@ $(document).ready(function(){
             }
         });
         $(this).addClass("d-none");
-        $(this).siblings("i").removeClass("d-none");
+        $(this).siblings("em").removeClass("d-none");
         $(this).parent().siblings().first().children().first().prop("disabled",true);
     });
 });

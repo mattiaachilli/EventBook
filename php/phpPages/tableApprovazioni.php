@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col-2"></div>
     <div class="col-12 col-lg-8 p-0">
-        <h2 class="text-light display-4">Lista eventi da approvare</h2>
+        <h1 class="text-light display-4">Lista eventi da approvare</h1>
         <div class = "form-div rounded">
         <?php if(count($parameters["events"]) >= 1): ?>
             <table class="table text-white border-bottom" id = "table">
@@ -17,20 +17,20 @@
                         <tr>
                             <td headers = "organizzatore" class = "text-center"><?php echo $event["Username"]?></td>
                             <td headers = "evento" class = "text-center">
-                                <form id="info" action = "../php/eventInfo.php" method = "post">
+                                <form action = "../php/eventInfo.php" method = "post">
                                     <input type="submit" class="btn-title bg-transparent text-white border-0" value = "<?php echo $event["Nome_evento"]?>">
                                     <input type = "hidden" name = "ID" value = "<?php echo $event["IDevento"]?>">
                                 </form>
                             </td>
                             <td headers = "buttons" class = "text-center row m-0">
-                                <form class = "text-center row container-fluid mt-0" action = "../api/api-approvation.php" id = "button-form" type = "post">
+                                <form class = "button-form text-center row container-fluid mt-0" action = "../api/api-approvation.php" type = "post">
                                     <div class = "col-6">
                                         <button type="submit" class="yButton btn btn-primary container-fluid">Sì</i></button>
-                                        <i class = "fas fa-check fa-2x d-none"></i>
+                                        <em class = "fas fa-check fa-2x d-none"></em>
                                     </div>
                                     <div class = "col-6">
                                         <button type="submit" class="fButton btn btn-primary container-fluid">No</i></button>
-                                        <i class = "fas fa-times fa-2x d-none"></i>
+                                        <em class = "fas fa-times fa-2x d-none"></em>
                                     </div>
                                     <input type = "hidden" value = "<?php echo $event["IDevento"]?>">
                                 </form>
@@ -48,7 +48,7 @@
 </div>
 <div class="row mb-5">
     <div class="col-sm-10 col-xs-12 text-right">
-        <button onclick="history.back();" type="submit" class="btn btn-primary"><i class="fas fa-arrow-left"></i> back</button> 
+        <button onclick="history.back();" type="submit" class="btn btn-primary"><em class="fas fa-arrow-left"></em> back</button> 
     </div>
     <div class="col-sm-2 col-xs-0"></div>
 </div>
