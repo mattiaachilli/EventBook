@@ -6,9 +6,9 @@
 <div class="row">
     <div class="col-md-1 col-sm-0"></div>
     <div class="col-md-10 col-sm-12">
-        <h2 class="text-light display-4 mt-5">
+        <h1 class="text-light display-4 mt-5">
             <?php if ($numEvents > 0) echo 'Eventi che hai pubblicato'; ?>
-        </h2>
+        </h1>
         <?php if ($numEvents == 0) echo '<div class="text-center font-weight-light font-italic text-light">Non hai ancora pubblicato alcun evento.</div>' ?>
     </div>
     <div class="col-md-1 col-xs-0"></div>
@@ -21,7 +21,7 @@
     <div class="form-div rounded p-0">
         <div class="row">
             <div class="col-xl-3 col-lg-12 col-xs-12 col-sm-12 p-3">
-                <img src="<?php echo $event["Immagine"]?>" width="100%"/>
+                <img alt="" class="w-100" src="<?php echo $event["Immagine"]?>"/>
             </div>
             <div class="col-xl-5 col-lg-7 col-xs-12 col-md-6 col-sm-12 mt-3">
                 <div class="row font-weight-bold">
@@ -53,14 +53,14 @@
             </div>
             <div class="col-xl-4 col-lg-5 col-sm-12 col-xs-12 col-md-6">
                 <div class="col-12 mt-4">
-                    <form action="../php/eventInfo.php" id="info" method="post">
+                    <form action="../php/eventInfo.php" method="post">
                         <button name="ID" value="<?php echo $event["IDevento"]; ?>" 
                                 type="submit" class="btn btn-primary mb-2 container-fluid">Info
                         </button>
                     </form>
                 </div>
                 <div class="col-12 mt-2">
-                    <form action="../php/editEvent.php" id="edit" method="post">
+                    <form action="../php/editEvent.php" method="post">
                         <button name="edit" value="<?php echo $event["IDevento"]; ?>" 
                                 type="submit" class="btn btn-primary mb-2 container-fluid">Modifica
                         </button>
@@ -90,7 +90,7 @@
 
 <div class="row mb-5">
     <div class="col-md-11 col-sm-12 col-xs-12 text-right">
-        <button onclick="history.back();" type="submit" class="btn btn-primary"><i class="fas fa-arrow-left"></i> back</button> 
+        <button onclick="history.back();" type="submit" class="btn btn-primary"><em class="fas fa-arrow-left"></em> back</button> 
     </div>
     <div class="col-md-1 col-sm-0 col-xs-0"></div>
 </div>

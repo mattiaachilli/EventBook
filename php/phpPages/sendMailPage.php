@@ -7,7 +7,7 @@
         <div class="form-div rounded" id="form-div">
             <form action="../api/api-sendMail.php" method= "post" id="form-login">
                 <div class="col-12">
-                    <label for="email">Inserisci la tua mail</label>
+                    <label for="mail">Inserisci la tua mail</label>
                     <input type="email" class="form-control" name="mail" id="mail">
                 </div>
                 <div class="row text-light">

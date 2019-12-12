@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col-md-2 col-sm-2"></div>
     <div class="col-md-8 col-sm-8 col-xs-12">
-        <h2 class="text-light display-4">Nuova location</h2>
+        <h1 class="text-light display-4">Nuova location</h1>
         <form class="form-div rounded p-8">    
             <div class="row">
                 <div class="col-md-6 col-sm-12 col-xs-12 mt-2">
@@ -56,7 +56,7 @@
 </div>
 <div class="row mb-5">
     <div class="col-sm-10 col-xs-12 text-right">
-        <button onclick="history.back();" type="submit" class="btn btn-primary"><i class="fas fa-arrow-left"></i> back</button> 
+        <button onclick="history.back();" type="submit" class="btn btn-primary"><em class="fas fa-arrow-left"></em> back</button> 
     </div>
     <div class="col-sm-2 col-xs-0"></div>
 </div>
