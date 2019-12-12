@@ -1,23 +1,16 @@
-<div class="row">
-    <div class="col-lg-2 col-md-2"></div>
-    <div class="panel-heading col-lg-8 col-md-8 col-sm-12 col-12">
-        <div class="panel-title">
-            <div class="row">
-                <div class="col-12">
-                    <h1 class="text-light display-4" id="title-cart">Carrello</h1>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-12">
-                    <button type="button" class="btn btn-primary btn-sm btn-block mt-4" id="continue">
-                        <span class="glyphicon glyphicon-share-alt w-50"></span> Continua ad acquistare
-                    </button>
-                </div>
-            </div>
-        </div>
+<div class="row mt-5">
+    <div class="col-0"></div>
+    <div class="col-7">
+        <h1 class="text-light display-4" id="title-cart">Carrello</h1>
     </div>
-    <div class="col-lg-2 col-md-2"></div>
+    <div class="col-3">
+        <button type="button" class="btn btn-primary btn-sm btn-block mt-4" id="continue">
+            <span class="glyphicon glyphicon-share-alt w-50"></span> Continua ad acquistare
+        </button>
+    </div>
+    <div class="col-lg-2 col-0"></div>
 </div>
+
 <div id="alert">
     <div class="row">
         <div class="col-lg-2 col-md-2"></div>
