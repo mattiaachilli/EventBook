@@ -130,3 +130,7 @@ a:hover{
     display: none;
 }
 
+.btn-title:hover{
+    text-decoration: underline;
+}
+

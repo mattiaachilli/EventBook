@@ -17,10 +17,9 @@
                         <tr>
                             <td headers = "organizzatore" class = "text-center"><?php echo $event["Username"]?></td>
                             <td headers = "evento" class = "text-center">
-                                <form id="info">
-                                    <a href = "../php/eventInfo.php?ID=<?php echo $event["IDevento"];?>">
-                                        <?php echo $event["Nome_evento"]?>
-                                    </a>
+                                <form id="info" action = "../php/eventInfo.php" method = "post">
+                                    <input type="submit" class="btn-title bg-transparent text-white border-0" value = "<?php echo $event["Nome_evento"]?>">
+                                    <input type = "hidden" name = "ID" value = "<?php echo $event["IDevento"]?>">
                                 </form>
                             </td>
                             <td headers = "buttons" class = "text-center row m-0">
