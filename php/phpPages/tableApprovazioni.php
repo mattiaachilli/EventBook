@@ -25,13 +25,13 @@
                                 </form>
                             </td>
                             <td headers = "buttons" class = "text-center row m-0">
-                                <form class = "button-form text-center row container-fluid mt-0" action = "../api/api-approvation.php" type = "post">
+                                <form class = "button-form text-center row container-fluid mt-0" action = "../api/api-approvation.php" method = "post">
                                     <div class = "col-6">
-                                        <button type="submit" class="yButton btn btn-primary container-fluid">Sì</i></button>
+                                        <button type="submit" class="yButton btn btn-primary container-fluid">Sì</button>
                                         <em class = "fas fa-check fa-2x d-none"></em>
                                     </div>
                                     <div class = "col-6">
-                                        <button type="submit" class="fButton btn btn-primary container-fluid">No</i></button>
+                                        <button type="submit" class="fButton btn btn-primary container-fluid">No</button>
                                         <em class = "fas fa-times fa-2x d-none"></em>
                                     </div>
                                     <input type = "hidden" value = "<?php echo $event["IDevento"]?>">
