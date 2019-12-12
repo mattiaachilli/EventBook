@@ -2,7 +2,7 @@
     <div class="col-2"></div>
     <div class="col-12 col-lg-8 p-0">
         <h2 class="text-light display-4">Lista eventi da approvare</h2>
-        <div class = "form-div rounded">
+        <div class = "table-div form-div rounded">
         <?php if(count($parameters["events"]) >= 1): ?>
             <table class="table text-white border-bottom" id = "table">
                 <thead>
