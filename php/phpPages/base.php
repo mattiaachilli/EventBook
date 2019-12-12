@@ -90,7 +90,7 @@
                     <h5 class="text-uppercase">Chi siamo</h5>
                     <p>
                         Achilli Mattia <br/>
-                        D'errico Christian <br/>
+                        D'Errico Christian <br/>
                         Innocenti Matteo <br/>
                     </p>
                 </div>
