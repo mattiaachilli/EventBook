@@ -18,7 +18,6 @@ $(document).ready(function() {
         const category = $("#category").val();
         const location = $("#location").val();
         const path = $("#image").val().replace(/^.*[\\\/]/, '');
-        alert(oldEventID);
 
         if (checkFields(eventName, desc, price, tickets, date, category, location, path) && imageIsCorrect) {
             const nomeLocation = location.split(" - ")[0];
