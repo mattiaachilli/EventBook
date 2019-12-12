@@ -2,7 +2,7 @@
     <div class="col-sm-2 col-xs-0"></div>
     <div class="col-sm-8 col-xs-12">
         <input type="hidden" id="event_id" value=<?php if(isset($_POST["ID"])) { echo $_POST["ID"]; } ?>> 
-        <h2 class="text-light display-4"><?php echo $parameters["event"][0]["Nome_evento"]; ?></h2>
+        <h1 class="text-light display-4"><?php echo $parameters["event"][0]["Nome_evento"]; ?></h1>
     </div>
     <div class="col-sm-2 col-xs-0"></div>
 </div>
@@ -39,12 +39,13 @@
                         </div>
                     </div>
                     <div class="row mt-5">
-                        <div class="col-xl-4 col-12 mt-3">
+                        <div class="col-xl-4 col-12">
                             Prezzo: <?php echo $parameters["event"][0]["Prezzo"];?>€
                         </div>
                         <?php if(!isUserLoggedIn() || typeOfUserLogged() == USER): ?>
                             <?php if($availableTickets[0]["Biglietti_disponibili"] > 0) : ?>
                                 <div class="col-xl-3 col-md-6 col-sm-6 col-xs-5 w-75 mt-3">
+                                <label for="ticket">N. biglietti</label>
                                     <select class="custom-select" id="ticket">
                                         <?php
                                             $ticket = 20;
@@ -57,11 +58,11 @@
                                         ?>
                                     </select>
                                 </div>
-                                <div class="col-xl-5 col-md-6 col-sm-12 col-xs-12 mt-3">
+                                <div class="col-xl-5 col-md-6 col-sm-12 col-xs-12 mt-5">
                                     <button id="addCart" type="submit" class="btn btn-primary container-fluid">
                                         Aggiungi al carrello
                                     </button>
-                                    <i class = "fas fa-check fa-2x d-none" id="checkOk"></i>
+                                    <em class = "fas fa-check fa-2x d-none" id="checkOk"></em>
                                 </div>
                             <?php else: ?> 
                                 <div class="col-xl-3 col-sm-5 col-xs-5 mt-2">
@@ -78,7 +79,7 @@
 </div>
 <div class="row mb-5 mt-4">
     <div class="col-sm-10 col-xs-12 text-right">
-        <button onclick="history.back();" type="submit" class="btn btn-primary"><i class="fas fa-arrow-left"></i> back</button> 
+        <button onclick="history.back();" type="submit" class="btn btn-primary"><em class="fas fa-arrow-left"></em> back</button> 
     </div>
     <div class="col-sm-2 col-xs-0"></div>
 </div>
