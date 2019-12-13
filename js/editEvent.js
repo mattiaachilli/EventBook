@@ -1,6 +1,6 @@
+const timeToWait = 1000;
 let capacity = 0; 
 let imageIsCorrect = true;
-const timeToWait = 1000;
 
 $(document).ready(function() {
     initializeLabels();
