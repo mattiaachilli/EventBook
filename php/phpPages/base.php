@@ -88,7 +88,7 @@
         <div class="container-fluid text-center text-light">
             <div class="row ">
                 <div class="col-md-4 col-sm-4 col-12">
-                    <h5>Chi siamo</h5>
+                    <h3>Chi siamo</h3>
                     <p>
                         Achilli Mattia <br/>
                         D'Errico Christian <br/>
@@ -96,7 +96,7 @@
                     </p>
                 </div>
                 <div class="col-md-4 col-sm-4 col-12 text-truncate">
-                    <h5>Contatti</h5>
+                    <h3>Contatti</h3>
                     <p> mattia.achilli@studio.unibo.it <br/>
                         christian.derrico@studio.unibo.it <br/>
                         matteo.innocenti2@studio.unibo.it <br/>
@@ -104,7 +104,7 @@
 
                 </div>
                 <div class="col-md-4 col-sm-4 col-12">
-                    <h5>Info utili</h5>
+                    <h3>Info utili</h3>
                     <p> Se sei su PC prova <br/>
                         il nostro sito anche da smartphone,<br/> 
                         non te ne pentirai! </p>
