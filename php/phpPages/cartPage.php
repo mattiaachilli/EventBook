@@ -53,12 +53,12 @@
                             <img class="img-responsive w-100 border border-light rounded" src=<?php echo $q[0]["Immagine"]; ?> alt="">
                         </div>
                         <div class="col-3 text-truncate">
-                            <h5 class="product-name">
+                            <h3 class="product-name h5">
                                 <strong><?php echo $q[0]["Nome_evento"]; ?></strong>
-                            </h5>
-                            <h6>
+                            </h3>
+                            <h3 class = "h6">
                                 <?php echo $q[0]["Descrizione"]; ?>
-                            </h6>
+                            </h3>
                         </div>
                         <div class="col-1">
                             <strong class="price"> <?php echo $q[0]["Prezzo"].",00€"; ?> </strong>
@@ -93,9 +93,9 @@
             <div class="row">
                 <div class ="col-sm-10 col-8"></div>
                 <div class="col-sm-2 col-2">
-                    <h4>Totale 
+                    <h3 class = "h4">Totale 
                         <strong id="total"></strong>
-                    </h4>
+                    </h3>
                 </div>
                 <div class="col-2"></div>
             </div>
