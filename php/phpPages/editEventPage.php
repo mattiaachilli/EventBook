@@ -1,7 +1,8 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
 <div class="row">
     <div class="col-md-2 col-sm-2"></div>
     <div class="col-md-8 col-sm-8 col-xs-12">
-        <h1 class="text-light display-4">Modifica evento</h1>
+        <h2 class="text-light display-4">Modifica evento</h2>
         <div class="form-div rounded">    
             <div class="row">
                 <div class="col-md-6 col-sm-12 col-xs-12 mt-2">
@@ -11,7 +12,13 @@
                 </div>
                 <div class="col-md-6 col-sm-12 col-xs-12 mt-2">
                     <label for="date">Data</label>
-                    <input class="form-control" type="date" id="date" value="<?php echo $parameters["event"][0]["Data"];?>">
+                    <div class="input-group">
+                        <input class="form-control" id="date" name="date" placeholder="dd/mm/yyyy" 
+                               type="text"  value="<?php echo $parameters["event"][0]["Data"];?>"/>
+                        <div class="input-group-append">
+                            <div class="input-group-text"><em class="fas fa-calendar-alt"></em></div>
+                        </div>
+                    </div>
                     <small id="wrongDate" class="text-white"></small>
                 </div>
             </div>        

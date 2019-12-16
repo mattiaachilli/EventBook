@@ -7,7 +7,7 @@
     $parameters["capacity"] = $db->getLocationCapacity($parameters["event"][0]["Nome_location"], 
                                                        $parameters["event"][0]["Nazione_location"], 
                                                        $parameters["event"][0]["Città_location"]);
-    $parameters["js"] = array("../js/editEvent.js");
+    $parameters["js"] = array("../js/editEvent.js", "../js/datepicker.js");
 
     require dirname(__DIR__).'/php/phpPages/base.php';
 ?>
