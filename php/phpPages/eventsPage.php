@@ -28,9 +28,9 @@
 <div class="row">
     <div class="col-md-1 col-sm-0"></div>
     <div class="col-md-10 col-sm-12">
-        <h1 class="text-light display-4 mt-5">
+        <h2 class="text-light display-4 mt-5">
             <?php if ($numEvents > 0) echo 'Eventi in programma'; ?>
-        </h1>
+        </h2>
     </div>
     <div class="col-md-1 col-xs-0"></div>
 </div>

@@ -2,7 +2,7 @@
     <div class="col-sm-2 col-xs-0"></div>
     <div class="col-sm-8 col-xs-12">
         <input type="hidden" id="event_id" value=<?php if(isset($_POST["ID"])) { echo $_POST["ID"]; } ?>> 
-        <h1 class="text-light display-4"><?php echo $parameters["event"][0]["Nome_evento"]; ?></h1>
+        <h2 class="text-light display-4"><?php echo $parameters["event"][0]["Nome_evento"]; ?></h2>
     </div>
     <div class="col-sm-2 col-xs-0"></div>
 </div>
