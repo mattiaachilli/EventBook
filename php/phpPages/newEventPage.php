@@ -2,7 +2,7 @@
 <div class="row">
     <div class="col-md-2 col-sm-2"></div>
     <div class="col-md-8 col-sm-8 col-xs-12">
-        <h1 class="text-light display-4">Nuovo evento</h1>
+        <h2 class="text-light display-4">Nuovo evento</h2>
         <div class="form-div rounded">    
             <div class="row">
                 <div class="col-md-6 col-sm-12 col-xs-12 mt-2">
@@ -12,7 +12,12 @@
                 </div>
                 <div class="col-md-6 col-sm-12 col-xs-12 mt-2">
                     <label for="date">Data</label>
-                    <input class="form-control" id="date" name="date" placeholder="dd/mm/yyyy" type="text"/>
+                    <div class="input-group">
+                        <input class="form-control" id="date" name="date" placeholder="dd/mm/yyyy" type="text"/>
+                        <div class="input-group-append">
+                            <div class="input-group-text"><em class="fas fa-calendar-alt"></em></div>
+                        </div>
+                    </div>
                     <small id="wrongDate" class="text-light"></small>
                 </div>
             </div>        

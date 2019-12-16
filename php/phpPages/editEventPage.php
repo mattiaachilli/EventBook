@@ -14,7 +14,7 @@
                     <label for="date">Data</label>
                     <div class="input-group">
                         <input class="form-control" id="date" name="date" placeholder="dd/mm/yyyy" 
-                               type="text"  value="<?php echo $parameters["event"][0]["Data"];?>"/>
+                               type="text" value="<?php echo $parameters["event"][0]["Data"];?>"/>
                         <div class="input-group-append">
                             <div class="input-group-text"><em class="fas fa-calendar-alt"></em></div>
                         </div>
