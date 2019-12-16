@@ -4,7 +4,7 @@
         <div class="panel-title">
             <div class="row">
                 <div class="col-12">
-                    <h3 class="text-light display-4" id="title-cart">Carrello</h3>
+                    <h2 class="text-light display-4" id="title-cart">Carrello</h2>
                 </div>
             </div>
             <div class="row">
@@ -23,7 +23,7 @@
         <div class="col-lg-2 col-md-2"></div>
         <div class="col-lg-8 col-md-8 col-sm-12 col-12">
             <div class="alert" role="alert" id="alert_class">
-                <h4 class="alert-heading" id="alert_heading">Attenzione!</h4>
+                <h3 class="alert-heading" id="alert_heading">Attenzione!</h3>
                 <div id="spinner">
                     <div class="spinner-border text-center" role="status">
                         <span class="sr-only">Loading...</span>
