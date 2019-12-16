@@ -1,9 +1,9 @@
 <div class="row">
     <div class="col-lg-4 col-md-2 col-sm-2"></div>
     <div class="col-lg-4 col-md-8 col-sm-8 col-12">
-        <h1 class="text-light display-4">Login</h1>
+        <h2 class="text-light display-4">Login</h2>
         <div class="form-div rounded" id="form-div">
-            <form action = "../api/api-login.php" method = "post" id="form-login">
+            <form action = "<?php echo ROOT."/api/api-login.php" ?>" method = "post" id="form-login">
                 <div class="col-12">
                     <label for="username-email">Username / Email </label>
                     <input type="text" class="form-control" id="username-email" name="username">

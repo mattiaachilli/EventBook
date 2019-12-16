@@ -4,7 +4,7 @@
         <div class="panel-title">
             <div class="row">
                 <div class="col-12">
-                    <h1 class="text-light display-4" id="title-cart">Carrello</h1>
+                    <h3 class="text-light display-4" id="title-cart">Carrello</h3>
                 </div>
             </div>
             <div class="row">
