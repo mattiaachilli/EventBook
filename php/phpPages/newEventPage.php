@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
 <div class="row">
     <div class="col-md-2 col-sm-2"></div>
     <div class="col-md-8 col-sm-8 col-xs-12">
@@ -11,7 +12,7 @@
                 </div>
                 <div class="col-md-6 col-sm-12 col-xs-12 mt-2">
                     <label for="date">Data</label>
-                    <input class="form-control" type="date" id="date">
+                    <input class="form-control" id="date" name="date" placeholder="dd/mm/yyyy" type="text"/>
                     <small id="wrongDate" class="text-light"></small>
                 </div>
             </div>        

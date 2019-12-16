@@ -4,7 +4,7 @@
     if(isUserLoggedIn() && typeOfUserLogged() == ORGANIZER) {
         $parameters["title"] = "Nuovo evento - EventBook";
         $parameters["content"] = dirname(__DIR__)."/php/phpPages/newEventPage.php";
-        $parameters["js"] = array("../js/newEvent.js");
+        $parameters["js"] = array("../js/newEvent.js", "../js/datepicker.js");
     } else {
         header("Location: index.php");
     }
