@@ -38,10 +38,10 @@
 <?php foreach($parameters["events"] as $event) : 
     if ($n % 2 == 0) { echo '<div class="row text-light">'.'<div class="col-sm-0 col-md-1"></div>'; } 
 ?>
-<div class="col-sm-12 col-md-5">
+<div class="col-sm-10 col-md-5">
     <form action="../php/eventInfo.php" class="form-div rounded p-1" method="post">
         <div class="row">
-            <div class="col-xl-4 col-xs-12 col-sm-12 p-4">
+            <div class="col-xl-4 col-xs-12 col-sm-12 p-3">
                 <img class="w-100" alt="" src="<?php echo $event["Immagine"]?>"/>
             </div>
             <div class="col-xl-8 col-xs-12 col-sm-12 mt-4">
@@ -51,26 +51,26 @@
                     </div>
                     <input type="hidden" value= <?php echo $event["IDevento"]; ?>/>
                 </div>
-                <div class="row mt-2">
+                <div class="row">
                     <div class="col-12 text-truncate">
-                        Luogo: <?php echo $event["Nome_location"].' - '.$event["Città_location"] ?>
+                        <?php echo $event["Nome_location"].' - '.$event["Città_location"] ?>
                     </div>
                 </div>
-                <div class="row mt-2">
+                <div class="row">
                     <div class="col-12 text-truncate">
-                        Data: <?php echo $event["Data"]; ?>
+                        <?php echo $event["Data"]; ?>
                     </div>
                 </div>
-                <div class="row mt-2">
+                <div class="row">
                     <div class="col-12 font-weight-light font-italic text-truncate">
-                        Categoria: <?php echo $event["Categoria"]; ?>
+                        <?php echo $event["Categoria"]; ?>
                     </div>
                 </div>
                 <div class="row mt-4">
                     <div class="col-xl-6 col-lg-6 col-md-5 col-sm-6 col-xs-12">
                         Prezzo: <?php echo $event["Prezzo"]; ?>€
                     </div>
-                    <div class="col-xl-6 col-lg-6 col-md-7 col-sm-6 col-xs-12 mt-4">
+                    <div class="col-xl-6 col-lg-6 col-md-7 col-sm-6 col-xs-12 mt-3">
                         <button name="ID" value="<?php echo $event["IDevento"]; ?>" 
                                 type="submit" class="btn btn-primary mb-2 float-right container-fluid">Informazioni
                         </button>

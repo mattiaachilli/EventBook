@@ -42,8 +42,8 @@
 <?php foreach($parameters["events"] as $event) : 
     if ($n % 2 == 0) { echo '<div class="row text-light">'.'<div class="col-sm-0 col-md-1"></div>'; } 
 ?>
-<div class="col-sm-12 col-md-5">
-    <form action="../php/eventInfo.php" class="form-div rounded p-0" method="post">
+<div class="col-sm-10 col-md-5">
+    <form action="../php/eventInfo.php" class="form-div rounded p-1" method="post">
         <div class="row">
             <div class="col-xl-4 col-xs-12 col-sm-12 p-3">
                 <img src="<?php echo $event["Immagine"]?>" class ="w-100" alt = ""/>
@@ -71,12 +71,12 @@
                     </div>
                 </div>
                 <div class="row mt-4">
-                    <div class="col-xl-8 col-sm-12 col-xs-12">
+                    <div class="col-xl-6 col-lg-6 col-md-5 col-sm-6 col-xs-12">
                         Prezzo: <?php echo $event["Prezzo"]; ?>€
                     </div>
-                    <div class="col-xl-4 col-sm-12 col-xs-12">
+                    <div class="col-xl-6 col-lg-6 col-md-7 col-sm-6 col-xs-12 mt-3">
                         <button name="ID" value="<?php echo $event["IDevento"]; ?>" 
-                                type="submit" class="btn btn-primary mb-2 float-right">Informazioni
+                                type="submit" class="btn btn-primary mb-2 float-right container-fluid">Informazioni
                         </button>
                     </div>
                 </div>

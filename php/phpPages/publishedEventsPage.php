@@ -17,7 +17,7 @@
 <?php foreach($parameters["events"] as $event) : 
     if ($n % 2 == 0) { echo '<div class="row text-light">'.'<div class="col-sm-0 col-md-1"></div>'; } 
 ?>
-<div class="col-sm-12 col-md-5">
+<div class="col-sm-10 col-md-5">
     <div class="form-div rounded p-0">
         <div class="row">
             <div class="col-xl-3 col-lg-12 col-xs-12 col-sm-12 p-3">

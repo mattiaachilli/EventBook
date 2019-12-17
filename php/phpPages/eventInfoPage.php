@@ -15,7 +15,7 @@
                     <img alt="" class="w-100" src="<?php echo $parameters["event"][0]["Immagine"]; ?>"/>
                 </div>
                 <div class="col-xl-8 col-xs-12 col-sm-12">
-                    <div class="row mt-4">
+                    <div class="row mt-2">
                         <div class="col-12">
                             <?php echo $parameters["event"][0]["Descrizione"]; ?> 
                         </div>
