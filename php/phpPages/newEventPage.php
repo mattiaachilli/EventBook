@@ -11,9 +11,9 @@
                     <small id="wrongName" class="text-white"></small>
                 </div>
                 <div class="col-md-6 col-sm-12 col-xs-12 mt-2">
-                    <label for="date">Data</label>
+                    <label for="date">Data<small> (mm/gg/aaaa)</small></label>
                     <div class="input-group">
-                        <input class="form-control" id="date" name="date" placeholder="dd/mm/yyyy" type="text"/>
+                        <input class="form-control" id="date" name="date" placeholder="mm/gg/aaaa" type="text"/>
                         <div class="input-group-append">
                             <div class="input-group-text"><em class="fas fa-calendar-alt"></em></div>
                         </div>
