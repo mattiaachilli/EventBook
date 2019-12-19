@@ -16,8 +16,10 @@
                     $i++;
                 }
             }
-            if (count($db->checkExistingEvent($_POST["date"], $_POST["nazione"], $_POST["città"], $_POST["location"])) == 0) {
-                $db->insertNewEvent($_POST["eventName"], $_POST["date"], $_POST["desc"], $pathImage,
+            $date = strtotime($_POST["date"]);
+            $date = date('Y-m-d', $date);
+            if (count($db->checkExistingEvent($date, $_POST["nazione"], $_POST["città"], $_POST["location"])) == 0) {
+                $db->insertNewEvent($_POST["eventName"], $date, $_POST["desc"], $pathImage,
                                     $_POST["price"], $_POST["tickets"], $_POST["category"], $_POST["location"],
                                     $_POST["nazione"], $_POST["città"]);
             } else {

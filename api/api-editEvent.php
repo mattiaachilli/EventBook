@@ -9,11 +9,14 @@
         && isset($_POST["città"]) && isset($_POST["path"]) && isset($_POST["oldEventID"])) {
             
             $pathImage = "../img/events/".$_POST["path"];
+            $date = strtotime($_POST["date"]);
+            $date = date('Y-m-d', $date);
             $oldEvent = $db->getEvent($_POST["oldEventID"]);
             $soldTickets = count($db->getRows($_POST["oldEventID"]));
             $locationCapacity = $db->getLocationCapacity($_POST["location"], $_POST["nazione"], $_POST["città"])[0]["Capienza"];
-            $existingEvent = $db->checkExistingEvent($_POST["date"], $_POST["nazione"], 
+            $existingEvent = $db->checkExistingEvent($date, $_POST["nazione"], 
                                                      $_POST["città"], $_POST["location"]);
+
             if ($_POST["path"] != "" && $oldEvent[0]["Immagine"] != $pathImage) {
                 if (file_exists($pathImage)) {
                     $i = 1;
@@ -27,12 +30,12 @@
             } else {
                 $pathImage = $oldEvent[0]["Immagine"];
             }
-
+            
             if (count($existingEvent) == 0 || (count($existingEvent) == 1 && $oldEvent[0]["IDevento"] == $existingEvent[0]["IDevento"])) {
                 if ($soldTickets > $locationCapacity) {
                     $response = "I biglietti già venduti (".$soldTickets.") superano la capienza (".$locationCapacity.") della location scelta.";
                 } else if ($soldTickets + $_POST["tickets"] <= $locationCapacity) {
-                    $db->editEvent($_POST["eventName"], $_POST["date"], $_POST["desc"], $pathImage,
+                    $db->editEvent($_POST["eventName"], $date, $_POST["desc"], $pathImage,
                                         $_POST["price"], $_POST["tickets"], $_POST["category"], $_POST["location"],
                                         $_POST["nazione"], $_POST["città"], $_POST["oldEventID"]);                 
                 } else {

@@ -1,4 +1,9 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
+<?php
+    $date = $parameters["event"][0]["Data"];
+    $date = strtotime($date);
+    $date = date('m/d/Y', $date);
+?>
 <div class="row">
     <div class="col-md-2 col-sm-2"></div>
     <div class="col-md-8 col-sm-8 col-xs-12">
@@ -14,7 +19,7 @@
                     <label for="date">Data</label>
                     <div class="input-group">
                         <input class="form-control" id="date" name="date" placeholder="dd/mm/yyyy" 
-                               type="text" value="<?php echo $parameters["event"][0]["Data"];?>"/>
+                               type="text" value="<?php echo $date; ?>"/>
                         <div class="input-group-append">
                             <div class="input-group-text"><em class="fas fa-calendar-alt"></em></div>
                         </div>
