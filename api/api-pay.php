@@ -4,8 +4,9 @@
     if(!isUserLoggedIn()){
         echo 0;
     } else {
-        if(isset($_COOKIE["cart"]) && !empty($_COOKIE["cart"])) {
-            $return = $db->insertTicket($_SESSION["user"][0], json_decode($_COOKIE["cart"]));
+        $cookie = $_SESSION["user"][0]."Cart";
+        if(isset($_COOKIE[$cookie]) && !empty($_COOKIE[$cookie])) {
+            $return = $db->insertTicket($_SESSION["user"][0], json_decode($_COOKIE[$cookie]));
             if($return == 1) {
                 echo 1;
             } else {

@@ -321,7 +321,7 @@
 
         public function insertTicket($username, $arr) {
             $array = array();
-            for($i = 0; $i < count($arr); $i+=2) {
+            for($i = 1; $i < count($arr); $i+=3) {
                 $quantity = $arr[$i + 1];
                 $id = $arr[$i];
                 $n = 0;

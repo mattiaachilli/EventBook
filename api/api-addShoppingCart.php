@@ -12,7 +12,11 @@
             if(isset($_POST["change"])) {
                 $change = 1;
             }
-            setCookieCart($id, $n_ticket, $change);
+            if(!isUserLoggedIn()) {
+                setCookieCart($id, $n_ticket, $change);
+            } else {
+                setUserCookieCart($id, $n_ticket, $change);
+            }
             echo 1;
         }
     }
