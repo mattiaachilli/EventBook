@@ -462,5 +462,16 @@
 
             return $result->fetch_all(MYSQLI_ASSOC);
         }
+
+        public function getUsersInEvent($IDevent) {
+            $stmt = $this->db->prepare("SELECT DISTINCT Email
+                                        FROM biglietti B, utenti U
+                                        WHERE IDevento = ? AND B.Username_acquirente = U.Username");
+            $stmt->bind_param("i", $IDevent);
+            $stmt->execute();
+            $result = $stmt->get_result();
+
+            return $result->fetch_all(MYSQLI_ASSOC);
+        }
     }
 ?>
