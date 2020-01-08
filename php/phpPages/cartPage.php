@@ -52,12 +52,15 @@
                         <div class="col-3">
                             <img class="img-responsive w-100 border border-light rounded" src=<?php echo $q[0]["Immagine"]; ?> alt="">
                         </div>
-                        <div class="col-3 text-truncate">
+                        <div class="col-3">
                             <h3 class="product-name h5">
                                 <strong><?php echo $q[0]["Nome_evento"]; ?></strong>
                             </h3>
                             <h3 class = "h6">
-                                <?php echo $q[0]["Descrizione"]; ?>
+                                <?php echo $q[0]["Nome_location"]." - ".$q[0]["Città_location"]." (".$q[0]["Nazione_location"].")"; ?>
+                            </h3>
+                            <h3 class = "h6">
+                                <?php echo $q[0]["Data"]; ?>
                             </h3>
                         </div>
                         <div class="col-1">
