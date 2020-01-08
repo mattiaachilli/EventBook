@@ -90,12 +90,14 @@
     }
 
     function mergeCookie($user) {
-        if(isset($_COOKIE["cart"]) && !empty($_COOKIE["cart"])) {
-            $arr = json_decode($_COOKIE["cart"]);
-            for($i = 0; $i < count($arr); $i+=2) {
-                setUserCookieCart($arr[$i], $arr[$i + 1], 0, $user);
+        if(typeOfUserLogged() == USER) {
+            if(isset($_COOKIE["cart"]) && !empty($_COOKIE["cart"])) {
+                $arr = json_decode($_COOKIE["cart"]);
+                for($i = 0; $i < count($arr); $i+=2) {
+                    setUserCookieCart($arr[$i], $arr[$i + 1], 0, $user);
+                }
+                setcookie("cart", null, -1, "/");
             }
-            setcookie("cart", null, -1, "/");
         }
     }
 ?>
