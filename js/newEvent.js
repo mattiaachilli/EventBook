@@ -20,7 +20,7 @@ $(document).ready(function() {
 
         if (checkFields(eventName, desc, price, tickets, date, category, location, path) && imageIsCorrect) {
             const nomeLocation = location.split(" - ")[0];
-            const city = location.split(" - ")[1].split(" ")[0];
+            const city = location.split(" - ")[1].split(" (")[0];
             const country = location.split(" (")[1].split(")")[0];
             $.ajax({
                 url: '../api/api-newEvent.php',
@@ -47,7 +47,7 @@ $(document).ready(function() {
     $("#location").on("change", function(event) {
         const location = $("#location").val();
         const name = location.split(" - ")[0];
-        const city = location.split(" - ")[1].split(" ")[0];
+        const city = location.split(" - ")[1].split(" (")[0];
         const country = location.split(" (")[1].split(")")[0];
         $.ajax({
             url: '../api/api-getLocationCapacity.php',

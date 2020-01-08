@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Dic 09, 2019 alle 22:02
+-- Creato il: Gen 08, 2020 alle 22:41
 -- Versione del server: 10.4.8-MariaDB
 -- Versione PHP: 7.3.11
 
@@ -54,11 +54,9 @@ INSERT INTO `categorie` (`Nome`) VALUES
 ('Concerto'),
 ('Convegno'),
 ('Evento culinario'),
-('Festival'),
-('Musica elettronica'),
+('Fiera generica'),
 ('Serata in discoteca'),
-('Sport'),
-('Workshop');
+('Sport');
 
 -- --------------------------------------------------------
 
@@ -71,26 +69,32 @@ CREATE TABLE `eventi` (
   `Data` date NOT NULL,
   `Nome_evento` varchar(20) NOT NULL,
   `Nome_location` varchar(20) NOT NULL,
-  `Città_location` varchar(20) NOT NULL,
   `Nazione_location` varchar(20) NOT NULL,
+  `Città_location` varchar(20) NOT NULL,
   `Biglietti_disponibili` int(6) NOT NULL,
   `Categoria` varchar(20) NOT NULL,
   `Immagine` varchar(150) NOT NULL,
-  `Descrizione` varchar(500) NOT NULL,
+  `Descrizione` varchar(1000) NOT NULL,
   `Prezzo` int(5) NOT NULL,
   `Username_organizzatore` varchar(15) NOT NULL,
   `Active` tinyint(1) NOT NULL,
-  `Deleted` tinyint(1) NOT NULL,
-  `User_is_active` tinyint(1) NOT NULL
+  `Deleted` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dump dei dati per la tabella `eventi`
 --
 
-INSERT INTO `eventi` (`IDevento`, `Data`, `Nome_evento`, `Nome_location`, `Città_location`, `Nazione_location`, `Biglietti_disponibili`, `Categoria`, `Immagine`, `Descrizione`, `Prezzo`, `Username_organizzatore`, `Active`, `Deleted`, `User_is_active`) VALUES
-(35, '2020-01-25', 'Juventus - Inter', 'Allianz Stadium', 'Torino', 'Italia', 44000, 'Calcio', '../img/events/02_Juventus.com_.jpg', 'Derby d\'Italia', 100, 'MattSaber', 1, 0, 0),
-(36, '2019-10-18', 'MartinGarrix@ADE2019', 'RAI', 'Amsterdam', 'Paesi Bassi', 28001, 'Concerto', '../img/events/tn34063.jpg', 'Grande ritorno di Martin Garrix all RAI Convention Center durante l\'Amsterdam Dance Event.', 46, 'MattSaber', 1, 0, 0);
+INSERT INTO `eventi` (`IDevento`, `Data`, `Nome_evento`, `Nome_location`, `Nazione_location`, `Città_location`, `Biglietti_disponibili`, `Categoria`, `Immagine`, `Descrizione`, `Prezzo`, `Username_organizzatore`, `Active`, `Deleted`) VALUES
+(68, '2020-03-04', 'Juventus - Inter', 'Allianz Stadium', 'Italia', 'Torino', 40000, 'Calcio', '../img/events/stadium.jpg', 'Derby d\'Italia.', 50, 'Matt', 1, 0),
+(69, '2020-01-22', 'Sigep', 'Fiera di Rimini', 'Italia', 'Rimini', 5000, 'Evento culinario', '../img/events/Ice-Cream-Cone-Cupcakes-Recipe-1-of-1-6.jpg', 'Fiera del gelato migliore d\'Italia!', 15, 'Matt', 1, 0),
+(70, '2020-12-25', 'Tombola di Natale', 'Casina', 'Italia', 'Riccione', 25, 'Fiera generica', '../img/events/tombolina.jpg', 'Tombola con dei gran premi per tutti!', 5, 'Matt', 1, 0),
+(71, '2020-12-31', 'Capodanno 2021 a NYC', 'Time Square', 'USA', 'New York', 80000, 'Evento culinario', '../img/events/NYE-in-Times-Square-NYC.jpg', 'Capodanno a New York City!', 30, 'Matt', 1, 0),
+(73, '2020-02-12', 'Lakers - Miami Heat', 'Staples Center', 'USA', 'Los Angeles', 20000, 'Sport', '../img/events/61ZNcGHF4xL._SY355_.jpg', 'Partita di NBA.', 50, 'Matt', 1, 0),
+(74, '2020-02-14', 'Zucchero in Concert', 'Allianz Stadium', 'Italia', 'Torino', 20000, 'Concerto', '../img/events/download.jfif', 'Zucchero in concert', 40, 'Matt', 1, 0),
+(75, '2020-08-15', 'Martin Garrix ', 'Cocoricò', 'Italia', 'Riccione', 7000, 'Serata in discoteca', '../img/events/martin.jpg', 'Martin Garrix torna al Cocoricò dopo 5 anni!', 45, 'Matt', 1, 0),
+(76, '2020-07-20', 'Armin van Buuren', 'Cocoricò', 'Italia', 'Riccione', 7000, 'Serata in discoteca', '../img/events/A-9070-1528964521-4162.jpg', 'Il ritorno del re della trance in piramide!', 45, 'Matt', 1, 0),
+(77, '2020-07-07', 'AC/DC in concert', 'San Siro', 'Italia', 'Milano', 75000, 'Concerto', '../img/events/acdc.jpg', 'AC/DC in concerto a Milano!', 70, 'Matt', 1, 0);
 
 -- --------------------------------------------------------
 
@@ -112,9 +116,13 @@ CREATE TABLE `location` (
 --
 
 INSERT INTO `location` (`Nome`, `Città`, `Nazione`, `Capienza`, `Via`, `N_civico`) VALUES
-('Allianz Stadium', 'Torino', 'Italia', 45000, 'Dello Stadio ', 1),
-('Cocoricò', 'Rimini', 'Italia', 8000, 'Chieti', 44),
-('RAI', 'Amsterdam', 'Paesi Bassi', 30000, 'Europaplein', 24);
+('Allianz Stadium', 'Torino', 'Italia', 45000, 'Boh', 1),
+('Casina', 'Riccione', 'Italia', 25, 'Boh', 1),
+('Cocoricò', 'Riccione', 'Italia', 7500, 'Chieti', 44),
+('Fiera di Rimini', 'Rimini', 'Italia', 30000, 'Della Fiera ', 1),
+('San Siro', 'Milano', 'Italia', 80000, 'Dello Stadio', 1),
+('Staples Center', 'Los Angeles', 'USA', 30000, 'Staples', 1),
+('Time Square', 'New York', 'USA', 100000, 'Square', 1);
 
 -- --------------------------------------------------------
 
@@ -127,7 +135,7 @@ CREATE TABLE `utenti` (
   `Email` varchar(50) NOT NULL,
   `Nome` varchar(45) NOT NULL,
   `Cognome` varchar(45) NOT NULL,
-  `Password` varchar(45) NOT NULL,
+  `Password` varchar(32) NOT NULL,
   `Organizzatore` tinyint(1) NOT NULL,
   `Active` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -137,9 +145,9 @@ CREATE TABLE `utenti` (
 --
 
 INSERT INTO `utenti` (`Username`, `Email`, `Nome`, `Cognome`, `Password`, `Organizzatore`, `Active`) VALUES
-('Admin', 'matteo.innocenti2@studio.unibo.it', 'Matteo', 'Inno', '2521a33ad740a5ea010eac7002169c2e', 0, 0),
-('MattSaber', 'innocentimatteo93@gmail.com', 'Matteo', 'Innocenti', '2521a33ad740a5ea010eac7002169c2e', 1, 0),
-('Prova', 'matteoinnocenti93@live.com', 'Matteo', 'Innocenti', '6e6bc4e49dd477ebc98ef4046c067b5f', 0, 0);
+('Admin', 'innocentimatteo93@gmail.com', 'Matteo', 'Innocenti', '2521a33ad740a5ea010eac7002169c2e', 0, 0),
+('Inno', 'matteoinnocenti93@live.com', 'm', 'i', '2521a33ad740a5ea010eac7002169c2e', 0, 1),
+('Matt', 'matteo.innocenti2@studio.unibo.it', 'Matteo', 'Innocenti', '2521a33ad740a5ea010eac7002169c2e', 1, 1);
 
 --
 -- Indici per le tabelle scaricate
@@ -187,7 +195,7 @@ ALTER TABLE `utenti`
 -- AUTO_INCREMENT per la tabella `eventi`
 --
 ALTER TABLE `eventi`
-  MODIFY `IDevento` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `IDevento` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=78;
 
 --
 -- Limiti per le tabelle scaricate
