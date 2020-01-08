@@ -18,6 +18,8 @@
                         <button type="submit" class="btn btn-primary page-btn float-right" >Invia</button>
                     </div>
                 </div>
+                <div id="wheel" class="col-12 text-center">
+                </div>
             </form>
         </div>
     </div>
