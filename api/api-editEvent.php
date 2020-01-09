@@ -1,5 +1,6 @@
 <?php
     require_once(dirname(__DIR__)."/php/bootstrap.php");
+    require_once('../phpmailer/PHPMailerAutoload.php');
     
     $response = 0;
     
@@ -37,7 +38,14 @@
                 } else if ($soldTickets + $_POST["tickets"] <= $locationCapacity) {
                     $db->editEvent($_POST["eventName"], $date, $_POST["desc"], $pathImage,
                                         $_POST["price"], $_POST["tickets"], $_POST["category"], $_POST["location"],
-                                        $_POST["nazione"], $_POST["città"], $_POST["oldEventID"]);                 
+                                        $_POST["nazione"], $_POST["città"], $_POST["oldEventID"]);   
+                    $eventToEdit = $_POST["oldEventID"];
+                    $event = $db->getEvent($eventToEdit)[0];
+  
+                    $users = $db->getUsersInEvent($eventToEdit);
+                    foreach($users as $mailUser) {
+                        sendMail($mailUser["Email"], $event);
+                    }              
                 } else {
                     $response = "I biglietti aggiunti, sommati a quelli già venduti (".$soldTickets."),
                                  superano la capienza della location scelta. (max. ".($locationCapacity - $soldTickets).")";
@@ -50,4 +58,22 @@
         $response = "Variabili non settate.";
     }
     echo $response;
+
+    function sendMail($mailUser, $event) {
+        $mailReceiver = $mailUser;
+        $subject = "EventBook - Evento mopdificato";
+            $body = '<html>
+                        <head></head>
+                        <body>
+                            <h1>EventBook - Evento modificato</h1>
+                            <hr/>
+                            <p>L\'evento per il quale hai acquistato i biglietti e\' stato modificato.<br/>
+                               Le nuove informazioni sono le seguenti: <br/>'
+                               .$event["Nome_evento"].' - '.$event["Data"].' - '.$event["Nome_location"].
+                               '<br/>Saluti dallo staff di EventBook</p>
+                        </body>
+                    </html>';
+                    require_once("../api/api-mailManager.php");
+            $mail->send();
+    }
 ?>
