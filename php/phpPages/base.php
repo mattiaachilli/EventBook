@@ -20,6 +20,11 @@
     <link rel="stylesheet" href="../fontawesome-free-5.11.2-web/css/all.css">
     <link rel="stylesheet" href="../css/style.css">
     <?php
+        if (isset($parameters["datePicker"])) {
+            echo $parameters["datePicker"];
+        }
+    ?>
+    <?php
     if(isset($parameters["js"])):
         foreach($parameters["js"] as $script):
     ?>
